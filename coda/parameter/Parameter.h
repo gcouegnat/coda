@@ -17,12 +17,12 @@ public:
     bool is_set() const;
 
     virtual const Parameter& operator= (int value);
-    virtual const Parameter& operator= (double value);
+    virtual const Parameter& operator= (float value);
     virtual const Parameter& operator= (std::string value);
     virtual const Parameter& operator= (bool value);
 
     virtual operator int() const;
-    virtual operator double() const;
+    virtual operator float() const;
     virtual operator std::string() const;
     virtual operator bool() const;
 
@@ -58,16 +58,16 @@ class DoubleParameter : public Parameter
 {
 public:
     DoubleParameter(std::string key);
-    DoubleParameter(std::string key, double value);
+    DoubleParameter(std::string key, float value);
     ~DoubleParameter();
-    const DoubleParameter& operator= (double value);
-    operator double() const;
+    const DoubleParameter& operator= (float value);
+    operator float() const;
     std::string type_str() const;
     std::string value_str() const;
     std::string str() const;
 
 private:
-    double _value;
+    float _value;
 };
 
 class StringParameter : public Parameter

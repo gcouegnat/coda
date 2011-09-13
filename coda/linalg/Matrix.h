@@ -18,22 +18,22 @@ public:
     virtual ~Matrix() {};
 
     const Matrix& operator= (const Matrix& mat);
-    const Matrix& operator=(double a);
+    const Matrix& operator=(float a);
 
-    double 	operator() ( int i,  int j) const
+    float 	operator() ( int i,  int j) const
     {
         return values_[i*n_+j];
     };
-    double& 	operator() ( int i,  int j)
+    float& 	operator() ( int i,  int j)
     {
         return values_[i*n_+j];
     };
 
-    double operator[] ( int i) 					const
+    float operator[] ( int i) 					const
     {
         return values_[i];
     };
-    double& operator[] ( int i)
+    float& operator[] ( int i)
     {
         return values_[i];
     };
@@ -51,7 +51,7 @@ public:
 
 private:
     int m_, n_;
-    double* values_;
+    float* values_;
 
 public:
 

@@ -46,7 +46,7 @@ double coda::_time()
   struct timeval tv;
   struct timezone tz;
 	gettimeofday(&tv, &tz);
- return static_cast<double>(tv.tv_sec) + static_cast<double>(tv.tv_usec)*1e-6;
+ return static_cast<double>(tv.tv_sec) + static_cast<double>(tv.tv_usec)*1e-6f;
 }
 //-----------------------------------------------------------------------------
 

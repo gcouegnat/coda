@@ -5,8 +5,8 @@ using namespace coda;
 #include <eigen3/Eigen/Dense>
 
 
-#define N 320
-#define NREPEAT 10000
+#define N 32
+#define NREPEAT 100000
 
 
 int main (int argc, char const *argv[])
@@ -27,7 +27,7 @@ int main (int argc, char const *argv[])
 	}
 	timer.stop();
 
-	timer.rename("matvec (cblas)");
+	timer.rename("matvec (cblas_s)");
 	z=0.0;
 	timer.start();
 	Vector tmp(N);
@@ -46,7 +46,7 @@ int main (int argc, char const *argv[])
 	{
 		for(int j=0; j<N; ++j)
 		{
-			double tmp=0.0;
+			float tmp=0.0;
 			for(int k=0;k<N;++k)
 			{
 				tmp+= A(j,k)*x[k]+ B(j,k)+z[k];
