@@ -11,9 +11,12 @@ typedef unsigned int uint;
 namespace coda
 {
 
+class Matrix;
+
 class Vector : public VectorET<Vector>
 {
 public:
+
 
     explicit Vector(const uint size = 0);
     Vector(const Vector& v);
@@ -24,45 +27,47 @@ public:
     uint size() const;
 
     const Vector& operator=(const Vector& v);
-    const Vector& operator=(double a);
+    const Vector& operator=(float a);
 
     void zeros();
 
     void abs();
 
-    void add(double a);
-    void add(double a, Vector& v);
-    void add(double a, Vector&v, double b, Vector& w);
+    void add(float a);
+    void add(float a, Vector& v);
+    void add(float a, Vector&v, float b, Vector& w);
 
-    void eq(double a);
-    void eq(double a, Vector& v);
-    void eq(double a, Vector&v, double b, Vector& w);
+    void eq(float a);
+    void eq(float a, Vector& v);
+    void eq(float a, Vector&v, float b, Vector& w);
 
-    void axpy(double a, const Vector& v);
+    void axpy(float a, const Vector& v);
 
-    double dot(const Vector& x) const;
-    double norm(std::string norm_type) const;
+    float dot(const Vector& x) const;
+    float norm(std::string norm_type) const;
 
-    double min() const;
-    double max() const;
-    double sum() const;
+    float min() const;
+    float max() const;
+    float sum() const;
 
     std::string str() const;
 		void print() const;
 
-    const Vector& operator*=(double a);
-    const Vector& operator/=(double a);
-    const Vector& operator+=(double a);
-    const Vector& operator-=(double a);
+    const Vector& operator*=(float a);
+    const Vector& operator/=(float a);
+    const Vector& operator+=(float a);
+    const Vector& operator-=(float a);
     const Vector& operator+=(const Vector& v);
     const Vector& operator-=(const Vector& v);
 
-    inline double operator[] (const uint index) const
+		void matvec(Matrix& A, Vector& y);
+
+    inline float operator[] (const uint index) const
     {
         return _values[index];
     };
 
-    inline double& operator[] (const uint index)
+    inline float& operator[] (const uint index)
     {
         return _values[index];
     };
@@ -89,10 +94,10 @@ public:
 
 private:
     uint _size;
-    double* _values;
+    float* _values;
 
 private:
-    double* memptr();
+    float* memptr();
 };
 
 

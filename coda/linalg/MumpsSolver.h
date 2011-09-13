@@ -44,9 +44,9 @@ int MumpsSolver<float>::solve(Matrix<float>& A)
 }
 
 template <>
-int MumpsSolver<double>::solve(Matrix<double>& A)
+int MumpsSolver<float>::solve(Matrix<float>& A)
 {
-    cout << "Solve with Mumps (double)" << endl;
+    cout << "Solve with Mumps (float)" << endl;
     return 1;
 }
 
