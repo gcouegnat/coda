@@ -184,6 +184,15 @@ std::string Vector::str() const
   return s.str();
 }
 //-----------------------------------------------------------------------------
+void Vector::print() const
+{
+	std::cout << "[ ";
+	for(int i=0; i < size()-1; ++i)
+		std::cout << _values[i] <<", ";
+	std::cout << _values[size()-1] << "]" << std::endl;	
+}
+
+//-----------------------------------------------------------------------------
 
 //const Vector Vector::operator+(const Vector& v) const
 //{

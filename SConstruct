@@ -4,17 +4,17 @@
 
 import os
 
-env=Environment()
+env=Environment(CXX="/usr/bin/g++")
 env.Append(CPPPATH=".")
 #env.Append(CCFLAGS="-g -O2 -funroll-loops -fno-builtin")
-env.Append(CCFLAGS="-g -O3 -funroll-loops")
+env.Append(CCFLAGS="-g -O0")
 env.Append(CCFLAGS="-DTERM_WITH_COLORS")
 #env.Append(CCFLAGS="-fopenmp -DTERM_WITH_COLORS")
 #env.Append(LINKFLAGS="-fopenmp");
 
 # BLAS
 env['FRAMEWORKS']+= ['Accelerate']
-env.Append(CCFLAGS="-framework Accelerate");
+#env.Append(CCFLAGS="-framework Accelerate");
 env.Append(LINKFLAGS="-framework Accelerate");
 
 lib_target = "coda"

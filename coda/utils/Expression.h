@@ -8,94 +8,66 @@
 #ifndef EXPRESSION_H
 #define	EXPRESSION_H
 
+// #include <coda/linalg/Vector.h>
+// #include <coda/linalg/Matrix.h>
+
 namespace coda
 {
 
-
 template <typename T>
-struct VectorET
+class VectorET
 {
-
+public:
     inline VectorET() {};
 
-    inline const T& operator~() const
+    const T& operator~() const
     {
         return *static_cast<const T*> (this);
     }
-
-    // virtual void eval(const VectorET& expr) {};
-
 };
 
-
-
-//-----------------------------------------------------------------------------
-
-// template <typename T1, typename T2>
-// class VectorSub : public VectorET< VectorSub<T1, T2> >
+// template <typename Expression>
+// class VectorEvalTrait
 // {
 // public:
-//
-//     explicit VectorSub(const T1& a, const T2& b) : a_(a), b_(b)
-//     {
-//     }
-//
-//     int size() const
-//     {
-//         return a_.size();
-//     }
-//
-//     inline double operator[](int i) const
-//     {
-//         return a_[i] - b_[i];
-//     }
-//
-// private:
-//     const T1& a_;
-//     const T2& b_;
+//     typedef const Vector ET;
 // };
-// //-----------------------------------------------------------------------------
 //
-// template <typename T1, typename T2>
-// class VectorScale : public VectorET< VectorScale<T1, T2> >
+// template<>
+// class VectorEvalTrait<Vector>
 // {
 // public:
-//
-//     explicit VectorScale(const T1& a, const T2& b) : a_(a), b_(b)
-//     {
-//     }
-//
-//     int size() const
-//     {
-//         return a_.size();
-//     }
-//
-//     inline double operator[](int i) const
-//     {
-//         return a_ * b_[i];
-//     }
-//
-// private:
-//     const T1& a_;
-//     const T2& b_;
+//     typedef const Vector& ET;
 // };
-//-----------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
 
-// template <typename T1, typename T2>
-// inline VectorSub<T1, T2> operator-(const VectorET<T1>& a, const VectorET<T2>& b)
+template <typename T>
+class MatrixET
+{
+public:
+    inline MatrixET() {};
+
+    const T& operator~() const
+    {
+        return *static_cast<const T*> (this);
+    }
+};
+
+// template <typename Expression>
+// class MatrixEvalTrait
 // {
-//     return VectorSub<T1, T2 > (~a, ~b);
-// }
-// //-----------------------------------------------------------------------------
+// public:
+//     typedef const Matrix ET;
+// };
 //
-// template <typename T2>
-// inline VectorScale<double, T2> operator*(double a, const VectorET<T2>& b)
+// template<>
+// class MatrixEvalTrait<Matrix>
 // {
-//     return VectorScale<double, T2 > (a, ~b);
-// }
-//-----------------------------------------------------------------------------
+// public:
+//     typedef const Matrix& ET;
+// };
+
 
 }
 

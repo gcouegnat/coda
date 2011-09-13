@@ -19,8 +19,8 @@ int main(int argc, char const *argv[])
     //  info("This an info"); // printing
     //  warning("This a warning"); // printing
     //
-    //  info("init a vector of size 5");
-    //  Vector x(5);
+    //  info("init a vector of size 10");
+    //  Vector x(10);
     //  std::cout << x.str() << std::endl;
     //  for (int i = 0; i < x.size(); ++i)
     //    std::cout << "x[" << i << "] = " << x[i] << std::endl;
@@ -111,87 +111,136 @@ int main(int argc, char const *argv[])
     // for(int i=0; i<z.size(); ++i)
     // 		std::cout << "z["<<i<<"] = " << z[i] << std::endl;
 
-    coda::set_log_level(DEBUG);
+    // coda::set_log_level(DEBUG);
+    //
+    //     const int N = 10000;
+    //         const int NREPEAT = 10000;
+    //
+    //         Vector x(N), y(N), z(N), u(N), v(N), w(N);
+    //
+    //         coda::info("Create vectors");
+    //
+    //         x = 10.0;
+    //         y = 2.0;
+    //         u = 3.0;
+    //         v = 4.0;
+    //         w = 10.0;
+    //
+    //         Timer timer("Expression template ");
+    //         timer.start();
+    //         for (int i = 0; i < NREPEAT; ++i)
+    //         {
+    // 					z =x+y+u+v+w;
+    //         }
+    //         timer.stop();
+    //         info(z.str());
+    //         // for (int i = 0; i < z.size(); ++i)
+    //         //     std::cout << "z[" << i << "] = " << z[i] << std::endl;
+    //
+    //
+    //         timer.rename("C-style");
+    //         timer.start();
+    //         for (int i = 0; i < NREPEAT; ++i)
+    //         {
+    //             // for (int j = 0; j < z.size(); j++)
+    //     	        for (int j = 0; j < z.size(); j+=4)
+    //
+    //     {
+    //     		z[j] = 2.0* (x[j]+y[j]) - u[j]+v[j] -w[j];
+    //         z[j+1] = 2.0* (x[j+1]+y[j+1]) - u[j+1]+v[j+1] -w[j+1];
+    //            z[j+2] = 2.0* (x[j+2]+y[j+2]) - u[j+2]+v[j+2] -w[j+2];
+    //            z[j+3] = 2.0* (x[j+3]+y[j+3]) - u[j+3]+v[j+3] -w[j+3];
+    //
+    //     }   }
+    //         timer.stop();
+    //         info(z.str());
+    //         // for (int i = 0; i < z.size(); ++i)
+    //         //      std::cout << "z[" << i << "] = " << z[i] << std::endl;
+    //
+    //
+    //         timer.rename("In-place operator");
+    //         z = 0.0;
+    //         timer.start();
+    //         for (int i = 0; i < NREPEAT; ++i)
+    //         {
+    //             z.eq(1.0, x, 1.0, y);
+    //             z *= 2.0;
+    //             z -= u;
+    //             z += v;
+    //             z -= w;
+    //         }
+    //         timer.stop();
+    //
+    //         info(z.str());
+    // for (int i = 0; i < z.size(); ++i)
+    //     std::cout << "z[" << i << "] = " << z[i] << std::endl;
 
-    const int N = 5000;
-        const int NREPEAT = 10000;
-    
-        Vector x(N), y(N), z(N), u(N), v(N), w(N);
-    
-        coda::info("Create vectors");
-    
-        x = 10.0;
-        y = 2.0;
-        u = 3.0;
-        v = 4.0;
-        w = 5.0;
-    
-        Timer timer("Expression template ");
-        timer.start();
-        for (int i = 0; i < NREPEAT; ++i)
-        {
-					z =x+y+u+v+w;
-        }
-        timer.stop();
-        info(z.str());
-        // for (int i = 0; i < z.size(); ++i)
-        //     std::cout << "z[" << i << "] = " << z[i] << std::endl;
-    
-    
-        timer.rename("C-style");
-        timer.start();
-        for (int i = 0; i < NREPEAT; ++i)
-        {
-            // for (int j = 0; j < z.size(); j++)
-    	        for (int j = 0; j < z.size(); j+=4)
-    
-    {
-    		z[j] = 2.0* (x[j]+y[j]) - u[j]+v[j] -w[j];
-        z[j+1] = 2.0* (x[j+1]+y[j+1]) - u[j+1]+v[j+1] -w[j+1];
-           z[j+2] = 2.0* (x[j+2]+y[j+2]) - u[j+2]+v[j+2] -w[j+2];
-           z[j+3] = 2.0* (x[j+3]+y[j+3]) - u[j+3]+v[j+3] -w[j+3];
-      
-    }   }
-        timer.stop();
-        info(z.str());
-        // for (int i = 0; i < z.size(); ++i)
-        //      std::cout << "z[" << i << "] = " << z[i] << std::endl;
-     
-    
-        timer.rename("In-place operator");
-        z = 0.0;
-        timer.start();
-        for (int i = 0; i < NREPEAT; ++i)
-        {
-            z.eq(1.0, x, 1.0, y);
-            z *= 2.0;
-            z -= u;
-            z += v;
-            z -= w;
-        }
-        timer.stop();
-    
-        info(z.str());
-        // for (int i = 0; i < z.size(); ++i)
-        //     std::cout << "z[" << i << "] = " << z[i] << std::endl;
-    
-    
+
 // 		Vector a(10), x(10), y(10), z(10);
-// 		
+//
 // 		a=0.0;
 // 		x=1.0;
 // 		y=2.0;
 // 		z=3.0;
-//  
+//
 // 		a.assign(z);
 // 		a=x+y+z;
-// 
+//
 // //		a = x + y + z;
-// 
+//
 // 		// x.eval(z);
 //     for (int i = 0; i < a.size(); ++i)
 //          std::cout << "a[" << i << "] = " << a[i] << std::endl;
-			
+
+    set_log_level(ERROR);
+
+    info("Create matrices");
+    Matrix A(10,10);
+    Matrix B(10,10);
+    Matrix C(10,10);
+    Matrix D(10,10);
+
+    info("Create vectors");
+    Vector x(10), y(10), z(10), u(10), v(10);
+
+
+    A=1.0;
+
+    x=y=u=v=1.0;
+
+    std::cout << "A is " << A.m() << " x " << A.n() << std::endl;
+
+    z = x+y+u+v;
+
+    info(z.str());
+    for (int i = 0; i < z.size(); ++i)
+        std::cout << "z[" << i << "] = " << z[i] << std::endl;
+
+
+    B=10.0;
+    C=666.0;
+    std::cout << "B is " << B.m() << " x " << B.n() << std::endl;
+
+    info("Matrix addidtion");
+    D=A+B+C;
+    info("A =");
+    A.print();
+    info("B =");
+    B.print();
+    info("C =");
+    C.print();
+    info("D =");
+    D.print();
+
+		y=A*(x+z)+B*u;
+		
+		A.print();
+		x.print();
+		y.print();
+		
+		
+		
+		
 
 
     return 0;

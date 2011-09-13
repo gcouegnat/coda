@@ -13,5 +13,8 @@
 
 // linalg
 #include <coda/linalg/Vector.h>
+#include <coda/linalg/VectorOp.h>
+#include <coda/linalg/Matrix.h>
+#include <coda/linalg/MatrixOp.h>
 
 #endif /* end of include guard: CODA_H */

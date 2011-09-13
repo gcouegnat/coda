@@ -48,6 +48,7 @@ public:
     double sum() const;
 
     std::string str() const;
+		void print() const;
 
     const Vector& operator*=(double a);
     const Vector& operator/=(double a);
@@ -71,73 +72,30 @@ public:
 
     // Expression template function
 
-		template <typename Expr>
-		inline void assign(const VectorET<Expr>& expr)
-		{
-			const Expr& v(~expr);
-			for (int i=0; i<_size; i++)
-				_values[i] = v[i];
-		}
-		
-		template<typename Expr>
-		const Vector& operator=(const VectorET<Expr>& expr)
-		{
-			assign(expr);
-			return *this;
-		}
-		
+    template <typename Expr>
+    inline void assign(const VectorET<Expr>& expr)
+    {
+        const Expr& v(~expr);
+        for (int i=0; i<_size; i++)
+            _values[i] = v[i];
+    }
+
+    template<typename Expr>
+    const Vector& operator=(const VectorET<Expr>& expr)
+    {
+        assign(expr);
+        return *this;
+    }
+
 private:
     uint _size;
     double* _values;
 
 private:
     double* memptr();
-
 };
 
 
-
-//-----------------------------------------------------------------------------
-// VectorEvalTrait
-//-----------------------------------------------------------------------------
-template <typename Expression>
-class VectorEvalTrait
-{
-public:
-	typedef const Vector ET;
-};
-
-template<>
-class VectorEvalTrait<Vector>
-{
-public:
-	typedef const Vector& ET;
-};
-
-
-//-----------------------------------------------------------------------------
-// VectorAdd
-//-----------------------------------------------------------------------------
-template <typename VT1, typename VT2>
-class VectorAdd : public VectorET< VectorAdd<VT1,VT2> >
-{
-public:
-	
-	explicit VectorAdd(const VT1& lhs, const VT2& rhs) : lhs_(lhs), rhs_(rhs) {};
-	int size() const {return lhs_.size(); }
-	double operator[] (int i) const {return lhs_[i] + rhs_[i]; }
-	
-private:
-	const VT1& lhs_;
-	const VT2& rhs_;	
-	
-};
-
-template <typename VT1, typename VT2>
-VectorAdd<VT1,VT2> operator+ (const VectorET<VT1>& rhs, const VectorET<VT2>& lhs)
-{
-	return VectorAdd<VT1,VT2>(~rhs, ~lhs);
-}
 
 
 } /* end of namespace coda */
