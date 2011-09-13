@@ -20,7 +20,7 @@ public:
     void rename(std::string key);
 
     void add(std::string key, int value);
-    void add(std::string key, float value);
+    void add(std::string key, double value);
     void add(std::string key, std::string value);
     void add(std::string key, const char * value);
     void add(std::string key, bool value);

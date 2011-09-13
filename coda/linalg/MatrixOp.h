@@ -25,7 +25,7 @@ public:
         return lhs_.size();
     }
 
-    float operator[] (int i) const
+    double operator[] (int i) const
     {
         return lhs_[i] + rhs_[i];
     }

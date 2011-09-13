@@ -40,7 +40,7 @@ void Vector::resize(uint size)
 
   debug2("Resize a Vector from %d to  %d", _size, size);
   delete[] _values;
-  _values = new float[size];
+  _values = new double[size];
   _size = size;
   zeros();
 }
@@ -55,12 +55,12 @@ uint Vector::size() const
 const Vector& Vector::operator=(const Vector& v)
 {
   resize(v.size());
-  std::memcpy(this->_values, v._values, _size * sizeof (float));
+  std::memcpy(this->_values, v._values, _size * sizeof (double));
   return *this;
 }
 //-----------------------------------------------------------------------------
 
-const Vector& Vector::operator=(float a)
+const Vector& Vector::operator=(double a)
 {
   for (uint i = 0; i < _size; ++i)
     _values[i] = a;
@@ -71,37 +71,37 @@ const Vector& Vector::operator=(float a)
 
 void Vector::zeros()
 {
-  std::memset(_values, 0, _size * sizeof (float));
+  std::memset(_values, 0, _size * sizeof (double));
 }
 //-----------------------------------------------------------------------------
 
-void Vector::add(float a)
+void Vector::add(double a)
 {
   for (uint i = 0; i < _size; ++i)
     _values[i] += a;
 }
 //-----------------------------------------------------------------------------
 
-void Vector::add(float a, Vector& v)
+void Vector::add(double a, Vector& v)
 {
-  cblas_saxpy(_size, a, v._values, 1, _values, 1);
+  cblas_daxpy(_size, a, v._values, 1, _values, 1);
 }
 //-----------------------------------------------------------------------------
 
-void Vector::add(float a, Vector&v, float b, Vector& w)
+void Vector::add(double a, Vector&v, double b, Vector& w)
 {
-  cblas_saxpy(_size, a, v._values, 1, _values, 1);
-  cblas_saxpy(_size, b, w._values, 1, _values, 1);
+  cblas_daxpy(_size, a, v._values, 1, _values, 1);
+  cblas_daxpy(_size, b, w._values, 1, _values, 1);
 }
 //-----------------------------------------------------------------------------
 
-void Vector::eq(float a)
+void Vector::eq(double a)
 {
   function_not_implemented();
 }
 //-----------------------------------------------------------------------------
 
-void Vector::eq(float a, Vector& v)
+void Vector::eq(double a, Vector& v)
 {
   *this = v;
   *this *= a;
@@ -109,11 +109,11 @@ void Vector::eq(float a, Vector& v)
 
 //-----------------------------------------------------------------------------
 
-void Vector::eq(float a, Vector&v, float b, Vector& w)
+void Vector::eq(double a, Vector&v, double b, Vector& w)
 {
 //  *this = v;
 //  *this *= a;
-//  cblas_saxpy(_size, b, w._values, 1, _values, 1);
+//  cblas_daxpy(_size, b, w._values, 1, _values, 1);
 
   for (uint i = 0; i < _size; ++i)
    	_values[i] = a * v[i] + b * w[i];
@@ -122,30 +122,30 @@ void Vector::eq(float a, Vector&v, float b, Vector& w)
 }
 //-----------------------------------------------------------------------------
 
-const Vector& Vector::operator*=(float a)
+const Vector& Vector::operator*=(double a)
 {
   // for (uint i = 0; i < _size; ++i)
   // 	_values[i] *= a;
-  cblas_sscal(_size, a, _values, 1);
+  cblas_dscal(_size, a, _values, 1);
   return *this;
 }
 //-----------------------------------------------------------------------------
 
-const Vector& Vector::operator/=(float a)
+const Vector& Vector::operator/=(double a)
 {
   *this *= (1.0 / a);
   return *this;
 }
 //-----------------------------------------------------------------------------
 
-const Vector& Vector::operator+=(float a)
+const Vector& Vector::operator+=(double a)
 {
   add(a);
   return *this;
 }
 //-----------------------------------------------------------------------------
 
-const Vector& Vector::operator-=(float a)
+const Vector& Vector::operator-=(double a)
 {
   add(-a);
   return *this;
@@ -159,7 +159,7 @@ const Vector& Vector::operator+=(const Vector& v)
     _values[i] += v._values[i];
   }
    	
-//     cblas_saxpy(_size, 1.0, v._values, 1, _values, 1);
+//     cblas_daxpy(_size, 1.0, v._values, 1, _values, 1);
   return *this;
 }
 //-----------------------------------------------------------------------------
@@ -185,7 +185,7 @@ void Vector::matvec(Matrix& A, Vector& x)
 	
 	// for(int i=0; i<m; ++i)
 	// {
-	// 	float tmp = 0.0;
+	// 	double tmp = 0.0;
 	// 	for (int j=0; j<n; ++j)
 	// 	{
 	// 		tmp += A(i,j)*x[j];
@@ -193,7 +193,7 @@ void Vector::matvec(Matrix& A, Vector& x)
 	// 	_values[i]=tmp;	
 	// }
 
-	cblas_sgemv(CblasRowMajor,CblasNoTrans, m, n, 1.0, &A(0,0), m, &x[0], 1, 0.0, _values, 1);
+	cblas_dgemv(CblasRowMajor,CblasNoTrans, m, n, 1.0, &A(0,0), m, &x[0], 1, 0.0, _values, 1);
 
 }
 //-----------------------------------------------------------------------------
@@ -232,13 +232,13 @@ void Vector::print() const
 //}
 //-----------------------------------------------------------------------------
 
-float Vector::dot(const Vector& x) const
+double Vector::dot(const Vector& x) const
 {
   function_not_implemented();
 }
 //-----------------------------------------------------------------------------
 
-float Vector::norm(std::string norm_type) const
+double Vector::norm(std::string norm_type) const
 {
   function_not_implemented();
 }

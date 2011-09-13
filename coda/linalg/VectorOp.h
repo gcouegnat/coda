@@ -23,7 +23,7 @@ public:
     {
         return lhs_.size();
     }
-    float operator[] (int i) const
+    double operator[] (int i) const
     {
         return lhs_[i] + rhs_[i];
     }
@@ -52,9 +52,9 @@ public:
         return vec_.size();
     }
 
-    float operator[] (int i) const
+    double operator[] (int i) const
     {
-				float tmp = 0.0;
+				double tmp = 0.0;
 				const int n = mat_.n();
 				for(int j=0; j < n; j+=8)
 				{

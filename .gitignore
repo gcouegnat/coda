@@ -3,3 +3,6 @@
 *.[oa]
 *.os
 run
+bench
+Doxyfile
+

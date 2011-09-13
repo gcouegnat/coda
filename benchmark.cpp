@@ -27,7 +27,7 @@ int main (int argc, char const *argv[])
 	}
 	timer.stop();
 
-	timer.rename("matvec (cblas_s)");
+	timer.rename("matvec (cblas_d)");
 	z=0.0;
 	timer.start();
 	Vector tmp(N);
@@ -77,11 +77,11 @@ int main (int argc, char const *argv[])
 	timer.stop();
 	
 	timer.rename("matvec (eigen)");
-	Eigen::MatrixXf AAA(N,N);
-	Eigen::MatrixXf BBB(N,N);
-	Eigen::VectorXf xxx(N);
-	Eigen::VectorXf yyy(N);
-	Eigen::VectorXf zzz(N);
+	Eigen::MatrixXd AAA(N,N);
+	Eigen::MatrixXd BBB(N,N);
+	Eigen::VectorXd xxx(N);
+	Eigen::VectorXd yyy(N);
+	Eigen::VectorXd zzz(N);
 	// AAA=1.0;
 	// BBB=2.0;
 	// xxx=1.0;

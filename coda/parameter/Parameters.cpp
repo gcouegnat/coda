@@ -36,7 +36,7 @@ void Parameters::add(std::string key, int value)
 	_parameters[key] = new IntParameter(key, value);
 }
 //------------------------------------------------------------------------------
-void Parameters::add(std::string key, float value)
+void Parameters::add(std::string key, double value)
 {
 	_parameters[key] = new DoubleParameter(key, value);
 }
@@ -82,7 +82,7 @@ const Parameters& Parameters::operator= (const Parameters& parameters)
 		Parameter* q = 0;
 		if (p.type_str() == "int")
 			q = new IntParameter(dynamic_cast<const IntParameter&>(p));
-		else if (p.type_str() == "float")
+		else if (p.type_str() == "double")
 			q = new DoubleParameter(dynamic_cast<const DoubleParameter&>(p));
 		else if (p.type_str() == "bool")
 			q = new BoolParameter(dynamic_cast<const BoolParameter&>(p));

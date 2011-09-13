@@ -32,7 +32,7 @@ const Parameter& Parameter::operator= (int value)
     return *this;
 }
 //-----------------------------------------------------------------------------
-const Parameter& Parameter::operator= (float value)
+const Parameter& Parameter::operator= (double value)
 {
     return *this;
 }
@@ -52,7 +52,7 @@ Parameter::operator int() const
     return 0;
 }
 //-----------------------------------------------------------------------------
-Parameter::operator float() const
+Parameter::operator double() const
 {
     return 0;
 }
@@ -135,7 +135,7 @@ DoubleParameter::DoubleParameter(std::string key)
     // Do nothing
 }
 //-----------------------------------------------------------------------------
-DoubleParameter::DoubleParameter(std::string key, float value)
+DoubleParameter::DoubleParameter(std::string key, double value)
     : Parameter(key), _value(value)
 {
     _is_set = true;
@@ -146,7 +146,7 @@ DoubleParameter::~DoubleParameter()
     // Do nothing
 }
 //-----------------------------------------------------------------------------
-const DoubleParameter& DoubleParameter::operator= (float value)
+const DoubleParameter& DoubleParameter::operator= (double value)
 {
     // Set value
     _value = value;
@@ -155,14 +155,14 @@ const DoubleParameter& DoubleParameter::operator= (float value)
     return *this;
 }
 //-----------------------------------------------------------------------------
-DoubleParameter::operator float() const
+DoubleParameter::operator double() const
 {
     return _value;
 }
 //-----------------------------------------------------------------------------
 std::string DoubleParameter::type_str() const
 {
-    return "float";
+    return "double";
 }
 //-----------------------------------------------------------------------------
 std::string DoubleParameter::value_str() const
@@ -177,7 +177,7 @@ std::string DoubleParameter::str() const
 {
     std::stringstream s;
 
-    s << "<float-valued parameter named \""
+    s << "<double-valued parameter named \""
       << key()
       << "\" with value "
       << _value

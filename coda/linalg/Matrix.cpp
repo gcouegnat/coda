@@ -8,7 +8,7 @@ using namespace coda;
 Matrix::Matrix(int m,int n) : m_(m), n_(n)
 {
     debug2("Create a Matrix of size %dx%d", m,n);
-    values_ = new float[m*n];
+    values_ = new double[m*n];
 }
 //-----------------------------------------------------------------------------
 Matrix::Matrix(const Matrix& mat)
@@ -18,7 +18,7 @@ Matrix::Matrix(const Matrix& mat)
 	n_=mat.n();
 	// if(values_)
 	// 	delete[] values_;
-	values_ = new float[m_*n_];
+	values_ = new double[m_*n_];
 	
 	for(int i=0; i<m_*n_; i++)
       values_[i]=mat.values_[i];
@@ -31,7 +31,7 @@ const Matrix& Matrix::operator= (const Matrix& mat)
 	m_=mat.m();
 	n_=mat.n();
 	delete[] values_;
-	values_ = new float[m_*n_];
+	values_ = new double[m_*n_];
 	
 	for(int i=0; i<m_*n_; i++)
       values_[i]=mat.values_[i];
@@ -39,9 +39,9 @@ const Matrix& Matrix::operator= (const Matrix& mat)
 		return *this;
 }
 //-----------------------------------------------------------------------------
-const Matrix& Matrix::operator= (float a)
+const Matrix& Matrix::operator= (double a)
 {
-	debug("Matrix::operator = (float a)");
+	debug("Matrix::operator = (double a)");
 
 
 	for(int i=0; i<m_*n_; i++)
