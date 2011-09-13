@@ -2,31 +2,35 @@
 # Export('env')
 # SConscript('SConscript', variant_dir='build', duplicate=0)
 
-import os
+import os, sys
 
-env=Environment(CXX="/usr/bin/g++")
+
+env=Environment()
+
+env.Replace(CXX="g++")
+
+debug=ARGUMENTS.get("debug", 0)
+if int(debug):
+	env.Append(CCFLAGS="-g -O0")
+else:
+#	env.Append(CCFLAGS="-O2 -Wall -ffast-math -fstrict-aliasing -march=nocona -msse2")	
+	env.Append(CCFLAGS="-O3")	
+
+
 env.Append(CPPPATH=".")
-#env.Append(CCFLAGS="-g -O2 -funroll-loops -fno-builtin")
-env.Append(CCFLAGS="-g -O0")
 env.Append(CCFLAGS="-DTERM_WITH_COLORS")
-#env.Append(CCFLAGS="-fopenmp -DTERM_WITH_COLORS")
-#env.Append(LINKFLAGS="-fopenmp");
 
 # BLAS
-env['FRAMEWORKS']+= ['Accelerate']
-#env.Append(CCFLAGS="-framework Accelerate");
-env.Append(LINKFLAGS="-framework Accelerate");
+if sys.platform=="darwin":
+	env['FRAMEWORKS']+= ['Accelerate']
+	env.Append(LINKFLAGS="-framework Accelerate");
+
 
 lib_target = "coda"
 lib_source = Glob('coda/*/*.cpp')
-# lib_source = Split("""
-# coda/utils/Timer.cpp
-# coda/utils/log.cpp
-# coda/parameter/Parameter.cpp
-# coda/parameter/Parameters.cpp
-# coda/parameter/GlobalParameters.cpp
-# """)
 
 #env.Library(lib_target, lib_source)
 env.Library(lib_target, lib_source)
+
 env.Program("run",['main.cpp'],LIBS=['coda'],LIBPATH=['.'])
+env.Program("bench",['benchmark.cpp'],LIBS=['coda','armadillo'],LIBPATH=['.'])

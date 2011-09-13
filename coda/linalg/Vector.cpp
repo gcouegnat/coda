@@ -2,8 +2,10 @@
 #include <cstring>
 #include <cmath>
 
-#include "Vector.h"
 #include "cblas.h"
+#include "Matrix.h"
+#include "Vector.h"
+
 
 #include <coda/utils/log.h>
 
@@ -176,7 +178,25 @@ void Vector::abs()
     _values[i] = std::abs(_values[i]);
 }
 //-----------------------------------------------------------------------------
+void Vector::matvec(Matrix& A, Vector& x)
+{
+	const int m = A.m();
+	const int n = A.n();
+	
+	// for(int i=0; i<m; ++i)
+	// {
+	// 	double tmp = 0.0;
+	// 	for (int j=0; j<n; ++j)
+	// 	{
+	// 		tmp += A(i,j)*x[j];
+	// 	}
+	// 	_values[i]=tmp;	
+	// }
 
+	cblas_dgemv(CblasRowMajor,CblasNoTrans, m, n, 1.0, &A(0,0), m, &x[0], 1, 0.0, _values, 1);
+
+}
+//-----------------------------------------------------------------------------
 std::string Vector::str() const
 {
   std::stringstream s;

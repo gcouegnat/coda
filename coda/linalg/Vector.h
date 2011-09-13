@@ -11,9 +11,12 @@ typedef unsigned int uint;
 namespace coda
 {
 
+class Matrix;
+
 class Vector : public VectorET<Vector>
 {
 public:
+
 
     explicit Vector(const uint size = 0);
     Vector(const Vector& v);
@@ -56,6 +59,8 @@ public:
     const Vector& operator-=(double a);
     const Vector& operator+=(const Vector& v);
     const Vector& operator-=(const Vector& v);
+
+		void matvec(Matrix& A, Vector& y);
 
     inline double operator[] (const uint index) const
     {
