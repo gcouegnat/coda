@@ -56,16 +56,16 @@ public:
     {
 				double tmp = 0.0;
 				const int n = mat_.n();
-				for(int j=0; j < n; j+=8)
+				for(int j=0; j < n; ++j)
 				{
 					tmp+=mat_[i*n+j	 ]*vec_[j  ];
-					tmp+=mat_[i*n+j+1]*vec_[j+1];
-					tmp+=mat_[i*n+j+2]*vec_[j+2];
-					tmp+=mat_[i*n+j+3]*vec_[j+3];
-					tmp+=mat_[i*n+j+4]*vec_[j+4];
-					tmp+=mat_[i*n+j+5]*vec_[j+5];
-					tmp+=mat_[i*n+j+6]*vec_[j+6];
-					tmp+=mat_[i*n+j+7]*vec_[j+7];
+					// tmp+=mat_[i*n+j+1]*vec_[j+1];
+					// tmp+=mat_[i*n+j+2]*vec_[j+2];
+					// tmp+=mat_[i*n+j+3]*vec_[j+3];
+					// tmp+=mat_[i*n+j+4]*vec_[j+4];
+					// tmp+=mat_[i*n+j+5]*vec_[j+5];
+					// tmp+=mat_[i*n+j+6]*vec_[j+6];
+					// tmp+=mat_[i*n+j+7]*vec_[j+7];
 
 				}
 					

@@ -14,7 +14,7 @@ if int(debug):
 	env.Append(CCFLAGS="-g -O0")
 else:
 #	env.Append(CCFLAGS="-O2 -Wall -ffast-math -fstrict-aliasing -march=nocona -msse2")	
-	env.Append(CCFLAGS="-O3")	
+	env.Append(CCFLAGS="-O2")	
 
 
 env.Append(CPPPATH=".")

@@ -192,7 +192,7 @@ int main(int argc, char const *argv[])
 //     for (int i = 0; i < a.size(); ++i)
 //          std::cout << "a[" << i << "] = " << a[i] << std::endl;
 
-    set_log_level(ERROR);
+    set_log_level(DEBUG);
 
     info("Create matrices");
     Matrix A(10,10);
@@ -203,44 +203,7 @@ int main(int argc, char const *argv[])
     info("Create vectors");
     Vector x(10), y(10), z(10), u(10), v(10);
 
-
-    A=1.0;
-
-    x=y=u=v=1.0;
-
-    std::cout << "A is " << A.m() << " x " << A.n() << std::endl;
-
-    z = x+y+u+v;
-
-    info(z.str());
-    for (int i = 0; i < z.size(); ++i)
-        std::cout << "z[" << i << "] = " << z[i] << std::endl;
-
-
-    B=10.0;
-    C=666.0;
-    std::cout << "B is " << B.m() << " x " << B.n() << std::endl;
-
-    info("Matrix addidtion");
-    D=A+B+C;
-    info("A =");
-    A.print();
-    info("B =");
-    B.print();
-    info("C =");
-    C.print();
-    info("D =");
-    D.print();
-
-		y=A*(x+z)+B*u;
-		
-		A.print();
-		x.print();
-		y.print();
-		
-		
-		
-		
+		A = B * D * C;
 
 
     return 0;

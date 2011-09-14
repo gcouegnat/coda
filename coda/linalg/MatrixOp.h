@@ -43,7 +43,6 @@ MatrixAdd<MT1,MT2> operator+ (const MatrixET<MT1>& rhs, const MatrixET<MT2>& lhs
 }
 
 
-
 } /* end of namespace coda */
 
 #endif /* end of include guard: MATRIXOP_H */
