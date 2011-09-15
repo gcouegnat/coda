@@ -4,4 +4,4 @@
 #include "Timer.h"
 #include "log.h"
 
-#endif /* end of include guard: UTILS_H */
+#endif				/* end of include guard: UTILS_H */

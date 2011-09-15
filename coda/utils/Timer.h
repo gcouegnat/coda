@@ -3,33 +3,30 @@
 
 #include <string>
 
-namespace coda
-{
+namespace       coda {
 
-class Timer
-{
+class           Timer {
 public:
 
     Timer(std::string task = "");
     ~Timer();
 
-    void start();
-    void stop();
+    void            start();
+    void            stop();
 
-    double value() const;
+    double          value() const;
 
-    void rename(std::string task);
+    void            rename(std::string task);
 
 private:
 
     std::string _task;
-    double _t;
-    bool _stopped;
+    double          _t;
+    bool            _stopped;
 
 };
 
-double _time();
+double          _time();
 
-} /* namespace coda */
-
-#endif /* end of include guard: TIMER_H */
+}				/* namespace coda */
+#endif				/* end of include guard: TIMER_H */

@@ -4,7 +4,6 @@
 // utils
 #include <coda/utils/Timer.h>
 #include <coda/utils/log.h>
-#include <coda/utils/Expression.h>
 
 // parameter
 #include <coda/parameter/Parameter.h>
@@ -12,9 +11,11 @@
 #include <coda/parameter/GlobalParameters.h>
 
 // linalg
+#include <coda/linalg/BaseVector.h>
 #include <coda/linalg/Vector.h>
-#include <coda/linalg/VectorOp.h>
-#include <coda/linalg/Matrix.h>
-#include <coda/linalg/MatrixOp.h>
 
-#endif /* end of include guard: CODA_H */
+// #include <coda/linalg/VectorOp.h>
+// #include <coda/linalg/Matrix.h>
+// #include <coda/linalg/MatrixOp.h>
+
+#endif				/* end of include guard: CODA_H */
