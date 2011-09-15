@@ -54,7 +54,7 @@ Vector::resize (uint size)
 //-----------------------------------------------------------------------------
 
 uint
-Vector::size () const const
+Vector::size () const
 {
     return _size;
 }
@@ -232,7 +232,7 @@ Vector::abs ()
 //
 //}
 //-----------------------------------------------------------------------------
-std::string Vector::str () constconst
+std::string Vector::str () const
 {
     std::stringstream s;
     s << "<Vector of size " << size () << ">";
@@ -241,7 +241,7 @@ std::string Vector::str () constconst
 
 //-----------------------------------------------------------------------------
 void
-Vector::print () const const
+Vector::print () const
 {
     std::cout << "[ ";
     for (int i = 0; i < size () - 1; ++i)
@@ -270,7 +270,7 @@ Vector::print () const const
 //-----------------------------------------------------------------------------
 
 double
-Vector::dot (const Vector & x) const const
+Vector::dot (const Vector & x) const
 {
     function_not_implemented ();
 }
@@ -278,7 +278,7 @@ Vector::dot (const Vector & x) const const
 //-----------------------------------------------------------------------------
 
 double
-Vector::norm (std::string norm_type) const const
+Vector::norm (std::string norm_type) const
 {
     function_not_implemented ();
 }

@@ -18,14 +18,14 @@ Parameter::~Parameter ()
 }
 
 //-----------------------------------------------------------------------------
-std::string Parameter::key () constconst
+std::string Parameter::key ()  const
 {
     return _key;
 }
 
 //-----------------------------------------------------------------------------
 bool
-Parameter::is_set () const const
+Parameter::is_set () const
 {
     return _is_set;
 }
@@ -66,19 +66,19 @@ const
         0;
 }
 //-----------------------------------------------------------------------------
-Parameter::operator double () const const
+Parameter::operator double () const
 {
     return 0;
 }
 
 //-----------------------------------------------------------------------------
-Parameter::operator std::string () constconst
+Parameter::operator std::string ()  const
 {
     return 0;
 }
 
 //-----------------------------------------------------------------------------
-Parameter::operator bool () constconst
+Parameter::operator bool ()  const
 {
     return 0;
 }
@@ -123,13 +123,13 @@ const
 }
 //-----------------------------------------------------------------------------
 std::string
-IntParameter::type_str () const const
+IntParameter::type_str () const
 {
     return "int";
 }
 
 //-----------------------------------------------------------------------------
-std::string IntParameter::value_str () constconst
+std::string IntParameter::value_str ()  const
 {
     std::stringstream s;
     s << _value;
@@ -138,7 +138,7 @@ std::string IntParameter::value_str () constconst
 }
 
 //-----------------------------------------------------------------------------
-std::string IntParameter::str () constconst
+std::string IntParameter::str ()  const
 {
     std::stringstream s;
 
@@ -188,13 +188,13 @@ const
 }
 //-----------------------------------------------------------------------------
 std::string
-DoubleParameter::type_str () const const
+DoubleParameter::type_str () const
 {
     return "double";
 }
 
 //-----------------------------------------------------------------------------
-std::string DoubleParameter::value_str () constconst
+std::string DoubleParameter::value_str ()  const
 {
     std::stringstream s;
     s << _value;
@@ -203,7 +203,7 @@ std::string DoubleParameter::value_str () constconst
 }
 
 //-----------------------------------------------------------------------------
-std::string DoubleParameter::str () constconst
+std::string DoubleParameter::str ()  const
 {
     std::stringstream s;
 
@@ -246,25 +246,25 @@ StringParameter::operator= (std::string value)
 }
 
 //-----------------------------------------------------------------------------
-StringParameter::operator std::string () constconst
+StringParameter::operator std::string ()  const
 {
     return _value;
 }
 
 //-----------------------------------------------------------------------------
-std::string StringParameter::type_str () constconst
+std::string StringParameter::type_str ()  const
 {
     return "string";
 }
 
 //-----------------------------------------------------------------------------
-std::string StringParameter::value_str () constconst
+std::string StringParameter::value_str ()  const
 {
     return _value;
 }
 
 //-----------------------------------------------------------------------------
-std::string StringParameter::str () constconst
+std::string StringParameter::str ()  const
 {
     std::stringstream s;
 
@@ -306,19 +306,19 @@ BoolParameter::operator= (bool value)
 }
 
 //-----------------------------------------------------------------------------
-BoolParameter::operator bool () constconst
+BoolParameter::operator bool ()  const
 {
     return _value;
 }
 
 //-----------------------------------------------------------------------------
-std::string BoolParameter::type_str () constconst
+std::string BoolParameter::type_str ()  const
 {
     return "bool";
 }
 
 //-----------------------------------------------------------------------------
-std::string BoolParameter::value_str () constconst
+std::string BoolParameter::value_str ()  const
 {
     std::stringstream s;
     s << _value;
@@ -327,7 +327,7 @@ std::string BoolParameter::value_str () constconst
 }
 
 //-----------------------------------------------------------------------------
-std::string BoolParameter::str () constconst
+std::string BoolParameter::str ()  const
 {
     std::stringstream s;
 

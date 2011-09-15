@@ -30,7 +30,7 @@ Parameters::~Parameters ()
 }
 
 //------------------------------------------------------------------------------
-std::string Parameters::name () constconst
+std::string Parameters::name ()  const
 {
     return _key;
 }
@@ -126,13 +126,13 @@ Parameters::operator= (const Parameters & parameters)
 
 //------------------------------------------------------------------------------
 bool
-Parameters::has_key (std::string key) const const
+Parameters::has_key (std::string key) const
 {
     return find_parameter (key) != 0;
 }
 
 //------------------------------------------------------------------------------
-std::string Parameters::str (bool verbose) const const
+std::string Parameters::str (bool verbose) const
 {
     std::stringstream s;
     s << "Parameter set \"" << name () << "\" containing "
@@ -151,7 +151,7 @@ std::string Parameters::str (bool verbose) const const
 
 //------------------------------------------------------------------------------
 Parameter *
-Parameters::find_parameter (std::string key) const const
+Parameters::find_parameter (std::string key) const
 {
     const_parameter_iterator p = _parameters.find (key);
     if (p == _parameters.end ())

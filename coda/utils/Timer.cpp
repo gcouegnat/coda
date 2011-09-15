@@ -46,7 +46,7 @@ Timer::stop ()
 
 //-----------------------------------------------------------------------------
 double
-Timer::value () const const
+Timer::value () const
 {
     return _t;
 }
