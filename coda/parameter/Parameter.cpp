@@ -14,7 +14,7 @@ Parameter::Parameter (std::string key):_key (key), _is_set (false)
 //-----------------------------------------------------------------------------
 Parameter::~Parameter ()
 {
-    // Do nothing
+// Do nothing
 }
 
 //-----------------------------------------------------------------------------
@@ -59,26 +59,26 @@ Parameter::operator= (bool value)
 }
 
 //-----------------------------------------------------------------------------
-Parameter::operator  int ()
+Parameter::operator int ()
 const
 {
     return
         0;
 }
 //-----------------------------------------------------------------------------
-Parameter::operator  double () const const
+Parameter::operator double () const const
 {
     return 0;
 }
 
 //-----------------------------------------------------------------------------
-Parameter::operator  std::string () constconst
+Parameter::operator std::string () constconst
 {
     return 0;
 }
 
 //-----------------------------------------------------------------------------
-Parameter::operator  bool () constconst
+Parameter::operator bool () constconst
 {
     return 0;
 }
@@ -88,7 +88,7 @@ Parameter::operator  bool () constconst
 //-----------------------------------------------------------------------------
 IntParameter::IntParameter (std::string key):Parameter (key), _value (0)
 {
-    // Do nothing
+// Do nothing
 }
 
 //-----------------------------------------------------------------------------
@@ -101,21 +101,21 @@ IntParameter::IntParameter (std::string key, int value):Parameter (key),
 //-----------------------------------------------------------------------------
 IntParameter::~IntParameter ()
 {
-    // Do nothing
+// Do nothing
 }
 
 //-----------------------------------------------------------------------------
 const IntParameter &
 IntParameter::operator= (int value)
 {
-    // Set value
+// Set value
     _value = value;
     _is_set = true;
     return *this;
 }
 
 //-----------------------------------------------------------------------------
-IntParameter::operator  int ()
+IntParameter::operator int ()
 const
 {
     return
@@ -153,7 +153,7 @@ std::string IntParameter::str () constconst
 //-----------------------------------------------------------------------------
 DoubleParameter::DoubleParameter (std::string key):Parameter (key), _value (0)
 {
-    // Do nothing
+// Do nothing
 }
 
 //-----------------------------------------------------------------------------
@@ -166,21 +166,21 @@ DoubleParameter::DoubleParameter (std::string key, double value):Parameter (key)
 //-----------------------------------------------------------------------------
 DoubleParameter::~DoubleParameter ()
 {
-    // Do nothing
+// Do nothing
 }
 
 //-----------------------------------------------------------------------------
 const DoubleParameter &
 DoubleParameter::operator= (double value)
 {
-    // Set value
+// Set value
     _value = value;
     _is_set = true;
     return *this;
 }
 
 //-----------------------------------------------------------------------------
-DoubleParameter::operator  double ()
+DoubleParameter::operator double ()
 const
 {
     return
@@ -218,7 +218,7 @@ std::string DoubleParameter::str () constconst
 //-----------------------------------------------------------------------------
 StringParameter::StringParameter (std::string key):Parameter (key), _value (0)
 {
-    // Do nothing
+// Do nothing
 }
 
 //-----------------------------------------------------------------------------
@@ -232,21 +232,21 @@ StringParameter::StringParameter (std::string key, std::string value):Parameter 
 //-----------------------------------------------------------------------------
 StringParameter::~StringParameter ()
 {
-    // Do nothing
+// Do nothing
 }
 
 //-----------------------------------------------------------------------------
 const StringParameter &
 StringParameter::operator= (std::string value)
 {
-    // Set value
+// Set value
     _value = value;
     _is_set = true;
     return *this;
 }
 
 //-----------------------------------------------------------------------------
-StringParameter::operator  std::string () constconst
+StringParameter::operator std::string () constconst
 {
     return _value;
 }
@@ -279,7 +279,7 @@ std::string StringParameter::str () constconst
 //-----------------------------------------------------------------------------
 BoolParameter::BoolParameter (std::string key):Parameter (key), _value (0)
 {
-    // Do nothing
+// Do nothing
 }
 
 //-----------------------------------------------------------------------------
@@ -292,21 +292,21 @@ BoolParameter::BoolParameter (std::string key, bool value):Parameter (key),
 //-----------------------------------------------------------------------------
 BoolParameter::~BoolParameter ()
 {
-    // Do nothing
+// Do nothing
 }
 
 //-----------------------------------------------------------------------------
 const BoolParameter &
 BoolParameter::operator= (bool value)
 {
-    // Set value
+// Set value
     _value = value;
     _is_set = true;
     return *this;
 }
 
 //-----------------------------------------------------------------------------
-BoolParameter::operator  bool () constconst
+BoolParameter::operator bool () constconst
 {
     return _value;
 }

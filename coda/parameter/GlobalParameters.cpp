@@ -14,7 +14,7 @@ GlobalParameters::GlobalParameters ():Parameters ("coda")
 //-----------------------------------------------------------------------------
 GlobalParameters::~GlobalParameters ()
 {
-    // Do nothing
+// Do nothing
 }
 
 //-----------------------------------------------------------------------------

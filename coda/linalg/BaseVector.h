@@ -1,15 +1,5 @@
-/*
- * File:   VectorETession.h
- * T1uthor: couegnat
- *
- * Created on 8 septembre 2011, 10:49
- */
-
 #ifndef BASEVECTOR_H
 #define	BASEVECTOR_H
-
-// #include <coda/linalg/Vector.h>
-// #include <coda/linalg/Matrix.h>
 
 #include <coda/utils/log.h>
 
@@ -28,17 +18,16 @@ public:
     }
 };
 
-template < class Left, class Right, class Op > class VectorExpression
-: public BaseVector < VectorExpression < Left, Right, Op > >
+template < class Left, class Right, class Op >
+class VectorExpression : public BaseVector < VectorExpression < Left, Right, Op > >
 {
 public:
     typedef const VectorExpression & StoreType;
 
-    VectorExpression(const BaseVector < Left > &lhs,
-                     const BaseVector < Right >
-                     &rhs) : lhs_(lhs.derived()),
-    rhs_(rhs.derived())
+    VectorExpression(const BaseVector < Left > &lhs, const BaseVector < Right > &rhs)
+        : lhs_(lhs.derived()), rhs_(rhs.derived())
     {
+
     }
 
     inline double operator[] (int i) const
@@ -58,14 +47,14 @@ private:
 
 };
 
-template < class V > class VectorScalarExpression : public BaseVector < VectorScalarExpression < V > >
+template < class V >
+class VectorScalarExpression : public BaseVector < VectorScalarExpression < V > >
 {
 public:
     typedef const VectorScalarExpression StoreType;
 
-    VectorScalarExpression(const BaseVector < V > &v,
-                           const double &a) : v_(v.derived()),
-    a_(a)
+    VectorScalarExpression(const BaseVector < V > &v, const double &a) 
+		: v_(v.derived()), a_(a)
     {
     }
 
@@ -80,6 +69,7 @@ public:
     {
         return v_.size();
     }
+
 private:
     double a_;
     typename V::StoreType v_;
@@ -118,9 +108,7 @@ VectorExpression < Left, Right, Minus > operator -(const BaseVector < Left > &lh
 }
 
 template < class Left >
-VectorScalarExpression < Left > operator *(const BaseVector <
-Left > &v,
-const double &a)
+VectorScalarExpression < Left > operator *(const BaseVector <Left > &v, const double &a)
 {
     return VectorScalarExpression < Left > (v, a);
 }

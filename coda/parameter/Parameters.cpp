@@ -20,7 +20,7 @@ std::string,
 //------------------------------------------------------------------------------
 Parameters::Parameters (std::string key):_key (key)
 {
-    // Do nothing
+// Do nothing
 }
 
 //------------------------------------------------------------------------------
@@ -102,7 +102,7 @@ Parameters &
 Parameters::operator= (const Parameters & parameters)
 {
     _key = parameters._key;
-    // Copy parameters
+// Copy parameters
     for (const_parameter_iterator it = parameters._parameters.begin ();
             it != parameters._parameters.end (); ++it)
     {
@@ -142,7 +142,7 @@ std::string Parameters::str (bool verbose) const const
         for (const_parameter_iterator it = _parameters.begin ();
                 it != _parameters.end (); ++it)
         {
-            s << "\n  * " << it->second->key () << " ["
+            s << "\n * " << it->second->key () << " ["
               << it->second->type_str () << "] " << it->second->value_str ();
         }
     }

@@ -25,7 +25,7 @@ Vector::Vector (const Vector & v):
     _size (0),
     _values (0)
 {
-//  debug1("Copy a Vector of size %d", v.size() );
+// debug1("Copy a Vector of size %d", v.size() );
     *this = v;
 }
 
@@ -44,7 +44,7 @@ Vector::resize (uint size)
 {
     if (_size == size)
         return;
-//  debug2("Resize a Vector from %d to  %d", _size, size);
+// debug2("Resize a Vector from %d to %d", _size, size);
     delete[]_values;
     _values = new double[size];
     _size = size;
@@ -135,9 +135,9 @@ Vector::eq (double a, Vector & v)
 void
 Vector::eq (double a, Vector & v, double b, Vector & w)
 {
-//  *this = v;
-//  *this *= a;
-//  cblas_daxpy(_size, b, w._values, 1, _values, 1);
+// *this = v;
+// *this *= a;
+// cblas_daxpy(_size, b, w._values, 1, _values, 1);
     for (uint i = 0; i < _size; ++i)
         _values[i] = a * v[i] + b * w[i];
 }
@@ -147,8 +147,8 @@ Vector::eq (double a, Vector & v, double b, Vector & w)
 const Vector &
 Vector::operator*= (double a)
 {
-    // for (uint i = 0; i < _size; ++i)
-    //    _values[i] *= a;
+// for (uint i = 0; i < _size; ++i)
+// _values[i] *= a;
     cblas_dscal (_size, a, _values, 1);
     return *this;
 }
@@ -189,7 +189,7 @@ Vector::operator+= (const Vector & v)
     {
         _values[i] += v._values[i];
     }
-//     cblas_daxpy(_size, 1.0, v._values, 1, _values, 1);
+// cblas_daxpy(_size, 1.0, v._values, 1, _values, 1);
     return *this;
 }
 
@@ -215,20 +215,20 @@ Vector::abs ()
 //-----------------------------------------------------------------------------
 //void Vector::matvec(Matrix& A, Vector& x)
 //{
-//      const int m = A.m();
-//      const int n = A.n();
+// const int m = A.m();
+// const int n = A.n();
 //
-//      // for(int i=0; i<m; ++i)
-//      // {
-//      //      double tmp = 0.0;
-//      //      for (int j=0; j<n; ++j)
-//      //      {
-//      //              tmp += A(i,j)*x[j];
-//      //      }
-//      //      _values[i]=tmp;
-//      // }
+// // for(int i=0; i<m; ++i)
+// // {
+// // double tmp = 0.0;
+// // for (int j=0; j<n; ++j)
+// // {
+// // tmp += A(i,j)*x[j];
+// // }
+// // _values[i]=tmp;
+// // }
 //
-//      cblas_dgemv(CblasRowMajor,CblasNoTrans, m, n, 1.0, &A(0,0), m, &x[0], 1, 0.0, _values, 1);
+// cblas_dgemv(CblasRowMajor,CblasNoTrans, m, n, 1.0, &A(0,0), m, &x[0], 1, 0.0, _values, 1);
 //
 //}
 //-----------------------------------------------------------------------------
@@ -253,19 +253,19 @@ Vector::print () const const
 
 //const Vector Vector::operator+(const Vector& v) const
 //{
-//  Vector u;
-//  u = *this;
-//  u += v;
-//  return u;
+// Vector u;
+// u = *this;
+// u += v;
+// return u;
 //}
 ////-----------------------------------------------------------------------------
 //
 //const Vector Vector::operator-(const Vector& v) const
 //{
-//  Vector u;
-//  u = *this;
-//  u -= v;
-//  return u;
+// Vector u;
+// u = *this;
+// u -= v;
+// return u;
 //}
 //-----------------------------------------------------------------------------
 

@@ -4,9 +4,9 @@
 #include "Parameters.h"
 #include <coda/utils/LogLevel.h>
 
-namespace       coda
+namespace coda
 {
-class           GlobalParameters:public Parameters
+class GlobalParameters:public Parameters
 {
 public:
 
@@ -15,7 +15,7 @@ public:
 
     static Parameters default_parameters()
     {
-        Parameters      p("coda");
+        Parameters p("coda");
         p.add("log_level", INFO);
         p.add("default_solver", "mumps");
         return p;

@@ -1,7 +1,7 @@
 #ifndef LOGLEVEL_H
 #define LOGLEVEL_H
 
-namespace       coda
+namespace coda
 {
 enum LogLevel
 {
