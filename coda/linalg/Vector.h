@@ -9,11 +9,13 @@
 
 typedef unsigned int uint;
 
-namespace       coda {
+namespace       coda
+{
 
 // class Matrix;
 
-class           Vector:public BaseVector < Vector > {
+class           Vector:public BaseVector < Vector >
+{
 public:
 
 
@@ -61,11 +63,13 @@ public:
 
     // void matvec(Matrix& A, Vector& y);
 
-    inline double   operator[] (const uint index) const {
+    inline double   operator[] (const uint index) const
+    {
         return _values[index];
     };
 
-    inline double  &operator[] (const uint index) {
+    inline double  &operator[] (const uint index)
+    {
         return _values[index];
     };
 
@@ -79,9 +83,11 @@ public:
 
 
     template < class Derived >
-    Vector & operator =(const BaseVector < Derived > &rhs) {
+    Vector & operator =(const BaseVector < Derived > &rhs)
+    {
         const           Derived & rhs_ = rhs.derived();
-        for             (int i = 0; i < _size; ++i) {
+        for             (int i = 0; i < _size; ++i)
+        {
             _values[i] = rhs_[i];
         }
     } private:

@@ -3,7 +3,8 @@
 
 #include <string>
 
-namespace       coda {
+namespace       coda
+{
 void            set_log_level(int log_level);
 
 void            info(std::string msg, ...);

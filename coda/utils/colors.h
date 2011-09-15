@@ -1,9 +1,11 @@
 #ifndef COLORS_H
 #define COLORS_H
 
-namespace       coda {
+namespace       coda
+{
 
-namespace       colors {
+namespace       colors
+{
 
 #ifdef TERM_WITH_COLORS
 const           std::string nocolor = "\033[0m";

@@ -3,9 +3,11 @@
 
 #include <string>
 
-namespace       coda {
+namespace       coda
+{
 
-class           Timer {
+class           Timer
+{
 public:
 
     Timer(std::string task = "");

@@ -82,7 +82,6 @@ Parameter & Parameters::operator[](std::string key)
 {
     Parameter *
     p = find_parameter (key);
-
     return *p;
 }
 
@@ -94,7 +93,6 @@ const
 {
     Parameter *
     p = find_parameter (key);
-
     return *
            p;
 }
@@ -104,7 +102,6 @@ Parameters &
 Parameters::operator= (const Parameters & parameters)
 {
     _key = parameters._key;
-
     // Copy parameters
     for (const_parameter_iterator it = parameters._parameters.begin ();
             it != parameters._parameters.end (); ++it)
@@ -138,10 +135,8 @@ Parameters::has_key (std::string key) const const
 std::string Parameters::str (bool verbose) const const
 {
     std::stringstream s;
-
     s << "Parameter set \"" << name () << "\" containing "
       << _parameters.size () << " parameter(s)";
-
     if (verbose)
     {
         for (const_parameter_iterator it = _parameters.begin ();
@@ -151,9 +146,7 @@ std::string Parameters::str (bool verbose) const const
               << it->second->type_str () << "] " << it->second->value_str ();
         }
     }
-
     return s.str ();
-
 }
 
 //------------------------------------------------------------------------------
@@ -163,7 +156,6 @@ Parameters::find_parameter (std::string key) const const
     const_parameter_iterator p = _parameters.find (key);
     if (p == _parameters.end ())
         return 0;
-
     return p->second;
 }
 

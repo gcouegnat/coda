@@ -4,9 +4,11 @@
 #include <map>
 #include "Parameter.h"
 
-namespace       coda {
+namespace       coda
+{
 
-class           Parameters {
+class           Parameters
+{
 public:
 
     explicit Parameters(std::string key = "parameters");

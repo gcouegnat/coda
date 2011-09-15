@@ -111,7 +111,6 @@ IntParameter::operator= (int value)
     // Set value
     _value = value;
     _is_set = true;
-
     return *this;
 }
 
@@ -177,7 +176,6 @@ DoubleParameter::operator= (double value)
     // Set value
     _value = value;
     _is_set = true;
-
     return *this;
 }
 
@@ -244,7 +242,6 @@ StringParameter::operator= (std::string value)
     // Set value
     _value = value;
     _is_set = true;
-
     return *this;
 }
 
@@ -305,7 +302,6 @@ BoolParameter::operator= (bool value)
     // Set value
     _value = value;
     _is_set = true;
-
     return *this;
 }
 

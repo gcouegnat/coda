@@ -44,7 +44,6 @@ Vector::resize (uint size)
 {
     if (_size == size)
         return;
-
 //  debug2("Resize a Vector from %d to  %d", _size, size);
     delete[]_values;
     _values = new double[size];
@@ -77,7 +76,6 @@ Vector::operator= (double a)
 {
     for (uint i = 0; i < _size; ++i)
         _values[i] = a;
-
     return *this;
 }
 
@@ -140,11 +138,8 @@ Vector::eq (double a, Vector & v, double b, Vector & w)
 //  *this = v;
 //  *this *= a;
 //  cblas_daxpy(_size, b, w._values, 1, _values, 1);
-
     for (uint i = 0; i < _size; ++i)
         _values[i] = a * v[i] + b * w[i];
-
-
 }
 
 //-----------------------------------------------------------------------------
@@ -194,7 +189,6 @@ Vector::operator+= (const Vector & v)
     {
         _values[i] += v._values[i];
     }
-
 //     cblas_daxpy(_size, 1.0, v._values, 1, _values, 1);
     return *this;
 }

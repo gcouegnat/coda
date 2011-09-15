@@ -21,15 +21,15 @@ template < typename Derived > class BaseVector
 public:
     typedef const Derived & const_derived_type;
 
-    inline const_derived_type derived(void) const
+    inline const_derived_type
+    derived(void) const
     {
         return static_cast<const_derived_type> (*this);
     }
 };
 
-template < class Left, class Right, class Op > class VectorExpression : public BaseVector < VectorExpression < Left, Right,
-    Op >
-    >
+template < class Left, class Right, class Op > class VectorExpression
+: public BaseVector < VectorExpression < Left, Right, Op > >
 {
 public:
     typedef const VectorExpression & StoreType;
@@ -37,7 +37,7 @@ public:
     VectorExpression(const BaseVector < Left > &lhs,
                      const BaseVector < Right >
                      &rhs) : lhs_(lhs.derived()),
-        rhs_(rhs.derived())
+    rhs_(rhs.derived())
     {
     }
 
@@ -47,7 +47,8 @@ public:
         return result;
     }
 
-    inline int size(void) const
+    inline int
+    size(void) const
     {
         return rhs_.size();
     }
@@ -57,15 +58,14 @@ private:
 
 };
 
-template < class V > class VectorScalarExpression : public BaseVector < VectorScalarExpression < V >
-    >
+template < class V > class VectorScalarExpression : public BaseVector < VectorScalarExpression < V > >
 {
 public:
     typedef const VectorScalarExpression StoreType;
 
     VectorScalarExpression(const BaseVector < V > &v,
                            const double &a) : v_(v.derived()),
-        a_(a)
+    a_(a)
     {
     }
 
@@ -75,7 +75,8 @@ public:
         return result;
     }
 
-    inline int size(void) const
+    inline int
+    size(void) const
     {
         return v_.size();
     }
@@ -105,33 +106,27 @@ struct Minus
 };
 
 template < class Left, class Right >
-VectorExpression < Left, Right,
-                 Add > operator +(const BaseVector < Left > &lhs,
-                                  const BaseVector < Right > &rhs)
+VectorExpression < Left, Right, Add > operator +(const BaseVector < Left > &lhs, const BaseVector < Right > &rhs)
 {
     return VectorExpression < Left, Right, Add > (lhs, rhs);
 }
 
 template < class Left, class Right >
-VectorExpression < Left, Right,
-                 Minus > operator -(const BaseVector < Left > &lhs,
-                                    const BaseVector < Right > &rhs)
+VectorExpression < Left, Right, Minus > operator -(const BaseVector < Left > &lhs, const BaseVector < Right > &rhs)
 {
     return VectorExpression < Left, Right, Minus > (lhs, rhs);
 }
 
 template < class Left >
 VectorScalarExpression < Left > operator *(const BaseVector <
-        Left > &v,
-        const double &a)
+Left > &v,
+const double &a)
 {
     return VectorScalarExpression < Left > (v, a);
 }
 
 template < class Right >
-VectorScalarExpression < Right > operator *(const double &a,
-        const BaseVector <
-        Right > &v)
+VectorScalarExpression < Right > operator *(const double &a, const BaseVector < Right > &v)
 {
     return VectorScalarExpression < Right > (v, a);
 }

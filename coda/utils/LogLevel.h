@@ -1,8 +1,10 @@
 #ifndef LOGLEVEL_H
 #define LOGLEVEL_H
 
-namespace       coda {
-enum LogLevel {
+namespace       coda
+{
+enum LogLevel
+{
     ERROR = 40,
     WARNING = 30,
     INFO = 20,

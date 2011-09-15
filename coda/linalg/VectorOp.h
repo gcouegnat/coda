@@ -8,27 +8,32 @@
 #include <coda/utils/log.h>
 
 
-namespace       coda {
+namespace       coda
+{
 
 
 // -----------------------------------------------------------------------------
 // VectorAdd
 // -----------------------------------------------------------------------------
 template < typename VT1, typename VT2 >
-class VectorAdd:public VectorET < VectorAdd < VT1, VT2 > > {
+class VectorAdd:public VectorET < VectorAdd < VT1, VT2 > >
+{
 public:
 
     explicit VectorAdd(const VT1 & lhs, const VT2 & rhs):lhs_(lhs),
-        rhs_(rhs) {
+        rhs_(rhs)
+    {
     };
-    int             size() const {
+    int             size() const
+    {
         return lhs_.size();
     }
-    double          operator[] (int i) const {
+    double          operator[] (int i) const
+    {
         return lhs_[i] + rhs_[i];
     }
-    void            assign(Vector & dest) {
-
+    void            assign(Vector & dest)
+    {
     }
 
 
@@ -40,22 +45,26 @@ private:
 
 template < typename VT1, typename VT2 >
 VectorAdd < VT1, VT2 > operator+(const VectorET < VT1 > &rhs,
-                                 const VectorET < VT2 > &lhs) {
+                                 const VectorET < VT2 > &lhs)
+{
     return VectorAdd < VT1, VT2 > (~rhs, ~lhs);
 }
 
 // -----------------------------------------------------------------------------
 template < typename MT, typename VT > class MatVecMult:public VectorET < MatVecMult < MT,
-        VT > > {
+    VT > >
+{
 public:
     MatVecMult(const MT & mat, const VT & vec):mat_(mat), vec_(vec)
     {
     }
 
-    int             size() const {
+    int             size() const
+    {
         return vec_.size();
     }
-    double          operator[] (int i) const {
+    double          operator[] (int i) const
+    {
         debug("MatVecMult::operator []");
         double          tmp = 0.0;
         const int       n = mat_.n();
@@ -64,7 +73,8 @@ public:
         return tmp;
     }
     template <      typename VT3, typename MT4, typename VT5 >
-    static inline void assign(VT3 & C, MT4 & A, VT5 & B) {
+    static inline void assign(VT3 & C, MT4 & A, VT5 & B)
+    {
         debug("coda::assignMatVecMult_impl");
     }
 
@@ -75,14 +85,16 @@ private:
 
 template < typename MT, typename VT >
 MatVecMult < MT, VT > operator*(const MatrixET < MT > &mat,
-                                const VectorET < VT > &vec) {
+                                const VectorET < VT > &vec)
+{
     return MatVecMult < MT, VT > (~mat, ~vec);
 }
 
 
 template < typename VT1, typename MT2, typename VT3 >
 void assign(VectorET < VT1 > &lhs, const MatVecMult < MT2,
-            VT3 > &rhs) {
+            VT3 > &rhs)
+{
     debug("coda::assign");
     MatVecMult < MT2, VT3 >::assign(~lhs, rhs.lhs_, rhs.rhs_);
 }

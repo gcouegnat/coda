@@ -31,7 +31,6 @@ void
 coda::info (std::string msg, ...)
 {
     const int log_level = coda::parameters["log_level"];
-
     if (log_level <= INFO)
     {
         read (buffer, msg);
@@ -46,7 +45,6 @@ void
 coda::warning (std::string msg, ...)
 {
     const int log_level = coda::parameters["log_level"];
-
     if (log_level <= WARNING)
     {
         read (buffer, msg);
@@ -61,7 +59,6 @@ void
 coda::error (std::string msg, ...)
 {
     const int log_level = coda::parameters["log_level"];
-
     if (log_level <= ERROR)
     {
         read (buffer, msg);
@@ -78,15 +75,11 @@ coda::__debug (std::string file, unsigned long line, std::string function,
                std::string msg, ...)
 {
     const int log_level = coda::parameters["log_level"];
-
     if (log_level <= DEBUG)
     {
-
         read (buffer, msg);
-
         std::ostringstream ost;
         ost << file << ":" << line << " : " << function << "()";
-
         std::string s =
             std::string ("[DEBUG ") + ost.str () + std::string ("] ") + buffer;
         std::cerr << coda::colors::nocolor << s << coda::colors::

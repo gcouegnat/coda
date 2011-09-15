@@ -3,9 +3,11 @@
 
 #include <string>
 
-namespace       coda {
+namespace       coda
+{
 
-class           Parameter {
+class           Parameter
+{
 public:
     Parameter(std::string key);
     virtual ~ Parameter();
@@ -36,7 +38,8 @@ private:
 };
 
 
-class           IntParameter:public Parameter {
+class           IntParameter:public Parameter
+{
 public:
     IntParameter(std::string key);
     IntParameter(std::string key, int value);
@@ -51,7 +54,8 @@ private:
     int             _value;
 };
 
-class           DoubleParameter:public Parameter {
+class           DoubleParameter:public Parameter
+{
 public:
     DoubleParameter(std::string key);
     DoubleParameter(std::string key, double value);
@@ -66,7 +70,8 @@ private:
     double          _value;
 };
 
-class           StringParameter:public Parameter {
+class           StringParameter:public Parameter
+{
 public:
     StringParameter(std::string key);
     StringParameter(std::string key, std::string value);
@@ -81,7 +86,8 @@ private:
     std::string _value;
 };
 
-class           BoolParameter:public Parameter {
+class           BoolParameter:public Parameter
+{
 public:
     BoolParameter(std::string key);
     BoolParameter(std::string key, bool value);
