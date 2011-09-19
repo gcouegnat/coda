@@ -5,7 +5,8 @@ using namespace coda;
 int
 main (int argc, char const *argv[])
 {
-    set_log_level (WARNING);
+    set_log_level (DBG);
+
     Vector x (10), y (10), z (10), u (10), v (10);
     x = 1.0;
     y = 2.0;

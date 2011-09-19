@@ -6,15 +6,13 @@
 namespace coda
 {
 
-template < typename Derived > class BaseVector
+template < typename Derived > 
+class BaseVector
 {
 public:
-    typedef const Derived & const_derived_type;
-
-    inline const_derived_type
-    derived(void) const
+    const Derived& derived(void) const
     {
-        return static_cast<const_derived_type> (*this);
+        return static_cast<const Derived&> (*this);
     }
 };
 
@@ -51,7 +49,7 @@ template < class V >
 class VectorScalarExpression : public BaseVector < VectorScalarExpression < V > >
 {
 public:
-    typedef const VectorScalarExpression StoreType;
+    typedef const VectorScalarExpression & StoreType;
 
     VectorScalarExpression(const BaseVector < V > &v, const double &a) 
 		: v_(v.derived()), a_(a)
@@ -64,8 +62,7 @@ public:
         return result;
     }
 
-    inline int
-    size(void) const
+    inline int size(void) const
     {
         return v_.size();
     }
@@ -96,28 +93,37 @@ struct Minus
 };
 
 template < class Left, class Right >
-VectorExpression < Left, Right, Add > operator +(const BaseVector < Left > &lhs, const BaseVector < Right > &rhs)
+inline VectorExpression < Left, Right, Add > operator +(const BaseVector < Left > &lhs, const BaseVector < Right > &rhs)
 {
-    return VectorExpression < Left, Right, Add > (lhs, rhs);
+    return VectorExpression < Left, Right, Add > (lhs.derived(), rhs.derived());
 }
 
 template < class Left, class Right >
-VectorExpression < Left, Right, Minus > operator -(const BaseVector < Left > &lhs, const BaseVector < Right > &rhs)
+inline VectorExpression < Left, Right, Minus > operator -(const BaseVector < Left > &lhs, const BaseVector < Right > &rhs)
 {
-    return VectorExpression < Left, Right, Minus > (lhs, rhs);
+    return VectorExpression < Left, Right, Minus > (lhs.derived(), rhs.derived());
 }
 
 template < class Left >
-VectorScalarExpression < Left > operator *(const BaseVector <Left > &v, const double &a)
+inline VectorScalarExpression < Left > operator *(const BaseVector <Left > &v, const double &a)
 {
-    return VectorScalarExpression < Left > (v, a);
+    return VectorScalarExpression < Left > (v.derived(), a);
 }
 
 template < class Right >
-VectorScalarExpression < Right > operator *(const double &a, const BaseVector < Right > &v)
+inline VectorScalarExpression < Right > operator *(const double &a, const BaseVector < Right > &v)
 {
-    return VectorScalarExpression < Right > (v, a);
+    return VectorScalarExpression < Right > (v.derived(), a);
 }
+
+template < class Left >
+VectorScalarExpression < Left > operator /(const BaseVector <Left > &v, const double &a)
+{
+	double b = 1.0/a;
+    return VectorScalarExpression < Left > (v.derived(), b);
+}
+
+
 
 
 } /* end namespace coda */

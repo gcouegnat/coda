@@ -12,12 +12,16 @@ using namespace coda;
 
 //-----------------------------------------------------------------------------
 
-Vector::Vector (const uint size):
-    _size (0),
-    _values (0)
+Vector::Vector (const uint size)
 {
-    debug1 ("Create a Vector of size %d", size);
-    resize (size);
+//    debug1 ("Create a Vector of size %d", size);
+//    resize (size);
+	coda_debug_sigprint();
+
+	_size = size;
+	if (size>0)
+		_values = new double[size];
+
 }
 
 //-----------------------------------------------------------------------------
@@ -33,7 +37,7 @@ Vector::Vector (const Vector & v):
 
 Vector::~Vector ()
 {
-    debug ("");
+    coda_debug_sigprint();
     delete[]_values;
 }
 
@@ -45,10 +49,10 @@ Vector::resize (uint size)
     if (_size == size)
         return;
 // debug2("Resize a Vector from %d to %d", _size, size);
-    delete[]_values;
+    delete[] _values;
     _values = new double[size];
     _size = size;
-    zeros ();
+//    zeros ();
 }
 
 //-----------------------------------------------------------------------------
@@ -74,8 +78,18 @@ Vector::operator= (const Vector & v)
 const Vector &
 Vector::operator= (double a)
 {
-    for (uint i = 0; i < _size; ++i)
-        _values[i] = a;
+	const int n = _size;
+	uint i,j;
+    for (i = 0, j = 1; j < n; i+=2, j+=2) 
+	{
+		_values[i] = a;
+		_values[j] = a;
+	}
+	if (i < n) 
+	{
+		_values[i] = a;
+	}
+	
     return *this;
 }
 

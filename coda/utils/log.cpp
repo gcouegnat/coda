@@ -27,8 +27,7 @@ coda::set_log_level (int log_level)
 }
 
 //-----------------------------------------------------------------------------
-void
-coda::info (std::string msg, ...)
+void coda::info (std::string msg, ...)
 {
     const int log_level = coda::parameters["log_level"];
     if (log_level <= INFO)
@@ -41,8 +40,7 @@ coda::info (std::string msg, ...)
 }
 
 //-----------------------------------------------------------------------------
-void
-coda::warning (std::string msg, ...)
+void coda::warning (std::string msg, ...)
 {
     const int log_level = coda::parameters["log_level"];
     if (log_level <= WARNING)
@@ -55,8 +53,7 @@ coda::warning (std::string msg, ...)
 }
 
 //-----------------------------------------------------------------------------
-void
-coda::error (std::string msg, ...)
+void coda::error (std::string msg, ...)
 {
     const int log_level = coda::parameters["log_level"];
     if (log_level <= ERROR)
@@ -70,21 +67,34 @@ coda::error (std::string msg, ...)
 }
 
 //-----------------------------------------------------------------------------
-void
-coda::__debug (std::string file, unsigned long line, std::string function,
+void coda::__debug (std::string file, unsigned long line, std::string function,
                std::string msg, ...)
 {
     const int log_level = coda::parameters["log_level"];
-    if (log_level <= DEBUG)
+    if (log_level <= DBG)
     {
         read (buffer, msg);
         std::ostringstream ost;
         ost << file << ":" << line << " : " << function << "()";
         std::string s =
-            std::string ("[DEBUG ") + ost.str () + std::string ("] ") + buffer;
+            std::string ("[DBG ") + ost.str () + std::string ("] ") + buffer;
         std::cerr << coda::colors::nocolor << s << coda::colors::
                   nocolor << std::endl;
     }
 }
 
 //-----------------------------------------------------------------------------
+void coda_sigprint(const char* x)
+{
+	std::cerr << "@" << x ;
+}
+
+void coda_endl()
+{
+    std::cerr << std::endl;
+}
+
+void coda_dummy()
+{
+    
+}
