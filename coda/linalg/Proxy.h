@@ -48,7 +48,7 @@ public:
 	}
 
 	uint nrows() const { return P.nrows; }
-	uint ncols() const { return P.ncols; }
+	uint ncols() const { return 1; }
 	uint nelem() const { return P.nelem; }	
 	
 	inline elem_type operator[] (const uint i) 		 const { return P[i]; }

@@ -7,21 +7,18 @@ using namespace coda;
 
 int main (int argc, char const *argv[])
 {
-    set_log_level (INFO);
+ 
+	Vector<float> x(10), y(10), z;
 
-    info("@VECTOR");
-   
-	Vector<float> x(3), y(3), z(3), u(3), v(3), w(3);
-   
 	x.fill(1.0);
 	y.fill(2.0);
-	z.fill(3.0);
-	w.fill(4.0);
-
-	u = (x + y) % z / w;
-
-	u.print("result = ");
-
+	
+	x.print("x = ");
+	y.print("y = ");
+	
+	z = x + y;
+	
+	z.print("z = ");
 	
     return 0;
 }

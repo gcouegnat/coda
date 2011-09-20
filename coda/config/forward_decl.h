@@ -3,8 +3,9 @@
 
 namespace coda
 {
-template <typename eT> class Vector;
 template <typename eT> class Matrix;
+template <typename eT> class Vector;
+
 
 template <typename T1, typename T2, typename eop_type> class eBinaryOp;
 

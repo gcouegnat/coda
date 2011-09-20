@@ -270,3 +270,50 @@ inline void Matrix<eT>::print(std::string text)
 		
 }
 //-----------------------------------------------------------------------------	
+//-----------------------------------------------------------------------------	
+template <typename eT>
+template <typename T1, typename T2, typename eop_type> 
+inline Matrix<eT>::Matrix(const eBinaryOp<T1, T2, eop_type>& op) : nrows(0), ncols(0), nelem(0) ,mem(0)
+{
+	eop_core<eop_type>::apply(*this, op);
+}
+//-----------------------------------------------------------------------------
+template <typename eT>
+template <typename T1, typename T2, typename eop_type> 
+inline const Matrix<eT>& Matrix<eT>::operator=(const eBinaryOp<T1, T2, eop_type>& op)
+{
+	eop_core<eop_type>::apply(*this, op);
+	return *this;	
+}
+//-----------------------------------------------------------------------------
+template <typename eT>
+template <typename T1, typename T2, typename eop_type> 
+inline const Matrix<eT>& Matrix<eT>::operator+=(const eBinaryOp<T1, T2, eop_type>& op)
+{
+	eop_core<eop_type>::apply_inplace_plus(*this, op);
+	return *this;	
+}
+//-----------------------------------------------------------------------------
+template <typename eT>
+template <typename T1, typename T2, typename eop_type> 
+inline const Matrix<eT>& Matrix<eT>::operator-=(const eBinaryOp<T1, T2, eop_type>& op)
+{
+	eop_core<eop_type>::apply_inplace_minus(*this, op);
+	return *this;	
+}
+//-----------------------------------------------------------------------------
+template <typename eT>
+template <typename T1, typename T2, typename eop_type> 
+inline const Matrix<eT>& Matrix<eT>::operator%=(const eBinaryOp<T1, T2, eop_type>& op)
+{
+	eop_core<eop_type>::apply_inplace_schur(*this, op);
+	return *this;	
+}
+//-----------------------------------------------------------------------------
+template <typename eT>
+template <typename T1, typename T2, typename eop_type> 
+inline const Matrix<eT>& Matrix<eT>::operator/=(const eBinaryOp<T1, T2, eop_type>& op)
+{
+	eop_core<eop_type>::apply_inplace_div(*this, op);
+	return *this;	
+}

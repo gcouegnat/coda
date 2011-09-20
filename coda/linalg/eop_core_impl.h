@@ -2,7 +2,7 @@ using namespace coda;
 
 template <typename eop_type>
 template <typename T1, typename T2> 
-inline void  eop_core<eop_type>::apply(Vector<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op)
+inline void  eop_core<eop_type>::apply(Matrix<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op)
 {
 		coda_debug_sigprint();
 		
@@ -11,7 +11,7 @@ inline void  eop_core<eop_type>::apply(Vector<typename T1::elem_type>& out, cons
 		const uint ncols = op.ncols();
 		const uint nelem = op.nelem();
 			
-		out.resize(nelem);
+		out.resize(nrows, ncols);
 		eT* out_mem = out.memptr();
 	
 		const Proxy<T1>& lhs = op.lhs;
@@ -25,7 +25,7 @@ inline void  eop_core<eop_type>::apply(Vector<typename T1::elem_type>& out, cons
 
 template <typename eop_type>
 template <typename T1, typename T2> 
-inline void  eop_core<eop_type>::apply_inplace_plus(Vector<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op)
+inline void  eop_core<eop_type>::apply_inplace_plus(Matrix<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op)
 {
 		coda_debug_sigprint();
 		
@@ -34,7 +34,7 @@ inline void  eop_core<eop_type>::apply_inplace_plus(Vector<typename T1::elem_typ
 		const uint ncols = op.ncols();
 		const uint nelem = op.nelem();
 			
-		out.resize(nelem);
+		out.resize(nrows, ncols);
 		eT* out_mem = out.memptr();
 	
 		const Proxy<T1>& lhs = op.lhs;
@@ -48,7 +48,7 @@ inline void  eop_core<eop_type>::apply_inplace_plus(Vector<typename T1::elem_typ
 
 template <typename eop_type>
 template <typename T1, typename T2> 
-inline void  eop_core<eop_type>::apply_inplace_minus(Vector<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op)
+inline void  eop_core<eop_type>::apply_inplace_minus(Matrix<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op)
 {
 		coda_debug_sigprint();
 		
@@ -57,7 +57,7 @@ inline void  eop_core<eop_type>::apply_inplace_minus(Vector<typename T1::elem_ty
 		const uint ncols = op.ncols();
 		const uint nelem = op.nelem();
 			
-		out.resize(nelem);
+		out.resize(nrows, ncols);
 		eT* out_mem = out.memptr();
 	
 		const Proxy<T1>& lhs = op.lhs;
@@ -71,7 +71,7 @@ inline void  eop_core<eop_type>::apply_inplace_minus(Vector<typename T1::elem_ty
 
 template <typename eop_type>
 template <typename T1, typename T2> 
-inline void  eop_core<eop_type>::apply_inplace_schur(Vector<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op)
+inline void  eop_core<eop_type>::apply_inplace_schur(Matrix<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op)
 {
 		coda_debug_sigprint();
 		
@@ -80,7 +80,7 @@ inline void  eop_core<eop_type>::apply_inplace_schur(Vector<typename T1::elem_ty
 		const uint ncols = op.ncols();
 		const uint nelem = op.nelem();
 			
-		out.resize(nelem);
+		out.resize(nrows, ncols);
 		eT* out_mem = out.memptr();
 	
 		const Proxy<T1>& lhs = op.lhs;
@@ -94,7 +94,7 @@ inline void  eop_core<eop_type>::apply_inplace_schur(Vector<typename T1::elem_ty
 
 template <typename eop_type>
 template <typename T1, typename T2> 
-inline void  eop_core<eop_type>::apply_inplace_div(Vector<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op)
+inline void  eop_core<eop_type>::apply_inplace_div(Matrix<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op)
 {
 		coda_debug_sigprint();
 		
@@ -103,7 +103,7 @@ inline void  eop_core<eop_type>::apply_inplace_div(Vector<typename T1::elem_type
 		const uint ncols = op.ncols();
 		const uint nelem = op.nelem();
 			
-		out.resize(nelem);
+		out.resize(nrows, ncols);
 		eT* out_mem = out.memptr();
 	
 		const Proxy<T1>& lhs = op.lhs;

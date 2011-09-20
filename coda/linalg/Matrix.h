@@ -58,6 +58,15 @@ public:
 	inline const Matrix& eyes();
 
 	inline void print(std::string text="");
+	
+	template <typename T1, typename T2, typename eop_type> inline				    Matrix(const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2, typename eop_type> inline const Matrix& operator= (const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2, typename eop_type> inline const Matrix& operator+=(const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2, typename eop_type> inline const Matrix& operator-=(const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2, typename eop_type> inline const Matrix& operator%=(const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2, typename eop_type> inline const Matrix& operator/=(const eBinaryOp<T1, T2, eop_type>& op);		
+	
+	
 
 protected:
 	inline void init(uint in_rows, uint in_cols);
