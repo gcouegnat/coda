@@ -3,7 +3,7 @@
 *.[oa]
 *.os
 run
-bench
+benchmark
 Doxyfile
 nbproject
 doc
