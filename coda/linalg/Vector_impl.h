@@ -263,3 +263,35 @@ inline const Vector<eT>& Vector<eT>::operator=(const eBinaryOp<T1, T2, eop_type>
 	eop_core<eop_type>::apply(*this, op);
 	return *this;	
 }
+//-----------------------------------------------------------------------------
+template <typename eT>
+template <typename T1, typename T2, typename eop_type> 
+inline const Vector<eT>& Vector<eT>::operator+=(const eBinaryOp<T1, T2, eop_type>& op)
+{
+	eop_core<eop_type>::apply_inplace_plus(*this, op);
+	return *this;	
+}
+//-----------------------------------------------------------------------------
+template <typename eT>
+template <typename T1, typename T2, typename eop_type> 
+inline const Vector<eT>& Vector<eT>::operator-=(const eBinaryOp<T1, T2, eop_type>& op)
+{
+	eop_core<eop_type>::apply_inplace_minus(*this, op);
+	return *this;	
+}
+//-----------------------------------------------------------------------------
+template <typename eT>
+template <typename T1, typename T2, typename eop_type> 
+inline const Vector<eT>& Vector<eT>::operator%=(const eBinaryOp<T1, T2, eop_type>& op)
+{
+	eop_core<eop_type>::apply_inplace_schur(*this, op);
+	return *this;	
+}
+//-----------------------------------------------------------------------------
+template <typename eT>
+template <typename T1, typename T2, typename eop_type> 
+inline const Vector<eT>& Vector<eT>::operator/=(const eBinaryOp<T1, T2, eop_type>& op)
+{
+	eop_core<eop_type>::apply_inplace_div(*this, op);
+	return *this;	
+}

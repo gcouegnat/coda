@@ -12,18 +12,19 @@ inline void run_benchmark (void)
 {
     Timer timer ("template");
     timer.start ();
-    Vector<double> x (N), y (N), z (N), u (N);
+    Vector<float> x (N), y (N), z (N), u (N);
     for (int i = 0; i <R; ++i)
     {
         x.fill (1.0);
         y.fill (2.0);
         z.fill (3.0);
- 
-        u = (x + y) - (x / z);
+		u.fill(1.0);
+
+        u += (x + y) - (x / z);
     }
     timer.stop ();
 
-	// u.print(" u = ");
+	 u.print(" u = ");
 }
 
 // template <int N, int R>
@@ -48,18 +49,19 @@ inline void run_benchmark_arma (void)
 {
     Timer timer ("arma");
     timer.start ();
-    arma::vec x(N), y(N), z(N), u(N);
+    arma::fvec x(N), y(N), z(N), u(N);
 
     for (int i = 0; i <R; ++i)
     {
         x.fill (1.0);
         y.fill (2.0);
         z.fill (3.0);
-        u = (x + y) - (x / z);
+		u.fill(1.0);
+        u += (x + y) - (x / z);
     }
     timer.stop ();
 
-	// u.print(" u = ");
+	 u.print(" u = ");
 }
 
 

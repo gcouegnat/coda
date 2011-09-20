@@ -58,6 +58,10 @@ public:
 
 	template <typename T1, typename T2, typename eop_type> inline				   Vector(const eBinaryOp<T1, T2, eop_type>& op);
 	template <typename T1, typename T2, typename eop_type> inline const Vector& operator=(const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2, typename eop_type> inline const Vector& operator+=(const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2, typename eop_type> inline const Vector& operator-=(const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2, typename eop_type> inline const Vector& operator%=(const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2, typename eop_type> inline const Vector& operator/=(const eBinaryOp<T1, T2, eop_type>& op);		
 
 protected:
 	inline void init(uint in_size);

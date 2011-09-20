@@ -34,10 +34,13 @@ uint eBinaryOp<T1, T2, eop_type>::nelem() const
 template<typename T1, typename T2, typename eop_type>
 typename T1::elem_type eBinaryOp<T1, T2, eop_type>::operator[] (const uint i) const
 {
-		 if (is_same_type<eop_type, eop_plus >::value == true) { return lhs[i] + rhs[i]; }
-	else if (is_same_type<eop_type, eop_minus>::value == true) { return lhs[i] - rhs[i]; }
-	else if (is_same_type<eop_type, eop_schur>::value == true) { return lhs[i] * rhs[i]; }
-	else if (is_same_type<eop_type, eop_div  >::value == true) { return lhs[i] / rhs[i]; }	
+	// 	 if (is_same_type<eop_type, eop_plus >::value == true) { return lhs[i] + rhs[i]; }
+	// else if (is_same_type<eop_type, eop_minus>::value == true) { return lhs[i] - rhs[i]; }
+	// else if (is_same_type<eop_type, eop_schur>::value == true) { return lhs[i] * rhs[i]; }
+	// else if (is_same_type<eop_type, eop_div  >::value == true) { return lhs[i] / rhs[i]; }	
+
+	return eop_core<eop_type>::process(lhs[i], rhs[i]);
+
 }
 
 
