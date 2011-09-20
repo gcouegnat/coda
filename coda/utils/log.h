@@ -18,12 +18,15 @@ void __debug(std::string file, unsigned long line, std::string function, std::st
 #define debug2(msg, arg0, arg1) 			do { coda::__debug(__FILE__, __LINE__, __PRETTY_FUNCTION__, msg, arg0, arg1); } while (false)
 #define debug3(msg, arg0, arg1, arg2) 		do { coda::__debug(__FILE__, __LINE__, __PRETTY_FUNCTION__, msg, arg0, arg1, arg2); } while (false)
 #define debug4(msg, arg0, arg1, arg2, arg3)	do { coda::__debug(__FILE__, __LINE__, __PRETTY_FUNCTION__, msg, arg0, arg1, arg2, arg3); } while (false)
-#define function_not_implemented() \
+
+#define coda_debug_function_not_implemented() \
 do { \
  error("The function '%s' has not been implemented (in %s line %d).", \
  __PRETTY_FUNCTION__, __FILE__, __LINE__); \
  } while (false)
-#endif				// end of include guard: LOG_H
+#endif				
+
+// end of include guard: LOG_H
 
 
 void coda_sigprint(const char* x);

@@ -1,95 +1,71 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-#include <iostream>
-#include <string>
-#include <coda/utils/log.h>
-
-#include "BaseVector.h"
-
-typedef unsigned int uint;
-
 namespace coda
 {
 
-// class Matrix;
-
-class Vector:public BaseVector < Vector >
+template <typename eT>
+class Vector : public Base< Vector<eT> >
 {
 public:
 
+	typedef eT	elem_type;
+	
+	const uint nrows;
+	const uint ncols;
+	const uint nelem;
+	
+	const eT* const mem;
+	
+// protected:
+// 	eT mem_local[16];	
+	
+public:
+	inline ~Vector();
+	inline Vector();
+	
+	inline Vector(uint in_size);
 
-    explicit Vector(const uint size = 0);
-    Vector(const Vector & v);
+	inline const Vector& operator+=(const eT val);	
+	inline const Vector& operator-=(const eT val);
+	inline const Vector& operator*=(const eT val);
+	inline const Vector& operator/=(const eT val);
+	
+	inline Vector(const Vector& v);
+	inline const Vector& operator=(const Vector& v);
+	inline const Vector& operator+=(const Vector& v);	
+	inline const Vector& operator-=(const Vector& v);
+	inline const Vector& operator%=(const Vector& v);
+	inline const Vector& operator/=(const Vector& v);
 
-    virtual ~ Vector();
+	inline eT& operator [] (const uint i);
+	inline eT  operator [] (const uint i) const;
+	inline eT& at (const uint i);
+	inline eT  at (const uint i) const;
 
-    void resize(uint n);
-    uint size() const;
+	inline 		 eT* memptr();
+	inline const eT* memptr() const;
 
-    const Vector & operator=(const Vector & v);
-    const Vector & operator=(double a);
+	inline void resize(const uint in_rows);
+	inline void reshape(const uint in_rows);
+	inline uint size();
 
-    void zeros();
+	inline const Vector& fill(const eT val);
+	inline const Vector& zeros();
+	inline const Vector& ones();
 
-    void abs();
+	inline void print(std::string text="");
 
-    void add(double a);
-    void add(double a, Vector & v);
-    void add(double a, Vector & v, double b, Vector & w);
+	template <typename T1, typename T2, typename eop_type> inline				   Vector(const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2, typename eop_type> inline const Vector& operator=(const eBinaryOp<T1, T2, eop_type>& op);
 
-    void eq(double a);
-    void eq(double a, Vector & v);
-    void eq(double a, Vector & v, double b, Vector & w);
+protected:
+	inline void init(uint in_size);
 
-    void axpy(double a, const Vector & v);
-
-    double dot(const Vector & x) const;
-    double norm(std::string norm_type) const;
-
-    double min() const;
-    double max() const;
-    double sum() const;
-
-    std::string str() const;
-    void print() const;
-
-    const Vector & operator*=(double a);
-    const Vector & operator/=(double a);
-    const Vector & operator+=(double a);
-    const Vector & operator-=(double a);
-    const Vector & operator+=(const Vector & v);
-    const Vector & operator-=(const Vector & v);
-
-// void matvec(Matrix& A, Vector& y);
-
-    inline double operator[] (const uint index) const
-    {
-        return _values[index];
-    };
-
-    inline double &operator[] (const uint index)
-    {
-        return _values[index];
-    };
-
-
-    typedef const Vector & StoreType;
-
-    template < class Derived >
-    Vector & operator =(const BaseVector < Derived > &rhs)
-    {
-        const Derived & rhs_ = rhs.derived();
-        for (int i = 0; i < _size; ++i)
-        {
-            _values[i] = rhs_[i];
-        }
-    } private:
-    uint _size;
-    double *_values;
 
 };
 
 }				/* end of namespace coda */
 
 #endif				/* end of include guard: VECTOR_H */
+
