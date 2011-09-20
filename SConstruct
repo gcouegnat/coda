@@ -14,8 +14,8 @@ if int(debug):
 	env.Append(CCFLAGS="-g -O0 -DDEBUG")
 else:
 #	env.Append(CCFLAGS="-O1 -ffast-math -fstrict-aliasing")
-#	env.Append(CCFLAGS="-O3 -fstrict-aliasing -funroll-loops")
-	env.Append(CCFLAGS="-O3")
+	env.Append(CCFLAGS="-O3 -fstrict-aliasing -funroll-loops")
+#	env.Append(CCFLAGS="-O3")
 
 env.Append(CPPPATH=".")
 env.Append(CCFLAGS="-DTERM_WITH_COLORS")
