@@ -16,6 +16,13 @@ inline Vector<eT>::Vector(const uint in_size)
 } 
 //-----------------------------------------------------------------------------
 template <typename eT>
+inline void Vector<eT>::resize(const uint in_nelem)
+{
+		coda_debug_sigprint();
+		Matrix<eT>::init(in_nelem, 1);
+}
+//-----------------------------------------------------------------------------
+template <typename eT>
 inline void Vector<eT>::print(std::string text)
 {
 	coda_debug_sigprint();

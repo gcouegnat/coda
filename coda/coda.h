@@ -26,7 +26,7 @@
 #include <coda/linalg/Vector.h>
 
 #include <coda/linalg/eop_core.h>
-#include <coda/linalg/eBinaryOp.h>
+#include <coda/linalg/CwiseBinaryOp.h>
 
 #include <coda/linalg/Proxy.h>
 
@@ -34,12 +34,13 @@
 
 #include <coda/linalg/arrayops_impl.h>
 #include <coda/linalg/eop_core_impl.h>
-#include <coda/linalg/eBinaryOp_impl.h>
+#include <coda/linalg/CwiseBinaryOp_impl.h>
 
 #include <coda/linalg/Matrix_impl.h>
 #include <coda/linalg/Vector_impl.h>
 
 #include <coda/linalg/operators.h>
+#include <coda/linalg/functions.h>
 
 // #include <coda/linalg/VectorOp.h>
 // #include <coda/linalg/Matrix.h>

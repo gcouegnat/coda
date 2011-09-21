@@ -24,7 +24,7 @@ inline void run_benchmark (void)
     }
     timer.stop ();
 
-	 u.print(" u = ");
+	 // u.print(" u = ");
 }
 
 // template <int N, int R>
@@ -61,7 +61,7 @@ inline void run_benchmark_arma (void)
     }
     timer.stop ();
 
-	 u.print(" u = ");
+	 // u.print(" u = ");
 }
 
 

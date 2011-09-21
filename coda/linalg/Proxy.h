@@ -57,13 +57,13 @@ public:
 };
 
 template <typename T1, typename T2, typename eop_type>
-class Proxy< eBinaryOp<T1, T2, eop_type> >
+class Proxy< CwiseBinaryOp<T1, T2, eop_type> >
 {
 public:
 	typedef typename T1::elem_type	elem_type;
-	const eBinaryOp<T1, T2, eop_type>& 	P;
+	const CwiseBinaryOp<T1, T2, eop_type>& 	P;
 
-	inline explicit Proxy(const eBinaryOp<T1, T2, eop_type>& O) : P(O)
+	inline explicit Proxy(const CwiseBinaryOp<T1, T2, eop_type>& O) : P(O)
 	{
 		coda_debug_sigprint();
 	}

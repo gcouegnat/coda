@@ -7,12 +7,12 @@ namespace coda
 template <typename eop_type>
 struct eop_core
 {
-	template <typename T1, typename T2> inline static void apply(Matrix<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2> inline static void apply(Matrix<typename T1::elem_type>& out, const CwiseBinaryOp<T1, T2, eop_type>& op);
 
-	template <typename T1, typename T2> inline static void apply_inplace_plus (Matrix<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op);
-	template <typename T1, typename T2> inline static void apply_inplace_minus(Matrix<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op);
-	template <typename T1, typename T2> inline static void apply_inplace_schur(Matrix<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op);
-	template <typename T1, typename T2> inline static void apply_inplace_div  (Matrix<typename T1::elem_type>& out, const eBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2> inline static void apply_inplace_plus (Matrix<typename T1::elem_type>& out, const CwiseBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2> inline static void apply_inplace_minus(Matrix<typename T1::elem_type>& out, const CwiseBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2> inline static void apply_inplace_schur(Matrix<typename T1::elem_type>& out, const CwiseBinaryOp<T1, T2, eop_type>& op);
+	template <typename T1, typename T2> inline static void apply_inplace_div  (Matrix<typename T1::elem_type>& out, const CwiseBinaryOp<T1, T2, eop_type>& op);
 	
 	template <typename eT> inline static eT process(const eT a, const eT b);
 

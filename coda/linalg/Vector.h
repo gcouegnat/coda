@@ -11,13 +11,14 @@ public:
 
 	typedef eT	elem_type;
 
-
 // protected:
 // 	eT mem_local[16];	
 	
 public:
 	inline Vector();
 	inline Vector(uint in_size);
+
+	inline void resize(const uint in_nelem);
 
 	inline void print(std::string text="");
 
