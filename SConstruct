@@ -34,6 +34,7 @@ lib_source = Glob('coda/*/*.cpp')
 env.Library(lib_target, lib_source)
 #env.Library(lib_target, lib_source)
 run = env.Program("run",['main.cpp'],LIBS=['coda', 'armadillo'],LIBPATH=['.'])
-env.Program("benchmark",['benchmark.cpp'],LIBS=['coda','armadillo'],LIBPATH=['.'])
+benchmark = env.Program("benchmark",['benchmark.cpp'],LIBS=['coda','armadillo'],LIBPATH=['.'])
 
 Default(run)
+Alias("all",['run', 'benchmark'])

@@ -9,26 +9,26 @@ class Vector : public Matrix<eT>
 {
 public:
 
-	typedef eT	elem_type;
+    typedef eT	elem_type;
 
 // protected:
-// 	eT mem_local[16];	
-	
+// 	eT mem_local[16];
+
 public:
-	inline Vector();
-	inline Vector(uint in_size);
+    inline Vector();
+    inline Vector(uint in_size);
 
-	inline void resize(const uint in_nelem);
+    inline void resize(const uint in_nelem);
 
-	inline void print(std::string text="");
+    inline void print(std::string text="");
 
 
-  template<typename T1> inline                   Vector(const Base<T1>& X);
-  template<typename T1> inline const Vector&  operator=(const Base<T1>& X);
+    template<typename T1> inline                   Vector(const Base<T1>& X);
+    template<typename T1> inline const Vector&  operator=(const Base<T1>& X);
 
 
 protected:
-	inline void init(uint in_size);
+    inline void init(uint in_size);
 
 
 };

@@ -3,6 +3,7 @@
 
 
 #include <iostream>
+#include <cmath>
 
 // forward declarartion
 #include <coda/config/forward_decl.h>
@@ -20,12 +21,16 @@
 #include <coda/parameter/GlobalParameters.h>
 
 // linalg
+#include <coda/linalg/cblas.h>
 #include <coda/linalg/Base.h>
 #include <coda/linalg/arrayops.h>
 #include <coda/linalg/Matrix.h>
 #include <coda/linalg/Vector.h>
 
-#include <coda/linalg/eop_core.h>
+#include <coda/linalg/cwise_op.h>
+#include <coda/linalg/cwise_binary_op.h>
+
+#include <coda/linalg/CwiseOp.h>
 #include <coda/linalg/CwiseBinaryOp.h>
 
 #include <coda/linalg/Proxy.h>
@@ -33,8 +38,13 @@
 // linalg -- immpl
 
 #include <coda/linalg/arrayops_impl.h>
-#include <coda/linalg/eop_core_impl.h>
+
+#include <coda/linalg/cwise_op_impl.h>
+#include <coda/linalg/cwise_binary_op_impl.h>
+
+#include <coda/linalg/CwiseOp_impl.h>
 #include <coda/linalg/CwiseBinaryOp_impl.h>
+
 
 #include <coda/linalg/Matrix_impl.h>
 #include <coda/linalg/Vector_impl.h>

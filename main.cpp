@@ -3,10 +3,12 @@
 #include <coda/coda.h>
 using namespace coda;
 
+typedef double Scalar;
+
 int main (int argc, char const *argv[])
 {
  
-	Vector<float> x(10), y(10), z;
+	Vector<Scalar> x(10), y(10), z;
 
 	x.fill(1.0);
 	y.fill(2.0);
@@ -23,23 +25,40 @@ int main (int argc, char const *argv[])
 	z.print("z = ");
 	
 	
-	Matrix<float> A(30,30);
-	Matrix<float> B(30,30);
-	Matrix<float> C(30,30);
+	Matrix<Scalar> A(10,10);
+	Matrix<Scalar> B(10,10);
+	Matrix<Scalar> C(10,10);
 
 
-	A.fill(1.0);
+	A.fill(5.0);
 	B.fill(2.0);
 	C.fill(3.0);	
 	
 	std::cout << "trace(A) = " << trace(A) << std::endl;
-	std::cout << "trace(B) = " << trace(B) << std::endl;
-	std::cout << "trace(C) = " << trace(C) << std::endl;
-	
-	
 	std::cout << "trace(A+B) = " << trace(A+B) << std::endl;
+
+	A.print(" A = ");
 	
-	std::cout << "trace(A+B+C) = " << trace(A+B+C) << std::endl;
+	C = 1.0 + 2.0*(A - B) - 6.5 + (-B+0.1*A/4.0);
+	C.print(" C = ");
 	
+	for(uint i=0; i < C.nrows; ++i)	C(i,i)=1.0;
+	C.print(" C = ");
+
+	A += ramp(C) + abs(C);
+	A.print(" A = ");
+	
+	std::cout << "trace( abs(A) ) = " << trace(ramp(A)) << std::endl;
+	
+	A.fill(1.0);
+	for(uint i=0; i < A.nrows; ++i)	A(i,i)=2.0;
+	A.print(" A = ");
+
+	inv(A);
+	A.print(" A = ");
+	
+	inv(A);
+	A.print(" A = ");
+		
     return 0;
 }

@@ -10,8 +10,6 @@ void info(std::string msg, ...);
 void warning(std::string msg, ...);
 void error(std::string msg, ...);
 void __debug(std::string file, unsigned long line, std::string function, std::string msg, ...);
-}				/* namespace coda */
-
 
 #define debug(msg) 							do { coda::__debug(__FILE__, __LINE__, __PRETTY_FUNCTION__, msg); } while (false)
 #define debug1(msg, arg0) 					do { coda::__debug(__FILE__, __LINE__, __PRETTY_FUNCTION__, msg, arg0); } while (false)
@@ -24,9 +22,6 @@ do { \
  error("The function '%s' has not been implemented (in %s line %d).", \
  __PRETTY_FUNCTION__, __FILE__, __LINE__); \
  } while (false)
-#endif				
-
-// end of include guard: LOG_H
 
 
 void coda_sigprint(const char* x);
@@ -37,7 +32,14 @@ void coda_dummy();
 #define CODA_FUNCSIG __PRETTY_FUNCTION__
 
 #if defined(DEBUG)
-	#define coda_debug_sigprint	coda_sigprint(CODA_FUNCSIG); coda_endl
+#define debug_sigprint	coda_sigprint(CODA_FUNCSIG); coda_endl
 #else
-	#define coda_debug_sigprint	coda_dummy
+#define debug_sigprint	coda_dummy
 #endif
+
+
+}				/* namespace coda */
+
+#endif
+
+// end of include guard: LOG_H
