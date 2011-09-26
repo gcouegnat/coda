@@ -21,9 +21,10 @@ public:
 // 	eT mem_local[16];
 
 public:
+	
     inline ~Matrix();
-    inline Matrix();
-
+    
+	inline Matrix();
     inline Matrix(uint in_rows, uint in_cols);
 
     inline const Matrix& operator+=(const eT val);
@@ -83,9 +84,11 @@ public:
     template <typename T1,              typename op_type> inline const Matrix& operator%=(const Op<T1, op_type>& op);
     template <typename T1,              typename op_type> inline const Matrix& operator/=(const Op<T1, op_type>& op);
 
-
+	template <typename T1, typename T2, typename op_type> inline				   Matrix(const BinaryOp<T1, T2, op_type>& op);
+	template <typename T1, typename T2, typename op_type> inline const Matrix& operator= (const BinaryOp<T1, T2, op_type>& op);
 
 protected:
+
     inline void init(uint in_rows, uint in_cols);
 
 
@@ -94,4 +97,3 @@ protected:
 }				/* end of namespace coda */
 
 #endif				/* end of include guard: MATRIX_H */
-

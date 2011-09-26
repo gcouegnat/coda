@@ -7,118 +7,96 @@ using namespace coda;
 #define GCCVERSION (__GNUC__ * 100 + __GNUC_MINOR__ * 10 + __GNUC_PATCHLEVEL__)
 
 
-template <int N, int R>
-inline void run_benchmark (void)
+template<typename eT>
+void benchmark_matmul_cblas(uint nrepeat = 1000)
 {
-    Timer timer ("template");
-    timer.start ();
-		//     Vector<float> x (N), y (N), z (N), u (N);
-	
-	for (int i = 0; i <R; ++i)
-	
-		//     {
-		//         x.fill (1.0);
-		//         y.fill (2.0);
-		//         z.fill (3.0);
-		// u.fill(1.0);
-		// 
-		//         u += (x + y) - (x / z);
-		//     }
-	{
-		Matrix<double> A(N,N);
-		A.fill(1.0);
-		for(uint j=0; j < A.nrows; ++j) A(j,j)*=2.0;
-		Matrix<double> B;
-		B=inv(A);
-	}
+    Matrix<eT> K(24,24);
+    Matrix<eT> B( 6,24);
+    Matrix<eT> C( 6, 6);
 
-    timer.stop ();
+    K.zeros();
+    B.fill(1.0);
+    C.fill(2.0);
 
-	 // u.print(" u = ");
+
+    for (uint i=0; i < nrepeat; ++i)
+    {
+        Matrix<eT> BtC(B.ncols, C.ncols);
+        cblas::gemm<eT>(cblas::CblasRowMajor, cblas::CblasTrans,
+                        cblas::CblasNoTrans, BtC.nrows, // M
+                        BtC.ncols, // N
+                        B.ncols, // K
+                        eT(1.0),
+                        B.mem,
+                        B.ncols, // LDA
+                        C.mem,
+                        C.ncols, // LDB
+                        eT(0.0),
+                        BtC.memptr(),
+                        BtC.ncols); // LDC
+
+        cblas::gemm<eT>(cblas::CblasRowMajor, cblas::CblasNoTrans,
+                        cblas::CblasNoTrans,
+                        K.nrows, // M
+                        K.ncols, // N
+                        BtC.ncols, // K
+                        eT(1.0),
+                        BtC.mem,
+                        BtC.ncols, // LDA
+                        B.mem,
+                        B.ncols, // LDB
+                        eT(0.0),
+                        K.memptr(),
+                        K.ncols); // LDC
+
+
+    }
+    // K.print("K =");
+
+
 }
 
-// template <int N, int R>
-// inline void run_benchmark_C (void)
-// {
-//     Timer timer ("plain C");
-//     timer.start ();
-//     for (int i = 0; i <R; ++i)
-//     {
-//         Vector<double> x (N), y (N), z (N), u (N);
-//         x = 1.0;
-//         y = 2.0;
-//         z = 3.0;
-//         for (int k = 0; k <N; ++k)
-//             u[k] =  (x[k] + y[k]) - (x[k] * z[k]);
-//     }
-//     timer.stop ();
-// }
 
-template <int N, int R>
-inline void run_benchmark_arma (void)
+template<typename eT>
+void benchmark_matmul_coda(uint nrepeat = 1000)
 {
-    Timer timer ("arma");
-    timer.start ();
-    // arma::fvec x(N), y(N), z(N), u(N);
+    Matrix<eT> K(24,24);
+    Matrix<eT> B( 6,24);
+    Matrix<eT> C( 6, 6);
 
-		    for (int i = 0; i <R; ++i)
-		//     {
-		//         x.fill (1.0);
-		//         y.fill (2.0);
-		//         z.fill (3.0);
-		// u.fill(1.0);
-		//         u += (x + y) - (x / z);
-		//     }
-
-
-	{
-		arma::mat A(N,N);
-		A.fill(1.0);
-		for(uint j=0; j < A.n_rows; ++j) A(j,j)*=2.0;
-		arma::mat B;
-		B=inv(A);
-	}
-
-    timer.stop ();
-
-	 // u.print(" u = ");
+    K.zeros();
+    B.fill(1.0);
+    C.fill(2.0);
+    
+    for (uint i=0; i < nrepeat; ++i)
+    {
+        K = trans(B)*C*B;
+    }
+    // K.print("K =");
 }
+
+
 
 
 int
 main (int argc, char const *argv[])
 {
     set_log_level (INFO);
+    info("Compiled with gcc %d", GCCVERSION);
 
-	info("Compiled with gcc %d", GCCVERSION);
+    Timer timer;
 
-    info("ARMA");
-    run_benchmark_arma <10, 1000000> ();
-    // run_benchmark_arma <100, 1000000> ();
-    run_benchmark_arma <1000, 100> ();
-    // run_benchmark_arma <10000, 10000> ();
-    // run_benchmark_arma <100000, 1000> ();
-    // run_benchmark_arma <1000000, 100> ();
-    // run_benchmark_arma <10000000, 10> ();
+    timer.rename("cblas");
+    timer.start();
+    benchmark_matmul_cblas<float>(1000000);
+    timer.stop();
 
-    // info("C");
-    //     run_benchmark_C <10, 10000000> ();
-    //     run_benchmark_C <100, 1000000> ();
-    //     run_benchmark_C <1000, 100000> ();
-    //     run_benchmark_C <10000, 10000> ();
-    //     run_benchmark_C <100000, 1000> ();
-    //     run_benchmark_C <1000000, 100> ();
-    //     run_benchmark_C <10000000, 10> ();
-    
-    info("Template");
-    run_benchmark <10, 1000000> ();
-    // run_benchmark <100, 1000000> ();
-    run_benchmark <1000, 100> ();
-    // run_benchmark <10000, 10000> ();
-    // run_benchmark <100000, 1000> ();
-    // run_benchmark <1000000, 100> ();
-    // run_benchmark <10000000, 10> ();
+    timer.rename("coda");
+    timer.start();
+    benchmark_matmul_coda<float>(1000000);
+    timer.stop();
 
-//-----------------------------------------------------------------------------
+
+
     return 0;
 }

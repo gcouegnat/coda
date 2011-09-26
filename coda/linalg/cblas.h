@@ -22,6 +22,7 @@ namespace coda
 namespace cblas
 {
 
+using ::CblasRowMajor;
 using ::CblasColMajor;
 using ::CblasNoTrans;
 using ::CblasTrans;
@@ -42,6 +43,7 @@ template <typename eT>
 inline eT dot(const int n, const eT* x, const eT* y)
 {
   debug_sigprint();
+  error("cblas::dot() is only defined for float or double");
   return eT(0);
 }
 
@@ -62,13 +64,71 @@ inline double dot(const int n, const double* x, const double* y)
 //
 // gemv
 //
+template <typename eT>
+inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA, const int M, const int N,
+                 const eT alpha, const eT *A, const int lda, const eT *X, const int incX, const eT beta,
+                 eT *Y, const int incY)
+{
+  debug_sigprint();
+  error("cblas::gemv() is only defined for float or double");
+}
 
+template <>
+inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA, const int M, const int N,
+                 const float alpha, const float *A, const int lda, const float *X, const int incX, const float beta,
+                 float *Y, const int incY)
+{
+  debug_sigprint();
+	cblas_sgemv(Order, TransA, M, N, alpha, A, lda, X, incX, beta, Y, incY);
+}
+
+
+template <>
+inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA, const int M, const int N,
+                 const double alpha, const double *A, const int lda, const double *X, const int incX, const double beta,
+                 double *Y, const int incY)
+{
+  debug_sigprint();
+	cblas_dgemv(Order, TransA, M, N, alpha, A, lda, X, incX, beta, Y, incY);
+}
 
 
 //
 // gemm
 //
 
+template <typename eT>
+inline void gemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA,
+                 const enum CBLAS_TRANSPOSE TransB, const int M, const int N,
+                 const int K, const eT alpha, const eT *A,
+                 const int lda, const eT *B, const int ldb,
+                 const eT beta, eT *C, const int ldc)
+{
+	debug_sigprint();
+	error("cblas::gemm() is only defined for float or double");
+}
+
+template <>
+inline void gemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA,
+                 const enum CBLAS_TRANSPOSE TransB, const int M, const int N,
+                 const int K, const float alpha, const float *A,
+                 const int lda, const float *B, const int ldb,
+                 const float beta, float *C, const int ldc)
+{
+	debug_sigprint();
+	cblas_sgemm(Order, TransA, TransB, M, N, K, alpha, A, lda , B, ldb, beta, C, ldc);
+}
+
+template <>
+inline void gemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA,
+                 const enum CBLAS_TRANSPOSE TransB, const int M, const int N,
+                 const int K, const double alpha, const double *A,
+                 const int lda, const double *B, const int ldb,
+                 const double beta, double *C, const int ldc)
+{
+	debug_sigprint();
+	cblas_dgemm(Order, TransA, TransB, M, N, K, alpha, A, lda , B, ldb, beta, C, ldc);
+}
 
 } /* end of namespace cblas */
 
@@ -91,7 +151,9 @@ template <typename eT>
 inline void getrf(int* m, int* n, eT* a, int* lda, int* ipiv, int* info)
 {
   debug_sigprint();
+ error("lapack::getrf() is only defined for float or double");
 }
+
 
 template <>
 inline void getrf(int* m, int* n, float* a, int* lda, int* ipiv, int* info)
@@ -114,6 +176,7 @@ template<typename eT>
 inline void getri(int* n,  eT* a, int* lda, int* ipiv, eT* work, int* lwork, int* info)
 {
   debug_sigprint();
+ error("lapack::getri() is only defined for float or double");
 }
 
 template<>

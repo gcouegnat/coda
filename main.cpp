@@ -15,10 +15,12 @@ int main (int argc, char const *argv[])
 	B.fill(2.0);
 	
 	Matrix<Scalar> C;
-	C = trans(A+B);
 
 	A.print("A = ");
 	B.print("B = ");
+
+    C = 2.0*trans(A+B)*(A-B);
+
 	C.print("C = ");
 
     return 0;

@@ -123,6 +123,17 @@ inline const CwiseOp<T1, op_neg> operator- (const Base<T1>& lhs)
 }
 
 
+//
+// BinaryOp *
+//
+template <typename T1, typename T2>
+inline const BinaryOp<T1, T2, op_times> operator* (const Base<T1>& lhs, const Base<T2>& rhs)
+{
+	debug_sigprint();
+	return BinaryOp<T1, T2, op_times>(lhs.get_ref(), rhs.get_ref());
+	
+}
+
 } /* end of namespace coda */
 
 #endif /* end of include guard: OPERATORS_H */

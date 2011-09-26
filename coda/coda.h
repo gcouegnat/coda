@@ -21,7 +21,6 @@
 #include <coda/parameter/GlobalParameters.h>
 
 // linalg
-#include <coda/linalg/cblas.h>
 #include <coda/linalg/Base.h>
 #include <coda/linalg/arrayops.h>
 #include <coda/linalg/Matrix.h>
@@ -31,12 +30,18 @@
 #include <coda/linalg/cwise_binary_op.h>
 #include <coda/linalg/op_inv.h>
 #include <coda/linalg/op_trans.h>
+#include <coda/linalg/op_times.h>
+
+#include <coda/linalg/cblas.h>
+#include <coda/linalg/gemm.h>
 
 #include <coda/linalg/CwiseOp.h>
 #include <coda/linalg/CwiseBinaryOp.h>
 #include <coda/linalg/Op.h>
+#include <coda/linalg/BinaryOp.h>
 
 #include <coda/linalg/Proxy.h>
+#include <coda/linalg/Unwrap.h>
 
 // linalg -- immpl
 
@@ -47,10 +52,12 @@
 
 #include <coda/linalg/op_inv_impl.h>
 #include <coda/linalg/op_trans_impl.h>
+#include <coda/linalg/op_times_impl.h>
 
 #include <coda/linalg/CwiseOp_impl.h>
 #include <coda/linalg/CwiseBinaryOp_impl.h>
 #include <coda/linalg/Op_impl.h>
+#include <coda/linalg/BinaryOp_impl.h>
 
 #include <coda/linalg/Matrix_impl.h>
 #include <coda/linalg/Vector_impl.h>

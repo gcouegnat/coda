@@ -280,8 +280,8 @@ inline void Matrix<eT>::print(std::string text)
 	std::ios::fmtflags old_flags = out.flags();
 	uint old_prec = out.precision(4);
 
-	out.setf(std::ios::scientific, std::ios::floatfield);
-	uint width = 11;
+	out.setf(std::ios::fixed, std::ios::floatfield);
+	uint width = 9;
 
     for(uint i=0; i < nrows; i++)
     {
@@ -410,5 +410,22 @@ inline const Matrix<eT>& Matrix<eT>::operator=(const Op<T1, op_type>& op)
 	return *this;
 }
 
+//-----------------------------------------------------------------------------
+template <typename eT>
+template <typename T1, typename T2, typename op_type> 
+inline Matrix<eT>::Matrix(const BinaryOp<T1, T2, op_type>& op) : nrows(0), ncols(0), nelem(0) ,mem(mem)
+{
+	debug_sigprint();
+    op_type::apply(*this, op);
+}
 
 
+template <typename eT>
+template <typename T1, typename T2, typename op_type> 
+inline const Matrix<eT>& Matrix<eT>::operator= (const BinaryOp<T1, T2, op_type>& op)
+{
+	debug_sigprint();
+	op_type::apply(*this, op);
+	return *this;
+
+}
