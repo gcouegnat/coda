@@ -106,7 +106,7 @@ inline Matrix<eT>::Matrix(const Matrix<eT>& m)
 
     if (this != &m)
     {
-        init(m.nelem);
+        init(m.nrows, m.ncols);
         arrayops::copy(memptr(), m.mem, m.nelem);
     }
 
@@ -117,7 +117,7 @@ inline const Matrix<eT>& Matrix<eT>::operator=(const Matrix& m)
 {
     debug_sigprint();
 
-    init(m.nelem);
+    init(m.ncols, m.nrows);
     arrayops::copy(memptr(), m.mem, m.nelem);
 
     return *this;
@@ -253,23 +253,47 @@ inline uint Matrix<eT>::size()
 {
     return nelem;
 }
+template <typename eT>
+inline const Matrix<eT>& Matrix<eT>::symmetrize()
+{
+	debug_sigprint();
+	
+	for(uint i=0; i < nrows; ++i)
+	{
+		for(uint j=0; j < ncols; ++j)
+		{
+			const eT val = 0.5*((*this)(i,j)+(*this)(j,i));
+			(*this)(i,j) = (*this)(j,i) = val;
+		}
+	}
+	return *this;
+}
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline void Matrix<eT>::print(std::string text)
 {
     debug_sigprint();
+	
+	std::ostream& out = std::cout;
+    out << text << std::endl;
+	
+	std::ios::fmtflags old_flags = out.flags();
+	uint old_prec = out.precision(4);
 
-    std::cout << text << std::endl;
+	out.setf(std::ios::scientific, std::ios::floatfield);
+	uint width = 11;
 
     for(uint i=0; i < nrows; i++)
     {
         for (uint j=0; j < ncols; j++)
         {
-            std::cout << mem[i*ncols+j] << "  ";
+            out << std::setw(width) << mem[i*ncols+j] << "  ";
         }
-        std::cout << std::endl;
+        out << std::endl;
     }
 
+	out.flags(old_flags);
+	out.precision(old_prec);
 }
 
 //-----------------------------------------------------------------------------
@@ -324,7 +348,7 @@ inline const Matrix<eT>& Matrix<eT>::operator/=(const CwiseOp<T1, op_type>& op)
 //-----------------------------------------------------------------------------
 template <typename eT>
 template <typename T1, typename T2, typename op_type>
-inline Matrix<eT>::Matrix(const CwiseBinaryOp<T1, T2, op_type>& op) : nrows(0), ncols(0), nelem(0) ,mem(0)
+inline Matrix<eT>::Matrix(const CwiseBinaryOp<T1, T2, op_type>& op) : nrows(0), ncols(0), nelem(0) ,mem(mem)
 {
     cwise_binary_op<op_type>::apply(*this, op);
 }
@@ -368,3 +392,23 @@ inline const Matrix<eT>& Matrix<eT>::operator/=(const CwiseBinaryOp<T1, T2, op_t
     cwise_binary_op<op_type>::apply_inplace_div(*this, op);
     return *this;
 }
+
+template <typename eT>
+template <typename T1, typename op_type> 
+inline Matrix<eT>::Matrix(const Op<T1, op_type>& op) : nrows(0), ncols(0), nelem(0), mem(mem)
+{
+	debug_sigprint();
+	op_type::apply(*this, op);
+}
+
+template <typename eT>
+template <typename T1, typename op_type> 
+inline const Matrix<eT>& Matrix<eT>::operator=(const Op<T1, op_type>& op)
+{
+	debug_sigprint();
+	op_type::apply(*this, op);
+	return *this;
+}
+
+
+

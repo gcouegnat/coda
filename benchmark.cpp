@@ -12,16 +12,26 @@ inline void run_benchmark (void)
 {
     Timer timer ("template");
     timer.start ();
-    Vector<float> x (N), y (N), z (N), u (N);
-    for (int i = 0; i <R; ++i)
-    {
-        x.fill (1.0);
-        y.fill (2.0);
-        z.fill (3.0);
-		u.fill(1.0);
+		//     Vector<float> x (N), y (N), z (N), u (N);
+	
+	for (int i = 0; i <R; ++i)
+	
+		//     {
+		//         x.fill (1.0);
+		//         y.fill (2.0);
+		//         z.fill (3.0);
+		// u.fill(1.0);
+		// 
+		//         u += (x + y) - (x / z);
+		//     }
+	{
+		Matrix<double> A(N,N);
+		A.fill(1.0);
+		for(uint j=0; j < A.nrows; ++j) A(j,j)*=2.0;
+		Matrix<double> B;
+		B=inv(A);
+	}
 
-        u += (x + y) - (x / z);
-    }
     timer.stop ();
 
 	 // u.print(" u = ");
@@ -49,16 +59,26 @@ inline void run_benchmark_arma (void)
 {
     Timer timer ("arma");
     timer.start ();
-    arma::fvec x(N), y(N), z(N), u(N);
+    // arma::fvec x(N), y(N), z(N), u(N);
 
-    for (int i = 0; i <R; ++i)
-    {
-        x.fill (1.0);
-        y.fill (2.0);
-        z.fill (3.0);
-		u.fill(1.0);
-        u += (x + y) - (x / z);
-    }
+		    for (int i = 0; i <R; ++i)
+		//     {
+		//         x.fill (1.0);
+		//         y.fill (2.0);
+		//         z.fill (3.0);
+		// u.fill(1.0);
+		//         u += (x + y) - (x / z);
+		//     }
+
+
+	{
+		arma::mat A(N,N);
+		A.fill(1.0);
+		for(uint j=0; j < A.n_rows; ++j) A(j,j)*=2.0;
+		arma::mat B;
+		B=inv(A);
+	}
+
     timer.stop ();
 
 	 // u.print(" u = ");
@@ -73,9 +93,9 @@ main (int argc, char const *argv[])
 	info("Compiled with gcc %d", GCCVERSION);
 
     info("ARMA");
-    run_benchmark_arma <30, 10000000> ();
+    run_benchmark_arma <10, 1000000> ();
     // run_benchmark_arma <100, 1000000> ();
-    run_benchmark_arma <1000, 100000> ();
+    run_benchmark_arma <1000, 100> ();
     // run_benchmark_arma <10000, 10000> ();
     // run_benchmark_arma <100000, 1000> ();
     // run_benchmark_arma <1000000, 100> ();
@@ -91,9 +111,9 @@ main (int argc, char const *argv[])
     //     run_benchmark_C <10000000, 10> ();
     
     info("Template");
-    run_benchmark <30, 10000000> ();
+    run_benchmark <10, 1000000> ();
     // run_benchmark <100, 1000000> ();
-    run_benchmark <1000, 100000> ();
+    run_benchmark <1000, 100> ();
     // run_benchmark <10000, 10000> ();
     // run_benchmark <100000, 1000> ();
     // run_benchmark <1000000, 100> ();

@@ -122,6 +122,42 @@ public:
 
 };
 
+template <typename T1, typename op_type>
+class Proxy< Op<T1, op_type> >
+{
+public:
+    typedef typename T1::elem_type	elem_type;
+    const Matrix<elem_type> 	P;
+
+    inline explicit Proxy(const Op<T1, op_type>& O) : P(O)
+    {
+        debug_sigprint();
+    }
+
+    uint nrows() const
+    {
+        return P.nrows;
+    }
+    uint ncols() const
+    {
+        return P.ncols;
+    }
+    uint nelem() const
+    {
+        return P.nelem;
+    }
+
+    inline elem_type operator[] (const uint i) 	  const
+    {
+        return P[i];
+    }
+    inline elem_type at (const uint i, const uint j) const
+    {
+        return P.at(i,j);
+    }
+
+};
+
 template <typename T1, typename T2, typename op_type>
 class Proxy< CwiseBinaryOp<T1, T2, op_type> >
 {

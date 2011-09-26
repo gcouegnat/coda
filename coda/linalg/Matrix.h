@@ -57,6 +57,9 @@ public:
     inline const Matrix& ones();
     inline const Matrix& eyes();
 
+	inline const Matrix& symmetrize();
+
+
     inline void print(std::string text="");
 
     template <typename T1,              typename op_type> inline				   Matrix(const CwiseOp<T1, op_type>& op);
@@ -73,7 +76,12 @@ public:
     template <typename T1, typename T2, typename op_type> inline const Matrix& operator%=(const CwiseBinaryOp<T1, T2, op_type>& op);
     template <typename T1, typename T2, typename op_type> inline const Matrix& operator/=(const CwiseBinaryOp<T1, T2, op_type>& op);
 
-
+    template <typename T1,              typename op_type> inline				   Matrix(const Op<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Matrix& operator= (const Op<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Matrix& operator+=(const Op<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Matrix& operator-=(const Op<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Matrix& operator%=(const Op<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Matrix& operator/=(const Op<T1, op_type>& op);
 
 
 

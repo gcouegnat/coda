@@ -29,9 +29,12 @@
 
 #include <coda/linalg/cwise_op.h>
 #include <coda/linalg/cwise_binary_op.h>
+#include <coda/linalg/op_inv.h>
+#include <coda/linalg/op_trans.h>
 
 #include <coda/linalg/CwiseOp.h>
 #include <coda/linalg/CwiseBinaryOp.h>
+#include <coda/linalg/Op.h>
 
 #include <coda/linalg/Proxy.h>
 
@@ -42,9 +45,12 @@
 #include <coda/linalg/cwise_op_impl.h>
 #include <coda/linalg/cwise_binary_op_impl.h>
 
+#include <coda/linalg/op_inv_impl.h>
+#include <coda/linalg/op_trans_impl.h>
+
 #include <coda/linalg/CwiseOp_impl.h>
 #include <coda/linalg/CwiseBinaryOp_impl.h>
-
+#include <coda/linalg/Op_impl.h>
 
 #include <coda/linalg/Matrix_impl.h>
 #include <coda/linalg/Vector_impl.h>

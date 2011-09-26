@@ -5,6 +5,11 @@ namespace coda
 {
 
 //
+// A, B : matrix or vector
+// k : scalar
+//
+
+//
 // CwiseBinaryOp +, -, %, /
 //
 

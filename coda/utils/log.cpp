@@ -86,7 +86,7 @@ void coda::__debug (std::string file, unsigned long line, std::string function,
 //-----------------------------------------------------------------------------
 void coda::coda_sigprint(const char* x)
 {
-	std::cerr << coda::colors::yellow << "@" << x << coda::colors::nocolor;
+	std::cerr << "-----\n" << coda::colors::yellow << "@" << x << coda::colors::nocolor;
 }
 
 void coda::coda_endl()

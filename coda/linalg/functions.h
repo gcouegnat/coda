@@ -38,46 +38,25 @@ inline const CwiseOp<T1, op_ramp> ramp(const Base<T1>& X)
     return CwiseOp<T1, op_ramp>(X.get_ref());
 }
 
-
-template <typename eT>
-inline bool inv(Matrix<eT>& out)
+template <typename T1>
+inline const Op<T1, op_inv> inv(const Base<T1>& X)
 {
 	debug_sigprint();
+	return Op<T1, op_inv>(X.get_ref());
+}
 
-	int nrows = out.nrows;
-	int ncols = out.ncols;
-	int info = 0;
-	
-	int * ipiv = new int[nrows];
-	int work_len = nrows*84;
-	eT * work = new eT[work_len];
-	
-	lapack::getrf(&nrows, &ncols, out.memptr(), &nrows, ipiv, &info);
-	
-	if (info == 0)
-	{
-		int work_len_tmp = -1;
-		lapack::getri(&nrows, out.memptr(), &nrows, ipiv, work, &work_len_tmp, &info);
-		
-		if (info == 0)
-		{
-			int len = static_cast<int>(work[0]);
-			if (work_len < len)
-			{
-				work_len = len;
-				delete [] work;
-				work = new eT[work_len];
-			}
-		}
-		
-		lapack::getri(&nrows, out.memptr(), &nrows, ipiv, work, &work_len, &info);
-	}
-	
-	delete [] ipiv;
-	delete [] work;
+template <typename T1>
+inline const T1& inv(const Op<T1, op_inv>& X)
+{
+	debug_sigprint();
+	return X.lhs;
+}
 
-	return (info==0);
-	
+template <typename T1>
+inline const Op<T1, op_trans> trans(const Base<T1>& X)
+{
+	debug_sigprint();
+	return Op<T1, op_trans>(X.get_ref());
 }
 
 
