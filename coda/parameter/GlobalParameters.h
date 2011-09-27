@@ -2,7 +2,7 @@
 #define GLOBALPARAMETER_H
 
 #include "Parameters.h"
-#include <coda/utils/LogLevel.h>
+#include <coda/debug/log.h>
 
 namespace coda
 {

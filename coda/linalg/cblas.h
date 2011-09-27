@@ -42,7 +42,7 @@ using ::cblas_dgemm;
 template <typename eT>
 inline eT dot(const int n, const eT* x, const eT* y)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
   error("cblas::dot() is only defined for float or double");
   return eT(0);
 }
@@ -50,14 +50,14 @@ inline eT dot(const int n, const eT* x, const eT* y)
 template <>
 inline float dot(const int n, const float* x, const float* y)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
   return cblas_sdot(n, x, 1, y, 1);
 }
 
 template <>
 inline double dot(const int n, const double* x, const double* y)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
   return cblas_ddot(n, x, 1, y, 1);
 }
 
@@ -69,7 +69,7 @@ inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA
                  const eT alpha, const eT *A, const int lda, const eT *X, const int incX, const eT beta,
                  eT *Y, const int incY)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
   error("cblas::gemv() is only defined for float or double");
 }
 
@@ -78,7 +78,7 @@ inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA
                  const float alpha, const float *A, const int lda, const float *X, const int incX, const float beta,
                  float *Y, const int incY)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
 	cblas_sgemv(Order, TransA, M, N, alpha, A, lda, X, incX, beta, Y, incY);
 }
 
@@ -88,7 +88,7 @@ inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA
                  const double alpha, const double *A, const int lda, const double *X, const int incX, const double beta,
                  double *Y, const int incY)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
 	cblas_dgemv(Order, TransA, M, N, alpha, A, lda, X, incX, beta, Y, incY);
 }
 
@@ -104,7 +104,7 @@ inline void gemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA
                  const int lda, const eT *B, const int ldb,
                  const eT beta, eT *C, const int ldc)
 {
-	debug_sigprint();
+	coda_extra_debug_funcname();
 	error("cblas::gemm() is only defined for float or double");
 }
 
@@ -115,7 +115,7 @@ inline void gemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA
                  const int lda, const float *B, const int ldb,
                  const float beta, float *C, const int ldc)
 {
-	debug_sigprint();
+	coda_extra_debug_funcname();
 	cblas_sgemm(Order, TransA, TransB, M, N, K, alpha, A, lda , B, ldb, beta, C, ldc);
 }
 
@@ -126,7 +126,7 @@ inline void gemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA
                  const int lda, const double *B, const int ldb,
                  const double beta, double *C, const int ldc)
 {
-	debug_sigprint();
+	coda_extra_debug_funcname();
 	cblas_dgemm(Order, TransA, TransB, M, N, K, alpha, A, lda , B, ldb, beta, C, ldc);
 }
 
@@ -150,7 +150,7 @@ using ::dgetri_;
 template <typename eT>
 inline void getrf(int* m, int* n, eT* a, int* lda, int* ipiv, int* info)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
  error("lapack::getrf() is only defined for float or double");
 }
 
@@ -158,14 +158,14 @@ inline void getrf(int* m, int* n, eT* a, int* lda, int* ipiv, int* info)
 template <>
 inline void getrf(int* m, int* n, float* a, int* lda, int* ipiv, int* info)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
   sgetrf_(m, n, a, lda, ipiv, info);
 }
 
 template <>
 inline void getrf(int* m, int* n, double* a, int* lda, int* ipiv, int* info)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
   dgetrf_(m, n, a, lda, ipiv, info);
 }
 
@@ -175,21 +175,21 @@ inline void getrf(int* m, int* n, double* a, int* lda, int* ipiv, int* info)
 template<typename eT>
 inline void getri(int* n,  eT* a, int* lda, int* ipiv, eT* work, int* lwork, int* info)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
  error("lapack::getri() is only defined for float or double");
 }
 
 template<>
 inline void getri(int* n,  float* a, int* lda, int* ipiv, float* work, int* lwork, int* info)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
   sgetri_(n, a ,lda, ipiv, work, lwork, info);
 }
 
 template<>
 inline void getri(int* n,  double* a, int* lda, int* ipiv, double* work, int* lwork, int* info)
 {
-  debug_sigprint();
+  coda_extra_debug_funcname();
   dgetri_(n, a ,lda, ipiv, work, lwork, info);
 }
 

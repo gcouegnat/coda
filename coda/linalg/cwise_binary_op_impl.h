@@ -7,7 +7,7 @@ template <typename op_type>
 template <typename T1, typename T2>
 inline void  cwise_binary_op<op_type>::apply(Matrix<typename T1::elem_type>& out, const CwiseBinaryOp<T1, T2, op_type>& op)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     typedef typename T1::elem_type eT;
     const uint nrows = op.nrows();
@@ -30,7 +30,7 @@ template <typename op_type>
 template <typename T1, typename T2>
 inline void  cwise_binary_op<op_type>::apply_inplace_plus(Matrix<typename T1::elem_type>& out, const CwiseBinaryOp<T1, T2, op_type>& op)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     typedef typename T1::elem_type eT;
     const uint nrows = op.nrows();
@@ -53,7 +53,7 @@ template <typename op_type>
 template <typename T1, typename T2>
 inline void  cwise_binary_op<op_type>::apply_inplace_minus(Matrix<typename T1::elem_type>& out, const CwiseBinaryOp<T1, T2, op_type>& op)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     typedef typename T1::elem_type eT;
     const uint nrows = op.nrows();
@@ -76,7 +76,7 @@ template <typename op_type>
 template <typename T1, typename T2>
 inline void  cwise_binary_op<op_type>::apply_inplace_schur(Matrix<typename T1::elem_type>& out, const CwiseBinaryOp<T1, T2, op_type>& op)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     typedef typename T1::elem_type eT;
     const uint nrows = op.nrows();
@@ -99,7 +99,7 @@ template <typename op_type>
 template <typename T1, typename T2>
 inline void  cwise_binary_op<op_type>::apply_inplace_div(Matrix<typename T1::elem_type>& out, const CwiseBinaryOp<T1, T2, op_type>& op)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     typedef typename T1::elem_type eT;
     const uint nrows = op.nrows();

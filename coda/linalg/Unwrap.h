@@ -13,7 +13,7 @@ public:
 
 	inline Unwrap(const T1& A) : M(A)
 	{
-		debug_sigprint();
+		coda_extra_debug_funcname();
 	}
 };
 
@@ -26,7 +26,7 @@ public:
 
 	inline Unwrap(const Matrix<eT>& A) : M(A)
 	{
-		debug_sigprint();
+		coda_extra_debug_funcname();
 	}
 };
 
@@ -38,7 +38,7 @@ public:
 
 	inline Unwrap(const Vector<eT>& A) : M(A)
 	{
-		debug_sigprint();
+		coda_extra_debug_funcname();
 	}
 };
 

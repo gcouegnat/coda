@@ -12,7 +12,7 @@ public:
 	template<typename eT>
 	inline static void apply(Matrix<eT>& C, const Matrix<eT>& A, const Matrix<eT>& B, const eT alpha = eT(1), const eT beta = eT(0))
 	{
-		debug_sigprint();
+		coda_extra_debug_funcname();
 
 		cblas::gemm<eT>(cblas::CblasRowMajor, 
 		                cblas::CblasNoTrans, 

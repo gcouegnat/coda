@@ -2,10 +2,10 @@
 #include <sstream>
 #include <cstdlib>
 #include <cstdarg>
+#include <stdexcept>
 
 #include "log.h"
-#include "LogLevel.h"
-#include "colors.h"
+#include <coda/utils/colors.h>
 #include <coda/parameter/GlobalParameters.h>
 
 using namespace coda;
@@ -14,10 +14,10 @@ static const int buffer_size = 256;
 static char buffer[buffer_size];
 
 #define read(buffer, msg) \
-va_list aptr; \
-	va_start(aptr, msg); \
-	vsnprintf(buffer, buffer_size, msg.c_str(), aptr); \
-	va_end(aptr);
+    va_list aptr; \
+    va_start(aptr, msg); \
+    vsnprintf(buffer, buffer_size, msg.c_str(), aptr); \
+    va_end(aptr); \
 
 //-----------------------------------------------------------------------------
 void
@@ -33,7 +33,7 @@ void coda::info (std::string msg, ...)
     if (log_level <= INFO)
     {
         read (buffer, msg);
-        std::string s = std::string ("[INFO] ") + buffer;
+        std::string s = std::string ("Info: ") + buffer;
         std::cerr << coda::colors::bold_green << s << coda::colors::
                   nocolor << std::endl;
     }
@@ -46,7 +46,7 @@ void coda::warning (std::string msg, ...)
     if (log_level <= WARNING)
     {
         read (buffer, msg);
-        std::string s = std::string ("[WARNING] ") + buffer;
+        std::string s = std::string ("Warning: ") + buffer;
         std::cerr << coda::colors::red << s << coda::colors::nocolor << std::
                   endl;
     }
@@ -56,45 +56,20 @@ void coda::warning (std::string msg, ...)
 void coda::error (std::string msg, ...)
 {
     const int log_level = coda::parameters["log_level"];
+
     if (log_level <= ERROR)
     {
         read (buffer, msg);
-        std::string s = std::string ("[ERROR] ") + buffer;
-        std::cerr << coda::colors::red << s << coda::colors::nocolor << std::
-                  endl;
-        abort ();
+        std::string s = std::string ("Error: ") + buffer;
+
+        std::cerr.flush();
+        std::cerr << '\n';
+        std::cerr << coda::colors::red << s << coda::colors::nocolor << '\n';
+        std::cerr.flush();
+        throw std::runtime_error("CODA_RUNTIME_ERROR");
     }
 }
-
 //-----------------------------------------------------------------------------
-void coda::__debug (std::string file, unsigned long line, std::string function,
-               std::string msg, ...)
-{
-    const int log_level = coda::parameters["log_level"];
-    if (log_level <= DBG)
-    {
-        read (buffer, msg);
-        std::ostringstream ost;
-        ost << file << ":" << line << " : " << function << "()";
-        std::string s =
-            std::string ("[DBG ") + ost.str () + std::string ("] ") + buffer;
-        std::cerr << coda::colors::nocolor << s << coda::colors::
-                  nocolor << std::endl;
-    }
-}
 
-//-----------------------------------------------------------------------------
-void coda::coda_sigprint(const char* x)
-{
-	std::cerr << "-----\n" << coda::colors::yellow << "@" << x << coda::colors::nocolor;
-}
 
-void coda::coda_endl()
-{
-    std::cerr << std::endl;
-}
 
-void coda::coda_dummy()
-{
-    
-}

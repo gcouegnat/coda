@@ -5,13 +5,16 @@ namespace coda
 {
 
 
-template <const bool use_trans = false, const bool use_alpha = false, const bool use_beta = false>
 class gemv
 {
+public:
+    
 template <typename eT>
-inline static void apply
+inline static void apply(eT* y, const Matrix<eT>& A, const eT* x, const eT alpha = eT(1), const eT beta = eT(0))
 {
-	function_not_implemented();
+    coda_extra_debug_funcname();
+    // debug("using cblas::gemv()");
+    cblas::gemv(cblas::CblasRowMajor, cblas::CblasNoTrans, A.nrows, A.ncols, alpha, A.mem, A.ncols, x, 1, beta, y, 1);
 }
 	
 };

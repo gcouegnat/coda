@@ -1,12 +1,12 @@
 default: all
 
 all:
-	scons
+	scons all
 
 debug:
 	scons debug=1
 
 clean:
-	scons -c
+	scons -c all
 
 

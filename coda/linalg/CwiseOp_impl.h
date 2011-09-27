@@ -3,20 +3,20 @@ using namespace coda;
 template <typename T1, typename op_type>
 CwiseOp<T1, op_type>::CwiseOp(const Base<T1>& in_A) : lhs(in_A.get_ref()), val(val)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 }
 
 template <typename T1, typename op_type>
 CwiseOp<T1, op_type>::CwiseOp(const Base<T1>& in_A, typename T1::elem_type in_val) : lhs(in_A.get_ref()), val(in_val)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 }
 
 
 template <typename T1, typename op_type>
 CwiseOp<T1, op_type>::~CwiseOp()
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 }
 
 template <typename T1, typename op_type>

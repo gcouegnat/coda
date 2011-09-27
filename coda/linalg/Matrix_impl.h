@@ -10,7 +10,7 @@ using namespace coda;
 template <typename eT>
 inline Matrix<eT>::~Matrix()
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
     if(nelem>0)
     {
         delete [] mem;
@@ -21,14 +21,14 @@ template <typename eT>
 inline Matrix<eT>::Matrix()
     : nrows(0), ncols(0), nelem(0), mem(0)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline Matrix<eT>::Matrix(uint in_rows, uint in_cols)
     : nrows(0), ncols(0), nelem(0) ,mem(0)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     init(in_rows, in_cols);
 }
@@ -48,7 +48,7 @@ inline const eT* Matrix<eT>::memptr() const
 template <typename eT>
 inline void Matrix<eT>::init(uint in_rows, uint in_cols)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     if(nelem>0) delete [] mem;
 
@@ -61,7 +61,7 @@ inline void Matrix<eT>::init(uint in_rows, uint in_cols)
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::operator+=(const eT val)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     arrayops::inplace_plus(memptr(), val, nelem);
 
@@ -71,7 +71,7 @@ inline const Matrix<eT>& Matrix<eT>::operator+=(const eT val)
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::operator-=(const eT val)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     arrayops::inplace_minus(memptr(), val, nelem);
 
@@ -81,7 +81,7 @@ inline const Matrix<eT>& Matrix<eT>::operator-=(const eT val)
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::operator*=(const eT val)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     arrayops::inplace_mult(memptr(), val, nelem);
 
@@ -91,7 +91,7 @@ inline const Matrix<eT>& Matrix<eT>::operator*=(const eT val)
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::operator/=(const eT val)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     arrayops::inplace_div(memptr(), val, nelem);
 
@@ -102,7 +102,7 @@ template <typename eT>
 inline Matrix<eT>::Matrix(const Matrix<eT>& m)
     : nrows(0), ncols(0), nelem(0), mem(mem)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     if (this != &m)
     {
@@ -115,7 +115,7 @@ inline Matrix<eT>::Matrix(const Matrix<eT>& m)
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::operator=(const Matrix& m)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     init(m.ncols, m.nrows);
     arrayops::copy(memptr(), m.mem, m.nelem);
@@ -126,7 +126,7 @@ inline const Matrix<eT>& Matrix<eT>::operator=(const Matrix& m)
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::operator+=(const Matrix& m)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     arrayops::inplace_plus(memptr(), m.memptr(), nelem);
 
@@ -136,7 +136,7 @@ inline const Matrix<eT>& Matrix<eT>::operator+=(const Matrix& m)
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::operator-=(const Matrix& m)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     arrayops::inplace_minus(memptr(), m.memptr(), nelem);
 
@@ -146,7 +146,7 @@ inline const Matrix<eT>& Matrix<eT>::operator-=(const Matrix& m)
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::operator%=(const Matrix& m)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     arrayops::inplace_mult(memptr(), m.memptr(), nelem);
 
@@ -157,7 +157,7 @@ inline const Matrix<eT>& Matrix<eT>::operator%=(const Matrix& m)
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::operator/=(const Matrix& m)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     arrayops::inplace_div(memptr(), m.memptr(), nelem);
 
@@ -203,7 +203,7 @@ inline eT  Matrix<eT>::operator() (const uint i, const uint j) const
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::fill(const eT val)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     arrayops::inplace_set(memptr(), val, nelem);
 
@@ -213,7 +213,7 @@ inline const Matrix<eT>& Matrix<eT>::fill(const eT val)
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::zeros()
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     arrayops::inplace_set(memptr(), eT(0), nelem);
 
@@ -223,7 +223,7 @@ inline const Matrix<eT>& Matrix<eT>::zeros()
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::ones()
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 
     arrayops::inplace_set(memptr(), eT(1), nelem);
 
@@ -233,7 +233,7 @@ inline const Matrix<eT>& Matrix<eT>::ones()
 template <typename eT>
 inline void Matrix<eT>::resize(uint in_rows, uint in_cols)
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
     if ((nrows!=in_rows) || (ncols!=in_cols))
     {
         init(in_rows, in_cols);
@@ -244,8 +244,8 @@ inline void Matrix<eT>::resize(uint in_rows, uint in_cols)
 template <typename eT>
 inline void Matrix<eT>::reshape(uint in_rows, uint in_cols)
 {
-    debug_sigprint();
-    coda_debug_function_not_implemented();
+    coda_extra_debug_funcname();
+    // coda_debug_function_not_implemented();
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
@@ -256,32 +256,33 @@ inline uint Matrix<eT>::size()
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::symmetrize()
 {
-	debug_sigprint();
-	
-	for(uint i=0; i < nrows; ++i)
-	{
-		for(uint j=0; j < ncols; ++j)
-		{
-			const eT val = 0.5*((*this)(i,j)+(*this)(j,i));
-			(*this)(i,j) = (*this)(j,i) = val;
-		}
-	}
-	return *this;
+    coda_extra_debug_funcname();
+
+    for(uint i=0; i < nrows; ++i)
+    {
+        for(uint j=0; j < ncols; ++j)
+        {
+            const eT val = 0.5*((*this)(i,j)+(*this)(j,i));
+            (*this)(i,j) = (*this)(j,i) = val;
+        }
+    }
+    return *this;
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline void Matrix<eT>::print(std::string text)
 {
-    debug_sigprint();
-	
-	std::ostream& out = std::cout;
-    out << text << std::endl;
-	
-	std::ios::fmtflags old_flags = out.flags();
-	uint old_prec = out.precision(4);
+    coda_extra_debug_funcname();
 
-	out.setf(std::ios::fixed, std::ios::floatfield);
-	uint width = 9;
+    std::ostream& out = std::cout;
+    out << text << std::endl;
+    out << "<Matrix of size " << nrows << " by " << ncols <<">\n";
+
+    std::ios::fmtflags old_flags = out.flags();
+    uint old_prec = out.precision(4);
+
+    out.setf(std::ios::fixed, std::ios::floatfield);
+    uint width = 14;
 
     for(uint i=0; i < nrows; i++)
     {
@@ -292,8 +293,8 @@ inline void Matrix<eT>::print(std::string text)
         out << std::endl;
     }
 
-	out.flags(old_flags);
-	out.precision(old_prec);
+    out.flags(old_flags);
+    out.precision(old_prec);
 }
 
 //-----------------------------------------------------------------------------
@@ -394,38 +395,38 @@ inline const Matrix<eT>& Matrix<eT>::operator/=(const CwiseBinaryOp<T1, T2, op_t
 }
 
 template <typename eT>
-template <typename T1, typename op_type> 
+template <typename T1, typename op_type>
 inline Matrix<eT>::Matrix(const Op<T1, op_type>& op) : nrows(0), ncols(0), nelem(0), mem(mem)
 {
-	debug_sigprint();
-	op_type::apply(*this, op);
+    coda_extra_debug_funcname();
+    op_type::apply(*this, op);
 }
 
 template <typename eT>
-template <typename T1, typename op_type> 
+template <typename T1, typename op_type>
 inline const Matrix<eT>& Matrix<eT>::operator=(const Op<T1, op_type>& op)
 {
-	debug_sigprint();
-	op_type::apply(*this, op);
-	return *this;
+    coda_extra_debug_funcname();
+    op_type::apply(*this, op);
+    return *this;
 }
 
 //-----------------------------------------------------------------------------
 template <typename eT>
-template <typename T1, typename T2, typename op_type> 
+template <typename T1, typename T2, typename op_type>
 inline Matrix<eT>::Matrix(const BinaryOp<T1, T2, op_type>& op) : nrows(0), ncols(0), nelem(0) ,mem(mem)
 {
-	debug_sigprint();
+    coda_extra_debug_funcname();
     op_type::apply(*this, op);
 }
 
 
 template <typename eT>
-template <typename T1, typename T2, typename op_type> 
+template <typename T1, typename T2, typename op_type>
 inline const Matrix<eT>& Matrix<eT>::operator= (const BinaryOp<T1, T2, op_type>& op)
 {
-	debug_sigprint();
-	op_type::apply(*this, op);
-	return *this;
+    coda_extra_debug_funcname();
+    op_type::apply(*this, op);
+    return *this;
 
 }

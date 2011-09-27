@@ -4,13 +4,13 @@ template<typename T1, typename T2, typename op_type>
 CwiseBinaryOp<T1, T2, op_type>::CwiseBinaryOp(const Base<T1>& in_A, const Base<T2>& in_B)
     : lhs(in_A.get_ref()), rhs(in_B.get_ref())
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 }
 
 template<typename T1, typename T2, typename op_type>
 CwiseBinaryOp<T1, T2, op_type>::~CwiseBinaryOp()
 {
-    debug_sigprint();
+    coda_extra_debug_funcname();
 }
 
 template<typename T1, typename T2, typename op_type>
