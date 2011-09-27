@@ -26,10 +26,11 @@ inline void op_times::apply(Matrix<eT>& out, const Matrix<eT>& A, const Matrix<e
     const uint nrows = A.nrows;
     const uint ncols = B.ncols;
 
+    coda_debug_assert_mult_size(A.nrows, A.ncols, B.nrows, B.ncols, "op_times::apply()");
+
     if (B.ncols == 1)
     { // matrix-vector
-
-        out.resize(B.nelem, 1);
+        out.resize(A.nrows, 1);
         gemv::apply(out.memptr(), A, B.memptr());
     }
     else

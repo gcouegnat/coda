@@ -276,7 +276,7 @@ inline void Matrix<eT>::print(std::string text)
 
     std::ostream& out = std::cout;
     out << text << std::endl;
-    out << "<Matrix of size " << nrows << " by " << ncols <<">\n";
+    out << "< Matrix of size " << nrows << " by " << ncols <<" >\n";
 
     std::ios::fmtflags old_flags = out.flags();
     uint old_prec = out.precision(4);

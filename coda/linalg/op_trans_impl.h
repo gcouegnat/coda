@@ -6,19 +6,31 @@ inline void op_trans::apply(Matrix<typename T1::elem_type>& out, const Op<T1, op
 	coda_extra_debug_funcname();
 	typedef typename T1::elem_type eT;
 	
-	Matrix<eT> tmp(X.lhs);
-	int nrows = tmp.nrows;
-	int ncols = tmp.ncols;
+  const Unwrap<T1> tmp(X.lhs);
+  const Matrix<eT>& A = tmp.M;
 	
-	out.resize(ncols, nrows);
-	
-	for(uint i=0; i < ncols; ++i)
-	{
-		for(uint j=0; j < nrows; ++j)
-		{
-			out(i,j) = tmp(j,i);
-		}
-	}
-	
-	
+  op_trans::apply(out, A);
+
+}	
+
+template <typename eT>
+inline  void op_trans::apply(Matrix<eT>& out, const Matrix<eT>& in)
+{
+  coda_extra_debug_funcname();
+  const uint nrows = in.nrows;
+  const uint ncols = in.ncols;
+  
+  out.resize(ncols, nrows);
+  
+  for(uint r = 0; r < nrows; ++r)
+  {
+    const uint j = r;
+    for(uint c = 0; c < ncols; ++c)
+    {
+      const uint i = c;
+      out.at(i,j) = in.at(r,c);
+    }
+  }
+  
 }
+

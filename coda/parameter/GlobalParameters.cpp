@@ -2,8 +2,7 @@
 
 using namespace coda;
 
-GlobalParameters
-coda::parameters;
+GlobalParameters coda::parameters;
 
 //-----------------------------------------------------------------------------
 GlobalParameters::GlobalParameters ():Parameters ("coda")

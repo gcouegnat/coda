@@ -151,7 +151,7 @@ template <typename eT>
 inline void getrf(int* m, int* n, eT* a, int* lda, int* ipiv, int* info)
 {
   coda_extra_debug_funcname();
- error("lapack::getrf() is only defined for float or double");
+  error("lapack::getrf() is only defined for float or double");
 }
 
 
@@ -176,7 +176,7 @@ template<typename eT>
 inline void getri(int* n,  eT* a, int* lda, int* ipiv, eT* work, int* lwork, int* info)
 {
   coda_extra_debug_funcname();
- error("lapack::getri() is only defined for float or double");
+  error("lapack::getri() is only defined for float or double");
 }
 
 template<>

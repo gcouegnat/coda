@@ -33,8 +33,8 @@ void coda::info (std::string msg, ...)
     if (log_level <= INFO)
     {
         read (buffer, msg);
-        std::string s = std::string ("Info: ") + buffer;
-        std::cerr << coda::colors::bold_green << s << coda::colors::
+        std::string s = std::string ("--- ") + buffer;
+        std::cerr << coda::colors::green << s << coda::colors::
                   nocolor << std::endl;
     }
 }
@@ -46,8 +46,8 @@ void coda::warning (std::string msg, ...)
     if (log_level <= WARNING)
     {
         read (buffer, msg);
-        std::string s = std::string ("Warning: ") + buffer;
-        std::cerr << coda::colors::red << s << coda::colors::nocolor << std::
+        std::string s = std::string ("--- WARNING: ") + buffer;
+        std::cerr << coda::colors::yellow << s << coda::colors::nocolor << std::
                   endl;
     }
 }
@@ -60,13 +60,13 @@ void coda::error (std::string msg, ...)
     if (log_level <= ERROR)
     {
         read (buffer, msg);
-        std::string s = std::string ("Error: ") + buffer;
+        std::string s = std::string ("--- ERROR: ") + buffer;
 
         std::cerr.flush();
         std::cerr << '\n';
         std::cerr << coda::colors::red << s << coda::colors::nocolor << '\n';
         std::cerr.flush();
-        throw std::runtime_error("CODA_RUNTIME_ERROR");
+        throw std::runtime_error("");
     }
 }
 //-----------------------------------------------------------------------------

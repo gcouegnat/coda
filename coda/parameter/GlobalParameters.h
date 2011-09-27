@@ -2,7 +2,7 @@
 #define GLOBALPARAMETER_H
 
 #include "Parameters.h"
-#include <coda/debug/log.h>
+#include <coda/log/log.h>
 
 namespace coda
 {
@@ -26,5 +26,5 @@ extern GlobalParameters parameters;
 
 }				/* namespace coda */
 
-#endif				/* end of include guard: GLOBALPARAMETER_H 
-*/
+#endif				/* end of include guard: GLOBALPARAMETER_H */
+

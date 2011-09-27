@@ -15,18 +15,21 @@
 #include "coda/config/traits.h"
 
 // utils
-#include "coda/utils/Timer.h"
 #include "coda/utils/access.h"
 #include "coda/utils/colors.h"
+
+// log
+#include "coda/log/Timer.h"
+#include "coda/log/log.h"
+
+// debug
+#include "coda/debug/debug.h"
 
 // parameter
 #include "coda/parameter/Parameter.h"
 #include "coda/parameter/Parameters.h"
 #include "coda/parameter/GlobalParameters.h"
 
-// debug
-#include "coda/debug/log.h"
-#include "coda/debug/debug.h"
 
 // linalg
 #include "coda/linalg/Base.h"

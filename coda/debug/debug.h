@@ -4,21 +4,16 @@
 namespace coda
 {
 
-    inline void coda_print()
-    {
-        std::cerr << std::endl;
-    }
-
     template <typename T1>
     inline void coda_print(const T1& msg)
     {
-        std::cerr << coda::colors::cyan << msg << coda::colors::nocolor << std::endl;
+        std::cerr << coda::colors::yellow << "@" << msg  << coda::colors::nocolor << std::endl;
     }
     
 
     inline void coda_assert(const bool state, std::string msg)
     {
-        if (state == true)
+        if (state == false)
         {
             error(msg);
         }
@@ -28,7 +23,16 @@ namespace coda
     {
         if ((nrows1 != nrows2) || (ncols1 != ncols2))
         {
-            error("%s: Incompatible matrix dimensions: %d x %d vs. %d x %d", msg.c_str(), nrows1, ncols1, nrows2, ncols2);
+            error("%s: Incompatible matrix dimensions: %d by %d and %d by %d", msg.c_str(), nrows1, ncols1, nrows2, ncols2);
+        }
+    }
+
+    template <typename eT>
+    inline void coda_assert_same_size(const Matrix<eT>& A, const Matrix<eT>& B, std::string msg)
+    {
+        if ((A.nrows1 != B.nrows) || (A.ncols != B.ncols))
+        {
+            error("%s: Incompatible matrix dimensions: %d by %d and %d by %d", msg.c_str(), A.nrows, A.ncols, B.nrows, B.ncols);
         }
     }
 
@@ -36,7 +40,7 @@ namespace coda
     {
         if (ncols1 != nrows2)
         {
-            error("Incompatible matrix dimensions: %d x %d vs. %d x %d", nrows1, ncols1, nrows2, ncols2);
+           error("%s: Incompatible matrix dimensions: %d by %d and %d by %d", msg.c_str(), nrows1, ncols1, nrows2, ncols2);
         }
         
     }
@@ -44,7 +48,7 @@ namespace coda
     
     inline void coda_funcname(const char* x)
     {
-    	std::cerr << coda::colors::yellow << "debug: " << x << coda::colors::nocolor;
+      std::cerr << "@" << x;
     }
 
     inline void coda_endl()
@@ -57,6 +61,8 @@ namespace coda
         // do nothing
     }
 
+
+
     // 
     // macros
     //
@@ -68,23 +74,33 @@ namespace coda
 
 
 #if defined(CODA_DEBUG)
-    #define coda_debug_print                coda_print
-    #define coda_debug_assert               coda_assert
+    #define coda_debug_print(msg)           coda_print(msg)
     #define coda_debug_assert_same_size     coda_assert_same_size
     #define coda_debug_assert_mult_size     coda_assert_mult_size
+    #define coda_debug_warning(msg)         warning("%s (in file <%s> at line %d).", msg, __FILE__, __LINE__);
+    #define coda_debug_error(msg)           error("%s (in file <%s> at line %d).", msg, __FILE__, __LINE__);
+    #define coda_debug_assert(state,msg)    if (state == false) coda_debug_error(msg)
 #else
-    #define coda_debug_print                true ? void(0) : coda_print
-    #define coda_debug_assert               true ? void(0) : coda_assert
+    #define coda_debug_print(msg)
+    #define coda_debug_assert(state,msg)
     #define coda_debug_assert_same_size     true ? void(0) : coda_assert_same_size
     #define coda_debug_assert_mult_size     true ? void(0) : coda_assert_mult_size
+    #define coda_debug_warning(msg)   
+    #define coda_debug_error(msg)         
 #endif
 
 #if defined(CODA_EXTRA_DEBUG)
-    #define coda_extra_debug_print          coda_print
+    #define coda_extra_debug_print(msg)     coda_print(msg)
+    #define coda_extra_debug_warning(msg)   warning("%s (in file <%s> at line %d).", msg, __FILE__, __LINE__);
+    #define coda_extra_debug_info(msg)      info("%s (in file <%s> at line %d).", msg, __FILE__, __LINE__);
+
+
     #define coda_extra_debug_funcname       coda_funcname(CODA_FUNCNAME); coda_endl
 #else
-    #define coda_extra_debug_print          true ? void(0) : coda_print
-    #define coda_extra_debug_funcname       true ? void(0) : coda_print
+    #define coda_extra_debug_print(msg)          
+    #define coda_extra_debug_warning(msg)
+    #define coda_extra_debug_info(msg)
+    #define coda_extra_debug_funcname       coda_dummy
 #endif
 
 
@@ -127,7 +143,6 @@ namespace coda
     //    #else
     //    #define coda_extra_debug_funcname    coda_dummy
     //    #endif
-
 
 
 } /* end of namespace coda */
