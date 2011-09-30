@@ -10,9 +10,9 @@ using namespace coda;
 template<typename eT>
 void benchmark_matmul_cblas(uint nrepeat = 1000)
 {
-    Matrix<eT> K(24,24);
-    Matrix<eT> B( 6,24);
-    Matrix<eT> C( 6, 6);
+    Matrix<eT> K(240,240);
+    Matrix<eT> B( 60,240);
+    Matrix<eT> C( 60, 60);
 
     K.zeros();
     B.fill(1.0);
@@ -63,9 +63,9 @@ void benchmark_matmul_cblas(uint nrepeat = 1000)
 template<typename eT>
 void benchmark_matmul_coda(uint nrepeat = 1000)
 {
-    Matrix<eT> K(24,24);
-    Matrix<eT> B( 6,24);
-    Matrix<eT> C( 6, 6);
+    Matrix<eT> K(240,240);
+    Matrix<eT> B( 60,240);
+    Matrix<eT> C( 60, 60);
 
     K.zeros();
     B.fill(1.0);
@@ -82,9 +82,9 @@ void benchmark_matmul_coda(uint nrepeat = 1000)
 template<typename eT>
 void benchmark_matmul_arma(uint nrepeat = 1000)
 {
-    arma::Mat<eT> K(24,24);
-    arma::Mat<eT> B( 6,24);
-    arma::Mat<eT> C( 6, 6);
+    arma::Mat<eT> K(240,240);
+    arma::Mat<eT> B( 60,240);
+    arma::Mat<eT> C( 60, 60);
 
     K.zeros();
     B.fill(1.0);
@@ -105,24 +105,35 @@ main (int argc, char const *argv[])
     info("Compiled with gcc %d", GCCVERSION);
 
     Timer timer;
-    info("Running benchmark with cblas");
-    timer.rename("cblas");
-    timer.start();
-    benchmark_matmul_cblas<double>(1000000);
-    timer.stop();
+    // info("Running benchmark with cblas");
+    // timer.rename("cblas");
+    // timer.start();
+    // benchmark_matmul_cblas<double>(1000000);
+    // timer.stop();
 
-    info("Running benchmark with coda");
+    info("Running benchmark<float> with coda");
     timer.rename("coda");
     timer.start();
-    benchmark_matmul_coda<double>(1000000);
+    benchmark_matmul_coda<float>(10000);
     timer.stop();
 
-    info("Running benchmark with armadillo");
+    info("Running benchmark<float> with armadillo");
+    timer.rename("armadillo");
+    timer.start();
+    benchmark_matmul_arma<float>(10000);
+    timer.stop();
+
+    info("Running benchmark<double> with coda");
     timer.rename("coda");
     timer.start();
-    benchmark_matmul_arma<double>(1000000);
+    benchmark_matmul_coda<double>(10000);
     timer.stop();
 
+    info("Running benchmark<double> with armadillo");
+    timer.rename("armadillo");
+    timer.start();
+    benchmark_matmul_arma<double>(10000);
+    timer.stop();
 
 
     return 0;

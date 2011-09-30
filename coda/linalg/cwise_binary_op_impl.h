@@ -20,6 +20,8 @@ inline void  cwise_binary_op<op_type>::apply(Matrix<typename T1::elem_type>& out
     const Proxy<T1>& lhs = op.lhs;
     const Proxy<T2>& rhs = op.rhs;
 
+    coda_debug_assert_same_size(lhs.nrows(), lhs.ncols(), rhs.nrows(), rhs.ncols(), "apply");
+
     for(uint i=0; i<nelem; ++i)
     {
         out_mem[i] = op_type::process(lhs[i], rhs[i]);
@@ -42,6 +44,8 @@ inline void  cwise_binary_op<op_type>::apply_inplace_plus(Matrix<typename T1::el
 
     const Proxy<T1>& lhs = op.lhs;
     const Proxy<T2>& rhs = op.rhs;
+    
+    coda_debug_assert_same_size(lhs.nrows(), lhs.ncols(), rhs.nrows(), rhs.ncols(), "apply");
 
     for(uint i=0; i<nelem; ++i)
     {
@@ -66,6 +70,8 @@ inline void  cwise_binary_op<op_type>::apply_inplace_minus(Matrix<typename T1::e
     const Proxy<T1>& lhs = op.lhs;
     const Proxy<T2>& rhs = op.rhs;
 
+    coda_debug_assert_same_size(lhs.nrows(), lhs.ncols(), rhs.nrows(), rhs.ncols(), "apply");
+    
     for(uint i=0; i<nelem; ++i)
     {
         out_mem[i] -= op_type::process(lhs[i], rhs[i]);
@@ -89,6 +95,8 @@ inline void  cwise_binary_op<op_type>::apply_inplace_schur(Matrix<typename T1::e
     const Proxy<T1>& lhs = op.lhs;
     const Proxy<T2>& rhs = op.rhs;
 
+    coda_debug_assert_same_size(lhs.nrows(), lhs.ncols(), rhs.nrows(), rhs.ncols(), "apply");
+    
     for(uint i=0; i<nelem; ++i)
     {
         out_mem[i] *= op_type::process(lhs[i], rhs[i]);
@@ -112,6 +120,8 @@ inline void  cwise_binary_op<op_type>::apply_inplace_div(Matrix<typename T1::ele
     const Proxy<T1>& lhs = op.lhs;
     const Proxy<T2>& rhs = op.rhs;
 
+    coda_debug_assert_same_size(lhs.nrows(), lhs.ncols(), rhs.nrows(), rhs.ncols(), "apply");
+    
     for(uint i=0; i<nelem; ++i)
     {
         out_mem[i] /= op_type::process(lhs[i], rhs[i]);

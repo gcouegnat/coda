@@ -3,9 +3,7 @@
 *.[oa]
 *.dylib
 *.os
-run
-benchmark
 Doxyfile
 nbproject
 doc
-
+*.exe

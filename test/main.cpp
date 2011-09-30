@@ -28,7 +28,7 @@ int main (int argc, char const *argv[])
     C.print("C = ");
 
     info("Vector operations...");
-    Vector<Scalar> x(3), y(3), z(3);
+    Vector<Scalar> x(3), y(3), z(5);
     info("vector of size %d x %d", x.nrows, x.ncols);
 
     x.fill(1.0);
@@ -37,6 +37,9 @@ int main (int argc, char const *argv[])
     y.print("y = ");
     
     warning("this is a warning");
+    coda_debug_warning("this is a debug warning");
+    coda_extra_debug_warning("this is an extra debug warning");
+    coda_debug_error("this is an error !");
     
     return 0;
 }

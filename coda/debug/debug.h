@@ -27,14 +27,14 @@ namespace coda
         }
     }
 
-    template <typename eT>
-    inline void coda_assert_same_size(const Matrix<eT>& A, const Matrix<eT>& B, std::string msg)
-    {
-        if ((A.nrows1 != B.nrows) || (A.ncols != B.ncols))
-        {
-            error("%s: Incompatible matrix dimensions: %d by %d and %d by %d", msg.c_str(), A.nrows, A.ncols, B.nrows, B.ncols);
-        }
-    }
+    // template <typename eT>
+    // inline void coda_assert_same_size(const Matrix<eT>& A, const Matrix<eT>& B, std::string msg)
+    // {
+    //     if ((A.nrows1 != B.nrows) || (A.ncols != B.ncols))
+    //     {
+    //         error("%s: Incompatible matrix dimensions: %d by %d and %d by %d", msg.c_str(), A.nrows, A.ncols, B.nrows, B.ncols);
+    //     }
+    // }
 
     inline void coda_assert_mult_size(const uint nrows1, const uint ncols1, const uint nrows2, const uint ncols2, std::string msg)
     {
@@ -44,11 +44,11 @@ namespace coda
         }
         
     }
-        
     
     inline void coda_funcname(const char* x)
     {
-      std::cerr << "@" << x;
+      // std::cerr << "@" << x;
+      coda_print(x);
     }
 
     inline void coda_endl()

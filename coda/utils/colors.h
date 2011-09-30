@@ -7,7 +7,7 @@ namespace coda
 namespace colors
 {
 
-#ifdef WITH_TERM_COLORS
+#if 1
 const std::string nocolor = "\033[0m";
 const std::string white = "\033[37m";
 const std::string red = "\033[31m";

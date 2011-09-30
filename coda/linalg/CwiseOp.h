@@ -20,8 +20,8 @@ public:
     uint ncols() const;
     uint nelem() const;
 
-    elem_type operator[] 	(const uint i) const;
-    elem_type at 			(const uint i, const uint j) const;
+    elem_type operator[] (const uint i) const;
+    elem_type at (const uint i, const uint j) const;
 
 };
 
