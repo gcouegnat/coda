@@ -2,6 +2,7 @@ import os, sys
 
 env=Environment()
 
+#env.Replace(CXX="/usr/bin/g++")
 
 debug=ARGUMENTS.get("debug", 1)
 if int(debug)==0:
@@ -15,8 +16,6 @@ if int(debug)==2:
 
 if sys.platform=="darwin":
 	env['FRAMEWORKS']+= ['Accelerate']
-	env.Append(LINKFLAGS="-framework Accelerate")
-
 
 coda_dir = os.getcwd()
 env.Append(CPPPATH=[coda_dir])
@@ -25,3 +24,5 @@ env.Append(LIBPATH=[coda_dir+'/lib'])
 Export('env')
 lib = SConscript('lib/SConscript')
 test = SConscript('test/SConscript')
+
+Default('test')

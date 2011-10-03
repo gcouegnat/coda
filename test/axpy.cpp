@@ -11,6 +11,8 @@ int main (int argc, char const *argv[])
     float * y = new float[N];
     float a = 1.0f;
 
+    coda_debug_var(a);
+
     coda::info("Runing plain c test");
     for( unsigned int i=0; i<N; ++i)
         x[i] = 1.0f;

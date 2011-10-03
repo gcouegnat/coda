@@ -80,13 +80,15 @@ namespace coda
     #define coda_debug_warning(msg)         warning("%s (in file <%s> at line %d).", msg, __FILE__, __LINE__);
     #define coda_debug_error(msg)           error("%s (in file <%s> at line %d).", msg, __FILE__, __LINE__);
     #define coda_debug_assert(state,msg)    if (state == false) coda_debug_error(msg)
+    #define coda_debug_var(x)               std::cerr << #x << " = " << x << std::endl;
 #else
     #define coda_debug_print(msg)
     #define coda_debug_assert(state,msg)
     #define coda_debug_assert_same_size     true ? void(0) : coda_assert_same_size
     #define coda_debug_assert_mult_size     true ? void(0) : coda_assert_mult_size
     #define coda_debug_warning(msg)   
-    #define coda_debug_error(msg)         
+    #define coda_debug_error(msg)
+    #define coda_debug_var(x)                        
 #endif
 
 #if defined(CODA_EXTRA_DEBUG)

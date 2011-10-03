@@ -3,4 +3,5 @@ Import('env')
 lib_target = "coda"
 lib_source = Glob('../coda/*/*.cpp')
 
-env.SharedLibrary(lib_target, lib_source, CPPATH=['..'])
+#env.SharedLibrary(lib_target, lib_source)
+env.Library(lib_target, lib_source)

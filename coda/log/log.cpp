@@ -69,7 +69,7 @@ void coda::error (std::string msg, ...)
         std::cerr.flush();
         std::cerr << coda::colors::bold_red << s << coda::colors::nocolor << '\n';
         std::cerr.flush();
-        throw std::runtime_error("");
+        abort();
     }
 }
 //-----------------------------------------------------------------------------
