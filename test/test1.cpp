@@ -6,12 +6,13 @@ typedef Matrix<float> Matrixf;
 
 int main(int argc, char const *argv[])
 {
+    info("Coda "+coda_version::as_string());
     info("testing matrix");
     Matrixd A(4,4);
     A.fill(0.1);
     A(3,3)=0;
     A(2,3)=99.99999999;
-    A.print("A = ");
+    A.print("A:");
     
     info("testing matrix operations");
     A+=2;
@@ -40,46 +41,43 @@ int main(int argc, char const *argv[])
     x.basis(2);
     x.at(0)=10;
     x[1]=-10.0001;
-    x.print("x = ",true);
+    x.print("x = ");
     
     info("testing operations");
     info("x+=2");
     x+=2;
-    x.print("x+=2",true);
+    x.print("x+=2");
     
     Vector<double> y;
-    info("y=x");
     y=x;
-    y.print("y=x",true);
+    y.print("y=x");
     
-    info("y+=x");
     y+=x;
-    y.print("y=+x",true);
+    y.print("y=+x");
     
     info("testing cwiseop");
     y=x+2;
-    y.print("y=x+2",true);
+    y.print("y=x+2");
 
     y=abs(x);
-    y.print("y=abs(x)",true);
+    y.print("y=abs(x)");
 
     y=ramp(x);
-    y.print("y=ramp(x)",true);
+    y.print("y=ramp(x)");
 
     info("testing cwiseop");
     Vector<double> z;
-    x.print("x=",true);
-    y.print("y=",true);
+    x.print("x=");
+    y.print("y=");
     
     z=x+y;
-    z.print("z=x+y",true);
+    z.print("z=x+y");
     
     z=x-y;
-    z.print("z=x-y",true);        
+    z.print("z=x-y");        
 
     z=x*y;
-    z.print("z=x*y",true);        
-
+    z.print("z=x*y");        
     error("Ohhh !");
     return 0;
 }

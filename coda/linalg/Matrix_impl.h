@@ -241,7 +241,7 @@ inline void Matrix<eT>::print(std::string text)
     {
         std::cout << text << std::endl;
     }
-    std::cout << "<Matrix of size " << nrows << " by " << ncols <<" >\n";
+    // std::cout << "<Matrix of size " << nrows << " by " << ncols <<" >\n";
     prettyprint::print(std::cout, *this);
 }
 //-----------------------------------------------------------------------------

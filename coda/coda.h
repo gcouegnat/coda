@@ -4,6 +4,7 @@
 // c++ includes
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include <string>
 #include <cmath>
 
@@ -18,6 +19,7 @@
 // utils
 #include "coda/utils/access.h"
 #include "coda/utils/colors.h"
+#include "coda/utils/version.h"
 
 // log
 #include "coda/log/prettyprint.h"

@@ -33,8 +33,8 @@ inline std::streamsize prettyprint::modifiy_stream(std::ostream& o, const eT* da
     for (int i = 0; i < nelem; ++i)
     {
         const eT val = data[i];
-        if( (val > eT(100))
-                || (val < eT(-100))
+        if( (val > eT(1000))
+                || (val < eT(-1000))
                 || ( (val > eT(0) ) && (val < eT(1e-4)))
                 || ( (val < eT(0) ) && (val > eT(-1e-4))))
         {
@@ -47,16 +47,16 @@ inline std::streamsize prettyprint::modifiy_stream(std::ostream& o, const eT* da
         o.setf(std::ios::scientific);
         o.setf(std::ios::right);
         o.unsetf(std::ios::fixed);
-        o.precision(6);
-        width=16;
+        o.precision(4);
+        width=13;
     }
     else
     {
         o.unsetf(std::ios::scientific);
         o.setf(std::ios::right);
         o.setf(std::ios::fixed);
-        o.precision(6);
-        width=13;
+        o.precision(4);
+        width=10;
     }
     return width;
 }
@@ -113,8 +113,9 @@ inline void prettyprint::print(std::ostream& o, Vector<eT>& V)
     {
         o.width(width);
         print_elem(o, V[i]);
-        o << '\n';
+        o << ' ';
     }
+    o << '\n';
     o.flush();
     stream_state.restore(o);
 }

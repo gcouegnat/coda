@@ -55,7 +55,8 @@ public:
 
 
     inline void resize(const uint in_nelem);
-    inline void print(const std::string text="", const bool verbose = false);
+    // inline void print(const std::string text="", const bool verbose = false);
+    inline void print(const std::string text="");
 
     inline eT& operator [] (const uint i);
     inline eT  operator [] (const uint i) const;
