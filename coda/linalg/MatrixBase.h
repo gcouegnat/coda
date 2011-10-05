@@ -1,10 +1,11 @@
-#ifndef BASE_H
-#define BASE_H
+#ifndef MATRIXBASE_H
+#define MATRIXBASE_H
 
 namespace coda
 {
+
 template < typename Derived >
-class Base
+class MatrixBase
 {
 public:
     inline const Derived& derived() const
@@ -15,4 +16,4 @@ public:
 
 } /* namespace coda */
 
-#endif /* BASE_H */
+#endif /* MATRIXBASE_H */

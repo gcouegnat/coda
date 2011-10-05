@@ -5,63 +5,74 @@ namespace coda
 {
 // trace
 template <typename T1>
-inline typename T1::elem_type trace(const Base<T1>& X)
+inline typename T1::elem_type trace(const MatrixBase<T1>& X)
 {
     coda_extra_debug_funcname();
-
     typedef typename T1::elem_type eT;
-
-    const Proxy<T1> A(X.get_ref());
+    const Proxy<T1> A(X.derived());
     const uint nrows = A.nrows();
-
     eT val = eT(0);
     for (uint i=0; i<nrows; ++i)
     {
         val += A.at(i,i);
     }
-
     return val;
 }
 
 
 template <typename T1>
-inline const CwiseOp<T1, op_abs> abs(const Base<T1>& X)
+inline const MatrixCwiseOp<T1, op_abs> abs(const MatrixBase<T1>& X)
 {
     coda_extra_debug_funcname();
-    return CwiseOp<T1, op_abs>(X.get_ref());
+    return MatrixCwiseOp<T1, op_abs>(X.derived());
 }
 
 template <typename T1>
-inline const CwiseOp<T1, op_ramp> ramp(const Base<T1>& X)
+inline const VectorCwiseOp<T1, op_abs> abs(const VectorBase<T1>& X)
 {
     coda_extra_debug_funcname();
-    return CwiseOp<T1, op_ramp>(X.get_ref());
+    return VectorCwiseOp<T1, op_abs>(X.derived());
 }
 
 template <typename T1>
-inline const Op<T1, op_inv> inv(const Base<T1>& X)
+inline const MatrixCwiseOp<T1, op_ramp> ramp(const MatrixBase<T1>& X)
 {
-	coda_extra_debug_funcname();
-	return Op<T1, op_inv>(X.get_ref());
+    coda_extra_debug_funcname();
+    return MatrixCwiseOp<T1, op_ramp>(X.derived());
+}
+
+template <typename T1>
+inline const VectorCwiseOp<T1, op_ramp> ramp(const VectorBase<T1>& X)
+{
+    coda_extra_debug_funcname();
+    return VectorCwiseOp<T1, op_ramp>(X.derived());
+}
+
+
+template <typename T1>
+inline const Op<T1, op_inv> inv(const MatrixBase<T1>& X)
+{
+    coda_extra_debug_funcname();
+    return Op<T1, op_inv>(X.derived());
 }
 
 template <typename T1>
 inline const T1& inv(const Op<T1, op_inv>& X)
 {
-	coda_extra_debug_funcname();
-	return X.lhs;
+    coda_extra_debug_funcname();
+    return X.lhs;
 }
 
 template <typename T1>
-inline const Op<T1, op_trans> trans(const Base<T1>& X)
+inline const Op<T1, op_trans> trans(const MatrixBase<T1>& X)
 {
-	coda_extra_debug_funcname();
-	return Op<T1, op_trans>(X.get_ref());
+    coda_extra_debug_funcname();
+    return Op<T1, op_trans>(X.derived());
 }
 
 
 
-} /* end of namespace coda */
+} /* namespace coda */
 
 
-#endif /* end of include guard: FUNCTIONS_H */
+#endif /* FUNCTIONS_H */

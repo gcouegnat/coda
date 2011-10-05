@@ -1,10 +1,11 @@
-#ifndef BASE_H
-#define BASE_H
+#ifndef VECTORBASE_H
+#define    VECTORBASE_H
 
 namespace coda
 {
+
 template < typename Derived >
-class Base
+class VectorBase
 {
 public:
     inline const Derived& derived() const
@@ -13,6 +14,8 @@ public:
     }
 };
 
-} /* namespace coda */
 
-#endif /* BASE_H */
+}
+
+#endif    /* VECTORBASE_H */
+

@@ -5,10 +5,10 @@ namespace coda
 {
 
 template <typename T1, typename op_type>
-class Op : public Base< Op<T1, op_type> >
+class Op : public MatrixBase< Op<T1, op_type> >
 {
 public:
-    typedef typename T1::elem_type	elem_type;
+    typedef typename T1::elem_type    elem_type;
 
     const T1& lhs;
 
@@ -18,7 +18,6 @@ public:
 };
 
 
+} /* namespace coda */
 
-} /* end of namespace coda */
-
-#endif /* end of include guard: OP_H */
+#endif /* OP_H */

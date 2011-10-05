@@ -43,6 +43,6 @@ public:
 
 };
 
-} /* end of namespace coda */
+} /* namespace coda */
 
-#endif /* end of include guard: ARRAYOPS_H */
+#endif /* ARRAYOPS_H */

@@ -15,4 +15,4 @@ void set_log_level(int log_level);
 
 }
 
-#endif // end of include guard: LOG_H
+#endif //  LOG_H

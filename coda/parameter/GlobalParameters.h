@@ -24,7 +24,7 @@ public:
 
 extern GlobalParameters parameters;
 
-}				/* namespace coda */
+}                /* namespace coda */
 
-#endif				/* end of include guard: GLOBALPARAMETER_H */
+#endif                /* GLOBALPARAMETER_H */
 

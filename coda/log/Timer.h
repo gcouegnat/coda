@@ -30,5 +30,5 @@ private:
 
 double _time();
 
-}				/* namespace coda */
-#endif				/* end of include guard: TIMER_H */
+}                /* namespace coda */
+#endif                /* TIMER_H */

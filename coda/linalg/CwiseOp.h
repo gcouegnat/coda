@@ -4,17 +4,17 @@
 namespace coda
 {
 template <typename T1, typename op_type>
-class CwiseOp : public Base< CwiseOp<T1, op_type> >
+class MatrixCwiseOp : public MatrixBase< MatrixCwiseOp<T1, op_type> >
 {
 public:
-    typedef typename T1::elem_type	elem_type;
+    typedef typename T1::elem_type    elem_type;
 
     const Proxy<T1> lhs;
     const elem_type val;
 
-    inline ~CwiseOp();
-    inline explicit CwiseOp(const Base<T1>& in_A);
-    inline CwiseOp(const Base<T1>& in_A, elem_type in_val);
+    inline ~MatrixCwiseOp();
+    inline explicit MatrixCwiseOp(const MatrixBase<T1>& in_A);
+    inline MatrixCwiseOp(const MatrixBase<T1>& in_A, elem_type in_val);
 
     uint nrows() const;
     uint ncols() const;
@@ -25,6 +25,26 @@ public:
 
 };
 
-} /* end of namespace coda */
+template <typename T1, typename op_type>
+class VectorCwiseOp : public VectorBase< VectorCwiseOp<T1, op_type> >
+{
+public:
+    typedef typename T1::elem_type    elem_type;
 
-#endif /* end of include guard: CWISEOP_H */
+    const Proxy<T1> lhs;
+    const elem_type val;
+
+    inline ~VectorCwiseOp();
+    inline explicit VectorCwiseOp(const VectorBase<T1>& in_A);
+    inline VectorCwiseOp(const VectorBase<T1>& in_A, elem_type in_val);
+
+    uint nelem() const;
+
+    elem_type operator[] (const uint i) const;
+    
+};
+
+
+} /* namespace coda */
+
+#endif /* CWISEOP_H */

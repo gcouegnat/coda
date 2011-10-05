@@ -4,7 +4,7 @@
 namespace coda
 {
 typedef unsigned int uint;
-} /* end of namespace coda */
+} /* namespace coda */
 
 
-#endif /* end of include guard: TYPEDEF_H */
+#endif /* TYPEDEF_H */

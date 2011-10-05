@@ -29,7 +29,6 @@ inline void arrayops::copy(eT* dest, const eT* src, const uint nelem)
     case 1:
         dest[0] = src[0];
     }
-
 }
 
 
@@ -41,12 +40,12 @@ inline void arrayops::copy(eT* dest, const eT* src, const uint nelem)
 uint i,j; \
 for(i=0, j=1; j < nelem; i+=2, j+=2) \
 { \
-	dest[i] oper src[i]; \
-	dest[j] oper src[j]; \
+    dest[i] oper src[i]; \
+    dest[j] oper src[j]; \
 } \
 if(i < nelem) \
 { \
-	dest[i] oper src[i]; \
+    dest[i] oper src[i]; \
 } \
  
 //-----------------------------------------------------------------------------
@@ -85,14 +84,14 @@ inline  void arrayops::inplace_div(eT* dest, const eT* src, const uint nelem)
 uint i,j; \
 for(i=0, j=1; j < nelem; i+=2, j+=2) \
 { \
-	dest[i] oper val; \
-	dest[j] oper val; \
+    dest[i] oper val; \
+    dest[j] oper val; \
 } \
 if(i < nelem) \
 { \
-	dest[i] oper val; \
+    dest[i] oper val; \
 } \
-	
+    
 
 
 //-----------------------------------------------------------------------------

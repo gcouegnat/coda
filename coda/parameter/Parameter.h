@@ -104,5 +104,5 @@ private:
 
 
 
-}				/* namespace coda */
-#endif				/* end of include guard: PARAMETER_H */
+}                /* namespace coda */
+#endif                /* PARAMETER_H */

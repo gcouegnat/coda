@@ -42,5 +42,5 @@ private:
 
 };
 
-}				/* namespace coda */
-#endif				/* end of include guard: PARAMETERS_H */
+}                /* namespace coda */
+#endif                /* PARAMETERS_H */

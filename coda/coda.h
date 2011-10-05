@@ -1,8 +1,9 @@
 #ifndef CODA_H
 #define CODA_H
 
-
+// c++ includes
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <cmath>
 
@@ -19,6 +20,7 @@
 #include "coda/utils/colors.h"
 
 // log
+#include "coda/log/prettyprint.h"
 #include "coda/log/Timer.h"
 #include "coda/log/log.h"
 
@@ -33,12 +35,15 @@
 
 // linalg
 #include "coda/linalg/Base.h"
+#include "coda/linalg/MatrixBase.h"
+#include "coda/linalg/VectorBase.h"
+
 #include "coda/linalg/arrayops.h"
 #include "coda/linalg/Matrix.h"
 #include "coda/linalg/Vector.h"
 
 #include "coda/linalg/cwise_op.h"
-#include "coda/linalg/cwise_binary_op.h"
+#include "coda/linalg/cwise_expr.h"
 #include "coda/linalg/op_inv.h"
 #include "coda/linalg/op_trans.h"
 #include "coda/linalg/op_times.h"
@@ -48,28 +53,30 @@
 #include "coda/linalg/gemv.h"
 
 #include "coda/linalg/CwiseOp.h"
-#include "coda/linalg/CwiseBinaryOp.h"
+#include "coda/linalg/CwiseExpr.h"
 #include "coda/linalg/Op.h"
-#include "coda/linalg/BinaryOp.h"
+#include "coda/linalg/Expr.h"
 
 #include "coda/linalg/Proxy.h"
 #include "coda/linalg/Unwrap.h"
 
 // linalg -- immpl
+#include "coda/log/prettyprint_impl.h"
+
 
 #include "coda/linalg/arrayops_impl.h"
 
 #include "coda/linalg/cwise_op_impl.h"
-#include "coda/linalg/cwise_binary_op_impl.h"
+#include "coda/linalg/cwise_expr_impl.h"
 
 #include "coda/linalg/op_inv_impl.h"
 #include "coda/linalg/op_trans_impl.h"
 #include "coda/linalg/op_times_impl.h"
 
 #include "coda/linalg/CwiseOp_impl.h"
-#include "coda/linalg/CwiseBinaryOp_impl.h"
+#include "coda/linalg/CwiseExpr_impl.h"
 #include "coda/linalg/Op_impl.h"
-#include "coda/linalg/BinaryOp_impl.h"
+#include "coda/linalg/Expr_impl.h"
 
 #include "coda/linalg/Matrix_impl.h"
 #include "coda/linalg/Vector_impl.h"
@@ -81,4 +88,4 @@
 // #include "coda/linalg/Matrix.h"
 // #include "coda/linalg/MatrixOp.h"
 
-#endif				/* end of include guard: CODA_H */
+#endif /* CODA_H */

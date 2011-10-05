@@ -3,7 +3,7 @@
 
 namespace coda
 {
- 
+
 #if !defined(CODA_NO_DEBUG) && !defined(NDEBUG) && !defined(CODA_DEBUG)
 #define CODA_DEBUG
 #endif
@@ -21,8 +21,6 @@ namespace coda
 #undef CODA_EXTRA_DEBUG
 #endif
 
+} /* namespace coda */
 
-    
-} /* end of namespace coda */
-
-#endif /* end of include guard: CONFIG_H */
+#endif /* CONFIG_H */

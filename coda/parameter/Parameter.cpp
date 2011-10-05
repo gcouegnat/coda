@@ -133,7 +133,6 @@ std::string IntParameter::value_str ()  const
 {
     std::stringstream s;
     s << _value;
-
     return s.str ();
 }
 
@@ -141,10 +140,8 @@ std::string IntParameter::value_str ()  const
 std::string IntParameter::str ()  const
 {
     std::stringstream s;
-
     s << "<int-valued parameter named \""
-    << key () << "\" with value " << _value << ">";
-
+      << key () << "\" with value " << _value << ">";
     return s.str ();
 }
 
@@ -198,7 +195,6 @@ std::string DoubleParameter::value_str ()  const
 {
     std::stringstream s;
     s << _value;
-
     return s.str ();
 }
 
@@ -206,10 +202,8 @@ std::string DoubleParameter::value_str ()  const
 std::string DoubleParameter::str ()  const
 {
     std::stringstream s;
-
     s << "<double-valued parameter named \""
-    << key () << "\" with value " << _value << ">";
-
+      << key () << "\" with value " << _value << ">";
     return s.str ();
 }
 
@@ -267,10 +261,8 @@ std::string StringParameter::value_str ()  const
 std::string StringParameter::str ()  const
 {
     std::stringstream s;
-
     s << "<string-valued parameter named \""
-    << key () << "\" with value " << _value << ">";
-
+      << key () << "\" with value " << _value << ">";
     return s.str ();
 }
 
@@ -322,7 +314,6 @@ std::string BoolParameter::value_str ()  const
 {
     std::stringstream s;
     s << _value;
-
     return s.str ();
 }
 
@@ -330,9 +321,7 @@ std::string BoolParameter::value_str ()  const
 std::string BoolParameter::str ()  const
 {
     std::stringstream s;
-
     s << "<bool-valued parameter named \""
-    << key () << "\" with value " << _value << ">";
-
+      << key () << "\" with value " << _value << ">";
     return s.str ();
 }

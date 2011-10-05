@@ -1,5 +1,5 @@
-#ifndef ACCESS_HPP
-#define ACCESS_HPP
+#ifndef ACCESS_H
+#define ACCESS_H
 
 struct access
 {
@@ -10,4 +10,4 @@ struct access
     }
 };
 
-#endif /* end of include guard: ACCESS_HPP */
+#endif /* ACCESS_H */

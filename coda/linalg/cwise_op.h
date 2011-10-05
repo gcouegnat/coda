@@ -7,11 +7,18 @@ namespace coda
 template <typename op_type>
 struct cwise_op
 {
-    template <typename T1> inline static void apply(Matrix<typename T1::elem_type>& out, const CwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_plus (Matrix<typename T1::elem_type>& out, const CwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_minus(Matrix<typename T1::elem_type>& out, const CwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_schur(Matrix<typename T1::elem_type>& out, const CwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_div  (Matrix<typename T1::elem_type>& out, const CwiseOp<T1, op_type>& op);
+    template <typename T1> inline static void apply(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
+    template <typename T1> inline static void apply_inplace_plus (Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
+    template <typename T1> inline static void apply_inplace_minus(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
+    template <typename T1> inline static void apply_inplace_schur(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
+    template <typename T1> inline static void apply_inplace_div  (Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
+    
+	template <typename T1> inline static void apply(Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
+    template <typename T1> inline static void apply_inplace_plus (Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
+    template <typename T1> inline static void apply_inplace_minus(Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
+    template <typename T1> inline static void apply_inplace_schur(Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
+    template <typename T1> inline static void apply_inplace_div  (Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
+    
     template <typename eT> inline static eT process(const eT a, const eT val);
 };
 
@@ -25,8 +32,8 @@ class op_neg                : public cwise_op<op_neg            >   {};
 class op_abs                : public cwise_op<op_abs            >   {};
 class op_ramp               : public cwise_op<op_ramp           >   {};
 
-} /* end of namespace coda */
+} /* namespace coda */
 
 
 
-#endif /* end of include guard: CWISE_OP_H */
+#endif /* CWISE_OP_H */

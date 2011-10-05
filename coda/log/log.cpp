@@ -18,7 +18,7 @@ static char buffer[buffer_size];
     va_start(aptr, msg); \
     vsnprintf(buffer, buffer_size, msg.c_str(), aptr); \
     va_end(aptr); \
-
+ 
 //-----------------------------------------------------------------------------
 void
 coda::set_log_level (int log_level)
@@ -34,9 +34,8 @@ void coda::info (std::string msg, ...)
     {
         read (buffer, msg);
         std::string s = std::string ("") + buffer;
-
         std::cerr.flush();
-        std::cerr << coda::colors::bold_white << s << coda::colors::nocolor << std::endl;
+        std::cerr << coda::colors::bold << s << coda::colors::nocolor << std::endl;
         std::cerr.flush();
     }
 }
@@ -49,10 +48,9 @@ void coda::warning (std::string msg, ...)
     {
         read (buffer, msg);
         std::string s = std::string ("WARNING: ") + buffer;
-
         std::cerr.flush();
-        std::cerr << coda::colors::bold_yellow << s << coda::colors::nocolor << std::endl;
-        std::cerr.flush(); 
+        std::cerr << coda::colors::yellow << s << coda::colors::nocolor << std::endl;
+        std::cerr.flush();
     }
 }
 
@@ -60,14 +58,12 @@ void coda::warning (std::string msg, ...)
 void coda::error (std::string msg, ...)
 {
     const int log_level = coda::parameters["log_level"];
-
     if (log_level <= ERROR)
     {
         read (buffer, msg);
         std::string s = std::string ("ERROR: ") + buffer;
-
         std::cerr.flush();
-        std::cerr << coda::colors::bold_red << s << coda::colors::nocolor << '\n';
+        std::cerr << coda::colors::light_red << s << coda::colors::nocolor << '\n';
         std::cerr.flush();
         abort();
     }

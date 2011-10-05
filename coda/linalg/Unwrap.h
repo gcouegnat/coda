@@ -8,14 +8,14 @@ template <typename T1>
 class Unwrap
 {
 public:
-	typedef typename T1::elem_type eT;
-	const Matrix<eT> M;
-  static const bool do_trans = false;
+    typedef typename T1::elem_type eT;
+    const Matrix<eT> M;
+    static const bool do_trans = false;
 
-	inline Unwrap(const T1& A) : M(A)
-	{
-		coda_extra_debug_funcname();
-	}
+    inline Unwrap(const T1& A) : M(A)
+    {
+        coda_extra_debug_funcname();
+    }
 };
 
 
@@ -23,32 +23,32 @@ template <typename eT>
 class Unwrap< Matrix<eT> >
 {
 public:
-	const Matrix<eT>& M;
-  static const bool do_trans = false;
-  
-	inline Unwrap(const Matrix<eT>& A) : M(A)
-	{
-		coda_extra_debug_funcname();
-	}
+    const Matrix<eT>& M;
+    static const bool do_trans = false;
+
+    inline Unwrap(const Matrix<eT>& A) : M(A)
+    {
+        coda_extra_debug_funcname();
+    }
 };
 
 template <typename eT>
 class Unwrap< Vector<eT> >
 {
 public:
-	const Vector<eT>& M;
-  static const bool do_trans = false;
-  
-	inline Unwrap(const Vector<eT>& A) : M(A)
-	{
-		coda_extra_debug_funcname();
-	}
+    const Vector<eT>& M;
+    static const bool do_trans = false;
+
+    inline Unwrap(const Vector<eT>& A) : M(A)
+    {
+        coda_extra_debug_funcname();
+    }
 };
 
 
 
 
 
-} /* end of namespace coda */
+} /* namespace coda */
 
-#endif /* end of include guard: UNWRAP_H */
+#endif /* UNWRAP_H */

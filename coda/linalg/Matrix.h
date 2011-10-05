@@ -5,7 +5,7 @@ namespace coda
 {
 
 template <typename eT>
-class Matrix : public Base< Matrix<eT> >
+class Matrix : public MatrixBase< Matrix<eT> >
 {
 public:
 
@@ -16,7 +16,6 @@ public:
     const uint nelem;
 
     const eT* const mem;
-
 // protected:
 //  eT mem_local[16];
 
@@ -69,19 +68,19 @@ public:
     inline void print(std::string text="");
 
     // interface with expression template
-    template <typename T1,              typename op_type> inline       Matrix(const CwiseOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Matrix& operator= (const CwiseOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Matrix& operator+=(const CwiseOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Matrix& operator-=(const CwiseOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Matrix& operator%=(const CwiseOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Matrix& operator/=(const CwiseOp<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline       Matrix(const MatrixCwiseOp<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Matrix& operator= (const MatrixCwiseOp<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Matrix& operator+=(const MatrixCwiseOp<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Matrix& operator-=(const MatrixCwiseOp<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Matrix& operator%=(const MatrixCwiseOp<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Matrix& operator/=(const MatrixCwiseOp<T1, op_type>& op);
 
-    template <typename T1, typename T2, typename op_type> inline       Matrix(const CwiseBinaryOp<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Matrix& operator= (const CwiseBinaryOp<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Matrix& operator+=(const CwiseBinaryOp<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Matrix& operator-=(const CwiseBinaryOp<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Matrix& operator%=(const CwiseBinaryOp<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Matrix& operator/=(const CwiseBinaryOp<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline       Matrix(const MatrixCwiseExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Matrix& operator= (const MatrixCwiseExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Matrix& operator+=(const MatrixCwiseExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Matrix& operator-=(const MatrixCwiseExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Matrix& operator%=(const MatrixCwiseExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Matrix& operator/=(const MatrixCwiseExpr<T1, T2, op_type>& op);
 
     template <typename T1,              typename op_type> inline       Matrix(const Op<T1, op_type>& op);
     template <typename T1,              typename op_type> inline const Matrix& operator= (const Op<T1, op_type>& op);
@@ -90,8 +89,8 @@ public:
     template <typename T1,              typename op_type> inline const Matrix& operator%=(const Op<T1, op_type>& op);
     template <typename T1,              typename op_type> inline const Matrix& operator/=(const Op<T1, op_type>& op);
 
-    template <typename T1, typename T2, typename op_type> inline    Matrix(const BinaryOp<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Matrix& operator= (const BinaryOp<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline    Matrix(const Expr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Matrix& operator= (const Expr<T1, T2, op_type>& op);
 
 protected:
 
@@ -99,7 +98,7 @@ protected:
 
 };
 
-}    /* end of namespace coda */
+}    /* namespace coda */
 
-#endif    /* end of include guard: MATRIX_H */
+#endif    /* MATRIX_H */
 

@@ -7,3 +7,5 @@ Doxyfile
 nbproject
 doc
 *.exe
+*.sublime-*
+ 
