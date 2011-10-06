@@ -26,14 +26,11 @@ template <typename eT>
 inline void Vector<eT>::print(std::string text)
 {
     coda_extra_debug_funcname();
-    
-    std::cout << text << std::endl;
-    std::cout << "<Vector of size " << Matrix<eT>::nelem << ">\n";
-
-    for(uint i=0; i < Matrix<eT>::nelem; i++)
+    if(text.length() > 0)
     {
-        std::cout << std::setw(14) << Matrix<eT>::mem[i] << std::endl;
+        std::cout << text << std::endl;
     }
+    prettyprint::print(std::cout, *this);
 }
 //-----------------------------------------------------------------------------
 template<typename eT>

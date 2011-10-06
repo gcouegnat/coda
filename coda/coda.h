@@ -24,6 +24,7 @@
 // log
 #include "coda/log/Timer.h"
 #include "coda/log/log.h"
+#include "coda/log/prettyprint.h"
 
 // debug
 #include "coda/debug/debug.h"
@@ -59,6 +60,7 @@
 #include "coda/linalg/Unwrap.h"
 
 // linalg -- immpl
+#include "coda/log/prettyprint_impl.h"
 
 #include "coda/linalg/arrayops_impl.h"
 

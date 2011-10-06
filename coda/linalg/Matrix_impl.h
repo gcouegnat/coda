@@ -273,28 +273,11 @@ template <typename eT>
 inline void Matrix<eT>::print(std::string text)
 {
     coda_extra_debug_funcname();
-
-    std::ostream& out = std::cout;
-    out << text << std::endl;
-    out << "< Matrix of size " << nrows << " by " << ncols <<" >\n";
-
-    std::ios::fmtflags old_flags = out.flags();
-    uint old_prec = out.precision(4);
-
-    out.setf(std::ios::fixed, std::ios::floatfield);
-    uint width = 14;
-
-    for(uint i=0; i < nrows; i++)
+    if(text.length() > 0)
     {
-        for (uint j=0; j < ncols; j++)
-        {
-            out << std::setw(width) << mem[i*ncols+j] << "  ";
-        }
-        out << std::endl;
+        std::cout << text << std::endl;
     }
-
-    out.flags(old_flags);
-    out.precision(old_prec);
+    prettyprint::print(std::cout, *this);
 }
 
 //-----------------------------------------------------------------------------
