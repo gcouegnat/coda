@@ -143,13 +143,13 @@ public:
 
 
 template <typename T1, typename op_type>
-class Proxy< Op<T1, op_type> >
+class Proxy< MatrixOp<T1, op_type> >
 {
 public:
     typedef typename T1::elem_type    elem_type;
     const Matrix<elem_type>     P;
 
-    inline explicit Proxy(const Op<T1, op_type>& O) : P(O)
+    inline explicit Proxy(const MatrixOp<T1, op_type>& O) : P(O)
     {
         coda_extra_debug_funcname();
     }
@@ -179,13 +179,13 @@ public:
 };
 
 template <typename T1, typename T2, typename op_type>
-class Proxy< Expr<T1, T2, op_type> >
+class Proxy< MatrixExpr<T1, T2, op_type> >
 {
 public:
     typedef typename T1::elem_type    elem_type;
     const Matrix<elem_type>     P;
 
-    inline explicit Proxy(const Expr<T1, T2, op_type>& O) : P(O)
+    inline explicit Proxy(const MatrixExpr<T1, T2, op_type>& O) : P(O)
     {
         coda_extra_debug_funcname();
     }
@@ -212,6 +212,30 @@ public:
     }
 
 };
+
+template <typename T1, typename T2, typename op_type>
+class Proxy< VectorExpr<T1, T2, op_type> >
+{
+public:
+    typedef typename T1::elem_type    elem_type;
+    const Vector<elem_type>     P;
+
+    inline explicit Proxy(const VectorExpr<T1, T2, op_type>& O) : P(O)
+    {
+        coda_extra_debug_funcname();
+    }
+    uint nelem() const
+    {
+        return P.nelem;
+    }
+
+    inline elem_type operator[] (const uint i)             const
+    {
+        return P[i];
+    }
+
+};
+
 
 } /* namespace coda */
 

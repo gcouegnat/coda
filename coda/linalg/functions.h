@@ -49,25 +49,28 @@ inline const VectorCwiseOp<T1, op_ramp> ramp(const VectorBase<T1>& X)
 }
 
 
+// matrix inverse
 template <typename T1>
-inline const Op<T1, op_inv> inv(const MatrixBase<T1>& X)
+inline const MatrixOp<T1, op_inv> inv(const MatrixBase<T1>& X)
 {
     coda_extra_debug_funcname();
-    return Op<T1, op_inv>(X.derived());
+    return MatrixOp<T1, op_inv>(X.derived());
 }
 
+// inv(inv(X)) = X
 template <typename T1>
-inline const T1& inv(const Op<T1, op_inv>& X)
+inline const T1& inv(const MatrixOp<T1, op_inv>& X)
 {
     coda_extra_debug_funcname();
     return X.lhs;
 }
 
+// matrix transpose
 template <typename T1>
-inline const Op<T1, op_trans> trans(const MatrixBase<T1>& X)
+inline const MatrixOp<T1, op_trans> trans(const MatrixBase<T1>& X)
 {
     coda_extra_debug_funcname();
-    return Op<T1, op_trans>(X.derived());
+    return MatrixOp<T1, op_trans>(X.derived());
 }
 
 

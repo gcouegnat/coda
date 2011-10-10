@@ -9,6 +9,7 @@ public:
     inline static void apply(Matrix<eT>& C, const Matrix<eT>& A, const Matrix<eT>& B, const eT alpha = eT(1), const eT beta = eT(0))
     {
         coda_extra_debug_funcname();
+        coda_extra_debug_print("Using cblas::gemm()");
         cblas::gemm<eT>(cblas::CblasRowMajor,
                         cblas::CblasNoTrans,
                         cblas::CblasNoTrans,

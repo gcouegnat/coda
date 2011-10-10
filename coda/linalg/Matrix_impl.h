@@ -99,7 +99,7 @@ template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::operator=(const Matrix& m)
 {
     coda_extra_debug_funcname();
-    init(m.ncols, m.nrows);
+    init(m.nrows, m.ncols);
     arrayops::copy(memptr(), m.mem, m.nelem);
     return *this;
 }
@@ -194,6 +194,15 @@ inline const Matrix<eT>& Matrix<eT>::ones()
     coda_extra_debug_funcname();
     arrayops::inplace_set(memptr(), eT(1), nelem);
     return *this;
+}
+template <typename eT>
+inline const Matrix<eT>& Matrix<eT>::randu()
+{
+    coda_extra_debug_funcname(); 
+    for(uint i=0; i<nelem; ++i)
+    {
+        access::rw(mem[i])=coda::randu<eT>();
+    }  
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
@@ -338,10 +347,13 @@ inline const Matrix<eT>& Matrix<eT>::operator/=(const MatrixCwiseExpr<T1, T2, op
     cwise_expr<op_type>::apply_inplace_div(*this, op);
     return *this;
 }
+
+//-----------------------------------------------------------------------------
+// MatrixOp
 //-----------------------------------------------------------------------------
 template <typename eT>
 template <typename T1, typename op_type>
-inline Matrix<eT>::Matrix(const Op<T1, op_type>& op) : nrows(0), ncols(0), nelem(0), mem(mem)
+inline Matrix<eT>::Matrix(const MatrixOp<T1, op_type>& op) : nrows(0), ncols(0), nelem(0), mem(mem)
 {
     coda_extra_debug_funcname();
     op_type::apply(*this, op);
@@ -349,16 +361,19 @@ inline Matrix<eT>::Matrix(const Op<T1, op_type>& op) : nrows(0), ncols(0), nelem
 //-----------------------------------------------------------------------------
 template <typename eT>
 template <typename T1, typename op_type>
-inline const Matrix<eT>& Matrix<eT>::operator=(const Op<T1, op_type>& op)
+inline const Matrix<eT>& Matrix<eT>::operator=(const MatrixOp<T1, op_type>& op)
 {
     coda_extra_debug_funcname();
     op_type::apply(*this, op);
     return *this;
 }
+
+//-----------------------------------------------------------------------------
+// MatrixExpr
 //-----------------------------------------------------------------------------
 template <typename eT>
 template <typename T1, typename T2, typename op_type>
-inline Matrix<eT>::Matrix(const Expr<T1, T2, op_type>& op) : nrows(0), ncols(0), nelem(0) ,mem(mem)
+inline Matrix<eT>::Matrix(const MatrixExpr<T1, T2, op_type>& op) : nrows(0), ncols(0), nelem(0) ,mem(mem)
 {
     coda_extra_debug_funcname();
     op_type::apply(*this, op);
@@ -366,9 +381,19 @@ inline Matrix<eT>::Matrix(const Expr<T1, T2, op_type>& op) : nrows(0), ncols(0),
 //-----------------------------------------------------------------------------
 template <typename eT>
 template <typename T1, typename T2, typename op_type>
-inline const Matrix<eT>& Matrix<eT>::operator= (const Expr<T1, T2, op_type>& op)
+inline const Matrix<eT>& Matrix<eT>::operator= (const MatrixExpr<T1, T2, op_type>& op)
 {
     coda_extra_debug_funcname();
     op_type::apply(*this, op);
     return *this;
 }
+
+template <typename eT>
+template <typename T1, typename T2> 
+inline const Matrix<eT>& Matrix<eT>::operator+= (const MatrixExpr<T1, T2, op_times>& op)
+{
+    coda_extra_debug_funcname();
+    op_times::apply_inplace_plus(*this, op);
+    return *this;
+}
+

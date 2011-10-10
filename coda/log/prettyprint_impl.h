@@ -34,9 +34,9 @@ inline std::streamsize prettyprint::modifiy_stream(std::ostream& o, const eT* da
     {
         const eT val = data[i];
         if( (val > eT(1000))
-                || (val < eT(-1000))
-                || ( (val > eT(0) ) && (val < eT(1e-4)))
-                || ( (val < eT(0) ) && (val > eT(-1e-4))))
+            || (val < eT(-1000))
+            || ( (val > eT(0) ) && (val < eT(1e-4)))
+            || ( (val < eT(0) ) && (val > eT(-1e-4))))
         {
             use_scientific_layout = true;
             break;
@@ -91,7 +91,7 @@ inline void prettyprint::print(std::ostream& o, Matrix<eT>& M)
     const uint ncols = M.ncols;
     for(uint i=0; i<nrows; ++i)
     {
-        for(uint j=0; j<nrows; ++j)
+        for(uint j=0; j<ncols; ++j)
         {
             o.width(width);
             prettyprint::print_elem(o, M.at(i,j));

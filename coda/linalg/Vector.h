@@ -52,6 +52,8 @@ public:
     template <typename T1, typename T2, typename op_type> inline const Vector& operator%=(const VectorCwiseExpr<T1, T2, op_type>& op);
     template <typename T1, typename T2, typename op_type> inline const Vector& operator/=(const VectorCwiseExpr<T1, T2, op_type>& op);
 
+    template <typename T1, typename T2, typename op_type> inline       Vector(const VectorExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Vector& operator= (const VectorExpr<T1, T2, op_type>& op);
 
 
     inline void resize(const uint in_nelem);
@@ -67,6 +69,7 @@ public:
     inline const Vector& fill(const eT val);
     inline const Vector& zeros();
     inline const Vector& ones();
+    inline const Vector& randu();
     inline const Vector& basis (const uint i);
 
     // memory access

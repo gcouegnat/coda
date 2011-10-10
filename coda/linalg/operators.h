@@ -247,11 +247,19 @@ inline const VectorCwiseOp<T1, op_neg> operator- (const VectorBase<T1>& lhs)
 // Expr *
 //
 template <typename T1, typename T2>
-inline const Expr<T1, T2, op_times> operator* (const MatrixBase<T1>& lhs, const MatrixBase<T2>& rhs)
+inline const MatrixExpr<T1, T2, op_times> operator* (const MatrixBase<T1>& lhs, const MatrixBase<T2>& rhs)
 {
     coda_extra_debug_funcname();
-    return Expr<T1, T2, op_times>(lhs.derived(), rhs.derived());
+    return MatrixExpr<T1, T2, op_times>(lhs.derived(), rhs.derived());
 }
+
+template <typename T1, typename T2>
+inline const VectorExpr<T1, T2, op_times> operator* (const MatrixBase<T1>& lhs, const VectorBase<T2>& rhs)
+{
+    coda_extra_debug_funcname();
+    return VectorExpr<T1, T2, op_times>(lhs.derived(), rhs.derived());
+}
+
 
 } /* namespace coda */
 

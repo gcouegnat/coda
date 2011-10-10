@@ -47,11 +47,11 @@ inline void  cwise_expr<op_type>::FUNC(Matrix<typename T1::elem_type>& out, cons
     } \
 } \
 
-__apply(apply       ,  =);
-__apply(apply_inplace_plus    , +=);
-__apply(apply_inplace_minus    , -=);
-__apply(apply_inplace_schur    , *=);
-__apply(apply_inplace_div    , /=);
+__apply(apply               ,  =);
+__apply(apply_inplace_plus  , +=);
+__apply(apply_inplace_minus , -=);
+__apply(apply_inplace_schur , *=);
+__apply(apply_inplace_div   , /=);
 
 #undef __apply
 
@@ -76,11 +76,11 @@ inline void  cwise_expr<op_type>::FUNC(Vector<typename T1::elem_type>& out, cons
     } \
 } \
 
-__apply(apply       ,  =);
-__apply(apply_inplace_plus    , +=);
-__apply(apply_inplace_minus    , -=);
-__apply(apply_inplace_schur    , *=);
-__apply(apply_inplace_div    , /=);
+__apply(apply               , =);
+__apply(apply_inplace_plus  , +=);
+__apply(apply_inplace_minus , -=);
+__apply(apply_inplace_schur , *=);
+__apply(apply_inplace_div   , /=);
 
 #undef __apply
 

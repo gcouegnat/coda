@@ -1,7 +1,7 @@
 using namespace coda;
 
 template <typename T1>
-inline void op_trans::apply(Matrix<typename T1::elem_type>& out, const Op<T1, op_trans>& X)
+inline void op_trans::apply(Matrix<typename T1::elem_type>& out, const MatrixOp<T1, op_trans>& X)
 {
     coda_extra_debug_funcname();
     typedef typename T1::elem_type eT;

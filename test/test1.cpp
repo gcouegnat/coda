@@ -10,8 +10,9 @@ int main(int argc, char const *argv[])
     info("testing matrix");
     Matrixd A(4,4);
     A.fill(0.1);
-    A(3,3)=0;
-    A(2,3)=99.99999999;
+    A.print("A:");
+    
+    A.randu();
     A.print("A:");
     
     info("testing matrix operations");
@@ -37,11 +38,14 @@ int main(int argc, char const *argv[])
 
 
     info("testing vector");
-    Vector<double> x(10);
+    Vector<double> x(4);
     x.basis(2);
     x.at(0)=10;
     x[1]=-10.0001;
-    x.print("x = ");
+    x.print("x:");
+    
+    x.randu();
+    x.print("x:");
     
     info("testing operations");
     info("x+=2");
@@ -76,8 +80,12 @@ int main(int argc, char const *argv[])
     z=x-y;
     z.print("z=x-y");        
 
-    z=x*y;
-    z.print("z=x*y");        
-    error("Ohhh !");
+    z=2.0*x*(y-1.0);
+    z.print("z=2*x*(y-1)");        
+
+    z=2.0*(A+B)*x-C*y;
+    z.print("2.0*(A+B)*x-C*y");
+
+
     return 0;
 }

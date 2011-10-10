@@ -1,9 +1,8 @@
 #include <iostream>
 #include <coda/coda.h>
-
-#define N 100000000
-#define R 100
-
+#include <armadillo>
+#define N 100
+#define R 10000000
 int main (int argc, char const *argv[])
 {
     float * x = new float[N];
@@ -50,5 +49,15 @@ int main (int argc, char const *argv[])
     // for(unsigned int i=0; i<N; ++i) std::cout<<B[i]<<" ";
     // std::cout<<std::endl;
     // B.print();
+    
+    coda::info("Running armadillo test");
+    arma::fvec X(N), Y(N);
+    X.fill(1.0);
+    Y.fill(0.0);
+    timer.rename("arma");
+    timer.start();
+    for(unsigned int j=0; j<R; ++j)
+        Y = 2.0*X;
+    timer.stop();
     return 0;
 }

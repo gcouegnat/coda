@@ -24,7 +24,10 @@ template <typename eT>
 inline void Vector<eT>::resize(const uint in_nelem)
 {
     coda_extra_debug_funcname();
-    init(in_nelem);
+    if (nelem != in_nelem)
+    {
+        init(in_nelem);    
+    }
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
@@ -113,7 +116,18 @@ inline const Vector<eT>& Vector<eT>::ones()
     arrayops::inplace_set(memptr(), eT(1), nelem);
     return *this;
 }
-
+//-----------------------------------------------------------------------------
+template <typename eT>
+inline const Vector<eT>& Vector<eT>::randu()
+{
+    coda_extra_debug_funcname();
+    for(uint i=0; i<nelem; ++i)
+    {
+        access::rw(mem[i])=coda::randu<eT>();
+    }
+    return *this;
+}
+//-----------------------------------------------------------------------------
 template <typename eT>
 inline const Vector<eT>& Vector<eT>::basis(const uint i)
 {
@@ -300,6 +314,23 @@ template <typename T1, typename T2, typename op_type>
 inline const Vector<eT>& Vector<eT>::operator/=(const VectorCwiseExpr<T1, T2, op_type>& op)
 {
     cwise_expr<op_type>::apply_inplace_div(*this, op);
+    return *this;
+}
+
+template <typename eT>
+template <typename T1, typename T2, typename op_type> 
+inline Vector<eT>::Vector(const VectorExpr<T1, T2, op_type>& op) : nelem(0) ,mem(mem)
+{
+    coda_extra_debug_funcname();
+    op_type::apply(*this, op);
+}
+
+template <typename eT>
+template <typename T1, typename T2, typename op_type> 
+inline const Vector<eT>& Vector<eT>::operator= (const VectorExpr<T1, T2, op_type>& op)
+{
+    coda_extra_debug_funcname();
+    op_type::apply(*this, op);
     return *this;
 }
 

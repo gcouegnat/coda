@@ -10,7 +10,7 @@ if int(debug)==0:
   env.Append(CCFLAGS="-O3 -funroll-loops -DNDEBUG -DCODA_NO_DEBUG -DARMA_NO_DEBUG")
 
 if int(debug)==1:
-  env.Append(CCFLAGS="-g -O2")
+  env.Append(CCFLAGS="-g -O3")
 
 if int(debug)==2:
   env.Append(CCFLAGS="-g -O0 -DCODA_EXTRA_DEBUG")
@@ -24,7 +24,7 @@ env.Append(LIBPATH=[coda_dir+'/lib'])
 
 Export('env')
 lib = SConscript('lib/SConscript')
-test = SConscript('test/SConscript', variant_dir='bin', duplicate=0)
+test = SConscript('test/SConscript')
 Default('lib')
 
 Alias('all',['lib','test'])

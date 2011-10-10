@@ -7,6 +7,8 @@
 #include <sstream>
 #include <string>
 #include <cmath>
+#include <cstdlib>
+#include <time.h>
 
 // compiler defs
 #include "coda/config/config.h"
@@ -34,6 +36,8 @@
 #include "coda/parameter/Parameters.h"
 #include "coda/parameter/GlobalParameters.h"
 
+// math
+#include "coda/math/random.h"
 
 // linalg
 #include "coda/linalg/Base.h"
