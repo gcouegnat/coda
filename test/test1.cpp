@@ -86,6 +86,19 @@ int main(int argc, char const *argv[])
     z=2.0*(A+B)*x-C*y;
     z.print("2.0*(A+B)*x-C*y");
 
+    z[0]=-100;
+
+    info("norm1(z)    : %f", norm1(z));
+    info("norm2(z)    : %f", norm2(z));
+    info("norm_max(z) : %f", norm_max(z));    
+
+    y=A*x;
+    for(uint i=0;i<y.nelem;++i) { y[i] += 1e-4*randu<double>(); }
+    
+    z=A*x;
+    y.print("y :");
+    z.print("Ax:");
+    std::cout << "norm(Ax-y) = " << norm2(A*x-y) << std::endl;
 
     return 0;
 }

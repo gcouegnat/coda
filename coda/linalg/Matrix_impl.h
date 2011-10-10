@@ -378,7 +378,7 @@ inline Matrix<eT>::Matrix(const MatrixExpr<T1, T2, op_type>& op) : nrows(0), nco
     coda_extra_debug_funcname();
     op_type::apply(*this, op);
 }
-//-----------------------------------------------------------------------------
+
 template <typename eT>
 template <typename T1, typename T2, typename op_type>
 inline const Matrix<eT>& Matrix<eT>::operator= (const MatrixExpr<T1, T2, op_type>& op)
