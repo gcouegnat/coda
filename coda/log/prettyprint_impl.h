@@ -109,6 +109,7 @@ inline void prettyprint::print(std::ostream& o, Vector<eT>& V)
     const prettyprint_state stream_state(o);
     const std::streamsize width = modifiy_stream(o, V.memptr(), V.nelem);
     const uint nelem = V.nelem;
+    
     for(uint i=0; i<nelem; ++i)
     {
         o.width(width);

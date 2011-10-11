@@ -6,7 +6,8 @@ typedef Matrix<float> Matrixf;
 
 int main(int argc, char const *argv[])
 {
-    info("Coda "+coda_version::as_string());
+    info(coda::version());
+    
     info("testing matrix");
     Matrixd A(4,4);
     A.fill(0.1);

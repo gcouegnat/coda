@@ -1,7 +1,9 @@
 using namespace coda;
+
 #include <iostream>
 #include <iomanip>
 #include <coda/utils/access.h>
+
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline Matrix<eT>::~Matrix()
@@ -44,7 +46,10 @@ template <typename eT>
 inline void Matrix<eT>::init(uint in_rows, uint in_cols)
 {
     coda_extra_debug_funcname();
-    if(nelem>0) delete [] mem;
+    if(nelem>0) 
+    {
+        delete [] mem;
+    }
     access::rw(nrows) = in_rows;
     access::rw(ncols) = in_cols;
     access::rw(nelem) = in_rows * in_cols;

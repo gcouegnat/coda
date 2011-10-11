@@ -20,23 +20,20 @@ Timer::~Timer ()
 }
 
 //-----------------------------------------------------------------------------
-void
-Timer::rename (std::string task)
+void Timer::rename (std::string task)
 {
     _task = task;
 }
 
 //-----------------------------------------------------------------------------
-void
-Timer::start ()
+void Timer::start ()
 {
     _t = coda::_time ();
     _stopped = false;
 }
 
 //-----------------------------------------------------------------------------
-void
-Timer::stop ()
+void Timer::stop ()
 {
     _t = coda::_time () - _t;
     _stopped = true;
@@ -45,15 +42,13 @@ Timer::stop ()
 }
 
 //-----------------------------------------------------------------------------
-double
-Timer::value () const
+double Timer::value () const
 {
     return _t;
 }
 
 //-----------------------------------------------------------------------------
-double
-coda::_time ()
+double coda::_time ()
 {
     struct timeval tv;
     struct timezone tz;

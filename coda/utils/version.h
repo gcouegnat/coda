@@ -29,4 +29,13 @@ namespace coda
 		}
 
 	};
+	
+	std::string version()
+	{
+        std::stringstream s;
+        s << "CODA " << coda_version::as_string() << std::endl;
+        
+        return s.str();
+	}
+	
 }

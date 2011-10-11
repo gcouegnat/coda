@@ -2,18 +2,20 @@
 using namespace coda;
 int main(int argc, char const *argv[])
 {
-    Matrix<float> A(50,50), B(50,30), C(30,50);
+    Matrix<float> A(5,5), B(5,3), C(3,5);
+    
     A.fill(1.0);
     B.fill(2.0);
     C.fill(3.0);
     A = B * C;
-    A.print("A:");
+    // A.print("A:");
 
     Vector<float> x(A.nrows), y;
     x.randu();
-    x.print("x:");
+    y.resize(x.nelem);
+    y.randu();
     
-    const uint nrepeat = 100000;
+    const uint nrepeat = 1000000;
     Timer timer("matvec");
     
     info("(B*C)*x");

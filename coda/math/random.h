@@ -3,6 +3,7 @@
 namespace coda
 {
 bool rand_seeded = false;
+
 template <typename eT>
 inline eT randu()
 {
@@ -14,5 +15,6 @@ inline eT randu()
     }
     return static_cast<eT>(std::rand())/static_cast<eT>(RAND_MAX);
 }
+
 } // namespace coda
 #endif // RANDOM_H
