@@ -3,8 +3,7 @@
 
 #include <string>
 
-namespace coda
-{
+namespace coda {
 
 void info(std::string msg, ...);
 void warning(std::string msg, ...);

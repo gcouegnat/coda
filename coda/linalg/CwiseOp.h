@@ -1,12 +1,10 @@
 #ifndef CWISEOP_H
 #define CWISEOP_H
 
-namespace coda
-{
+namespace coda {
 template <typename T1, typename op_type>
-class MatrixCwiseOp : public MatrixBase< MatrixCwiseOp<T1, op_type> >
-{
-public:
+class MatrixCwiseOp : public MatrixBase< MatrixCwiseOp<T1, op_type> > {
+  public:
     typedef typename T1::elem_type    elem_type;
 
     const Proxy<T1> lhs;
@@ -20,15 +18,21 @@ public:
     uint ncols() const;
     uint nelem() const;
 
-    elem_type operator[] (const uint i) const;
-    elem_type at (const uint i, const uint j) const;
+    elem_type operator[](const uint i) const;
+    elem_type at(const uint i, const uint j) const;
+    
+    void assign(Matrix<elem_type>& out) const
+    { 
+      coda_extra_debug_funcname();
+      cwise_op<op_type>::apply(out, *this);
+    }
+    
 
 };
 
 template <typename T1, typename op_type>
-class VectorCwiseOp : public VectorBase< VectorCwiseOp<T1, op_type> >
-{
-public:
+class VectorCwiseOp : public VectorBase< VectorCwiseOp<T1, op_type> > {
+  public:
     typedef typename T1::elem_type    elem_type;
 
     const Proxy<T1> lhs;
@@ -40,8 +44,8 @@ public:
 
     uint nelem() const;
 
-    elem_type operator[] (const uint i) const;
-    
+    elem_type operator[](const uint i) const;
+
 };
 
 

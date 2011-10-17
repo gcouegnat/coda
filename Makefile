@@ -1,10 +1,16 @@
-default: all
+default: test
+
+lib:
+	scons lib
+
+test: lib
+	scons test
 
 all:
 	scons all
 
 debug:
-	scons debug=1
+	scons 
 
 clean:
 	scons -c all

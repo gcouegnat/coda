@@ -4,21 +4,18 @@
 #include "Parameters.h"
 #include <coda/log/log.h>
 
-namespace coda
-{
-class GlobalParameters:public Parameters
-{
-public:
+namespace coda {
+class GlobalParameters: public Parameters {
+  public:
 
     GlobalParameters();
     virtual ~ GlobalParameters();
 
-    static Parameters default_parameters()
-    {
-        Parameters p("coda");
-        p.add("log_level", INFO);
-        p.add("default_solver", "mumps");
-        return p;
+    static Parameters default_parameters() {
+      Parameters p("coda");
+      p.add("log_level", INFO);
+      p.add("default_solver", "mumps");
+      return p;
     }
 };
 

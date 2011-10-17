@@ -1,8 +1,7 @@
 #ifndef TYPEDEF_H
 #define TYPEDEF_H
 
-namespace coda
-{
+namespace coda {
 typedef unsigned int uint;
 } /* namespace coda */
 

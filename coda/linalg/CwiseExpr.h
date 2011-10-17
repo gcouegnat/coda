@@ -1,13 +1,11 @@
 #ifndef CWISEBINARYOP_H
 #define CWISEBINARYOP_H
 
-namespace coda
-{
+namespace coda {
 
 template <typename T1, typename T2, typename op_type>
-class MatrixCwiseExpr : public MatrixBase< MatrixCwiseExpr<T1, T2, op_type> >
-{
-public:
+class MatrixCwiseExpr : public MatrixBase< MatrixCwiseExpr<T1, T2, op_type> > {
+  public:
     typedef typename T1::elem_type    elem_type;
 
     const Proxy<T1> lhs;
@@ -20,16 +18,21 @@ public:
     uint ncols() const;
     uint nelem() const;
 
-    elem_type operator[] (const uint i) const;
-    elem_type at (const uint i, const uint j) const;
+    elem_type operator[](const uint i) const;
+    elem_type at(const uint i, const uint j) const;
+    
+    void assign(Matrix<elem_type>& out) const
+    { 
+      coda_extra_debug_funcname();
+      cwise_expr<op_type>::apply(out, *this);
+    }
 
 };
 
 
 template <typename T1, typename T2, typename op_type>
-class VectorCwiseExpr : public VectorBase< VectorCwiseExpr<T1, T2, op_type> >
-{
-public:
+class VectorCwiseExpr : public VectorBase< VectorCwiseExpr<T1, T2, op_type> > {
+  public:
     typedef typename T1::elem_type    elem_type;
 
     const Proxy<T1> lhs;
@@ -40,7 +43,7 @@ public:
 
     uint nelem() const;
 
-    elem_type operator[] (const uint i) const;
+    elem_type operator[](const uint i) const;
 };
 
 } /* namespace coda */

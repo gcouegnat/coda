@@ -1,54 +1,45 @@
 using namespace coda;
 
-template <typename op_type> template <typename eT> inline eT cwise_op<op_type>::process(const eT a, const eT val)
-{
-    error("cwise_expr::process(): unknown op_type");
+template <typename op_type> template <typename eT> inline eT cwise_op<op_type>::process(const eT a, const eT val) {
+  error("cwise_expr::process(): unknown op_type");
 }
 
-template<> template<typename eT> 
-const inline eT cwise_op<op_scalar_plus>::process(const eT a, const eT val)
-{
-    return a + val;
+template<> template<typename eT>
+const inline eT cwise_op<op_scalar_plus>::process(const eT a, const eT val) {
+  return a + val;
 }
 
-template<> template<typename eT> 
-const inline eT cwise_op<op_scalar_minus    >::process(const eT a, const eT val)
-{
-    return a - val;
+template<> template<typename eT>
+const inline eT cwise_op<op_scalar_minus    >::process(const eT a, const eT val) {
+  return a - val;
 }
 
-template<> template<typename eT> 
-const inline eT cwise_op<op_scalar_times    >::process(const eT a, const eT val)
-{
-    return a * val;
+template<> template<typename eT>
+const inline eT cwise_op<op_scalar_times    >::process(const eT a, const eT val) {
+  return a * val;
 }
 
-template<> template<typename eT> 
-const inline eT cwise_op<op_scalar_div_pre  >::process(const eT a, const eT val)
-{
-    return val / a;
+template<> template<typename eT>
+const inline eT cwise_op<op_scalar_div_pre  >::process(const eT a, const eT val) {
+  return val / a;
 }
 
-template<> template<typename eT> 
-const inline eT cwise_op<op_scalar_div_post >::process(const eT a, const eT val)
-{
-    return a / val;
+template<> template<typename eT>
+const inline eT cwise_op<op_scalar_div_post >::process(const eT a, const eT val) {
+  return a / val;
 }
 
-template<> template<typename eT> 
-const inline eT cwise_op<op_neg >::process(const eT a, const eT val)
-{
-    return -a;
+template<> template<typename eT>
+const inline eT cwise_op<op_neg >::process(const eT a, const eT val) {
+  return -a;
 }
-template<> template<typename eT> 
-const inline eT cwise_op<op_abs >::process(const eT a, const eT val)
-{
-    return std::abs(a);
+template<> template<typename eT>
+const inline eT cwise_op<op_abs >::process(const eT a, const eT val) {
+  return std::abs(a);
 }
-template<> template<typename eT> 
-const inline eT cwise_op<op_ramp>::process(const eT a, const eT val)
-{
-    return (a>eT(0)?a:eT(0));
+template<> template<typename eT>
+const inline eT cwise_op<op_ramp>::process(const eT a, const eT val) {
+  return (a > eT(0) ? a : eT(0));
 }
 
 

@@ -1,14 +1,12 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-namespace coda
-{
+namespace coda {
 
 template <typename eT>
-class Vector : public VectorBase< Vector<eT> >
-{
+class Vector : public VectorBase< Vector<eT> > {
 
-public:
+  public:
     typedef eT  elem_type;
     const uint nelem;
     const eT* const mem;
@@ -16,7 +14,7 @@ public:
 // protected:
 //  eT mem_local[16];
 
-public:
+  public:
 
     // constructor/destructor
     inline ~Vector();
@@ -58,25 +56,25 @@ public:
 
     inline void resize(const uint in_nelem);
     // inline void print(const std::string text="", const bool verbose = false);
-    inline void print(const std::string text="");
+    inline void print(const std::string text = "");
 
-    inline eT& operator [] (const uint i);
-    inline eT  operator [] (const uint i) const;
-    inline eT& at (const uint i);
-    inline eT  at (const uint i) const;
+    inline eT& operator [](const uint i);
+    inline const eT  operator [](const uint i) const;
+    inline eT& at(const uint i);
+    inline eT  at(const uint i) const;
 
     // value initialization
     inline const Vector& fill(const eT val);
     inline const Vector& zeros();
     inline const Vector& ones();
     inline const Vector& randu();
-    inline const Vector& basis (const uint i);
+    inline const Vector& basis(const uint i);
 
     // memory access
     inline          eT* memptr();
     inline const    eT* memptr() const;
 
-protected:
+  protected:
     inline void init(uint in_size);
 
 

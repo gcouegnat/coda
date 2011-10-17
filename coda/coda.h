@@ -1,14 +1,19 @@
 #ifndef CODA_H
 #define CODA_H
 
+// c includes
+#include <time.h>
+
 // c++ includes
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+#include <fstream>
 #include <string>
+#include <algorithm>
 #include <cmath>
 #include <cstdlib>
-#include <time.h>
+
 
 // compiler defs
 #include "coda/config/config.h"
@@ -22,6 +27,7 @@
 #include "coda/utils/access.h"
 #include "coda/utils/colors.h"
 #include "coda/utils/version.h"
+#include "coda/utils/tuple.h"
 
 // log
 #include "coda/log/prettyprint.h"
@@ -31,6 +37,7 @@
 // debug
 #include "coda/debug/debug.h"
 
+
 // parameter
 #include "coda/parameter/Parameter.h"
 #include "coda/parameter/Parameters.h"
@@ -39,6 +46,7 @@
 // math
 #include "coda/math/random.h"
 
+
 // linalg
 #include "coda/linalg/Base.h"
 #include "coda/linalg/MatrixBase.h"
@@ -46,6 +54,7 @@
 
 #include "coda/linalg/arrayops.h"
 #include "coda/linalg/Matrix.h"
+#include "coda/linalg/SymMatrix.h"
 #include "coda/linalg/Vector.h"
 
 #include "coda/linalg/cwise_op.h"
@@ -66,6 +75,11 @@
 #include "coda/linalg/Proxy.h"
 #include "coda/linalg/Unwrap.h"
 
+
+#include "coda/utils/Array.h"
+#include "coda/sparse/SparseMatrixBase.h"
+#include "coda/sparse/CooSparseMatrix.h"
+
 // linalg -- immpl
 #include "coda/log/prettyprint_impl.h"
 
@@ -85,10 +99,14 @@
 #include "coda/linalg/Expr_impl.h"
 
 #include "coda/linalg/Matrix_impl.h"
+#include "coda/linalg/SymMatrix_impl.h"
 #include "coda/linalg/Vector_impl.h"
 
 #include "coda/linalg/operators.h"
 #include "coda/linalg/functions.h"
+
+
+#include "coda/sparse/CooSparseMatrix_impl.h"
 
 // #include "coda/linalg/VectorOp.h"
 // #include "coda/linalg/Matrix.h"

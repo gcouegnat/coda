@@ -1,16 +1,13 @@
 #ifndef VECTORBASE_H
 #define    VECTORBASE_H
 
-namespace coda
-{
+namespace coda {
 
 template < typename Derived >
-class VectorBase
-{
-public:
-    inline const Derived& derived() const
-    {
-        return static_cast<const Derived&> (*this);
+class VectorBase {
+  public:
+    inline const Derived& derived() const {
+      return static_cast<const Derived&>(*this);
     }
 };
 

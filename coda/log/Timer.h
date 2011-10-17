@@ -3,12 +3,10 @@
 
 #include <string>
 
-namespace coda
-{
+namespace coda {
 
-class Timer
-{
-public:
+class Timer {
+  public:
 
     Timer(std::string task = "");
     ~Timer();
@@ -20,7 +18,7 @@ public:
 
     void rename(std::string task);
 
-private:
+  private:
 
     std::string _task;
     double _t;

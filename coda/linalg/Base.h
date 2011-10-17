@@ -1,15 +1,12 @@
 #ifndef BASE_H
 #define BASE_H
 
-namespace coda
-{
+namespace coda {
 template < typename Derived >
-class Base
-{
-public:
-    inline const Derived& derived() const
-    {
-        return static_cast<const Derived&> (*this);
+class Base {
+  public:
+    inline const Derived& derived() const {
+      return static_cast<const Derived&>(*this);
     }
 };
 

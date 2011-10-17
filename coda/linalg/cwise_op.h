@@ -1,25 +1,23 @@
 #ifndef CWISE_OP_H
 #define CWISE_OP_H
 
-namespace coda
-{
+namespace coda {
 
 template <typename op_type>
-struct cwise_op
-{
-    template <typename T1> inline static void apply(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_plus (Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_minus(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_schur(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_div  (Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
-    
-	template <typename T1> inline static void apply(Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_plus (Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_minus(Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_schur(Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
-    template <typename T1> inline static void apply_inplace_div  (Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
-    
-    template <typename eT> inline static eT process(const eT a, const eT val);
+struct cwise_op {
+  template <typename T1> inline static void apply(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
+  template <typename T1> inline static void apply_inplace_plus(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
+  template <typename T1> inline static void apply_inplace_minus(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
+  template <typename T1> inline static void apply_inplace_schur(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
+  template <typename T1> inline static void apply_inplace_div(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
+
+  template <typename T1> inline static void apply(Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
+  template <typename T1> inline static void apply_inplace_plus(Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
+  template <typename T1> inline static void apply_inplace_minus(Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
+  template <typename T1> inline static void apply_inplace_schur(Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
+  template <typename T1> inline static void apply_inplace_div(Vector<typename T1::elem_type>& out, const VectorCwiseOp<T1, op_type>& op);
+
+  template <typename eT> inline static eT process(const eT a, const eT val);
 };
 
 
