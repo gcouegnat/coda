@@ -1,5 +1,5 @@
 #include <cstring>
-#include "arrayops.h"
+#include "../arrayops.h"
 
 using namespace coda;
 

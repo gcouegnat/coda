@@ -313,20 +313,20 @@ inline void Matrix<eT>::print(std::string text) {
 //-----------------------------------------------------------------------------
 // MatrixOp
 //-----------------------------------------------------------------------------
-template <typename eT>
-template <typename T1, typename op_type>
-inline Matrix<eT>::Matrix(const MatrixOp<T1, op_type>& op) : nrows(0), ncols(0), nelem(0), mem(mem) {
-  coda_extra_debug_funcname();
-  op_type::apply(*this, op);
-}
-//-----------------------------------------------------------------------------
-template <typename eT>
-template <typename T1, typename op_type>
-inline const Matrix<eT>& Matrix<eT>::operator=(const MatrixOp<T1, op_type>& op) {
-  coda_extra_debug_funcname();
-  op_type::apply(*this, op);
-  return *this;
-}
+// template <typename eT>
+// template <typename T1, typename op_type>
+// inline Matrix<eT>::Matrix(const MatrixOp<T1, op_type>& op) : nrows(0), ncols(0), nelem(0), mem(mem) {
+//   coda_extra_debug_funcname();
+//   op_type::apply(*this, op);
+// }
+// //-----------------------------------------------------------------------------
+// template <typename eT>
+// template <typename T1, typename op_type>
+// inline const Matrix<eT>& Matrix<eT>::operator=(const MatrixOp<T1, op_type>& op) {
+//   coda_extra_debug_funcname();
+//   op_type::apply(*this, op);
+//   return *this;
+// }
 
 //-----------------------------------------------------------------------------
 // MatrixExpr

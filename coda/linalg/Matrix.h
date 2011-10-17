@@ -82,18 +82,26 @@ class Matrix : public MatrixBase< Matrix<eT> > {
     // template <typename T1, typename T2, typename op_type> inline const Matrix& operator%=(const MatrixCwiseExpr<T1, T2, op_type>& op);
     // template <typename T1, typename T2, typename op_type> inline const Matrix& operator/=(const MatrixCwiseExpr<T1, T2, op_type>& op);
 
-    template <typename Expression> inline       Matrix(const MatrixBase<Expression>& X) : nrows(0), ncols(0), nelem(0) , mem(mem) { X.derived().assign(*this);}
-    template <typename Expression> inline const Matrix& operator=(const MatrixBase<Expression>& X) { X.derived().assign(*this); return *this;}
+    template <typename Expression> 
+    inline Matrix(const MatrixBase<Expression>& X) 
+    : nrows(0), ncols(0), nelem(0) , mem(mem) { 
+      X.derived().assign(*this);
+    }
+    
+    template <typename Expression> 
+    inline const Matrix& operator=(const MatrixBase<Expression>& X) { 
+      X.derived().assign(*this); 
+      return *this;
+    }
     
 
-
     // operator
-    template <typename T1,              typename op_type> inline       Matrix(const MatrixOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Matrix& operator= (const MatrixOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Matrix& operator+=(const MatrixOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Matrix& operator-=(const MatrixOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Matrix& operator%=(const MatrixOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Matrix& operator/=(const MatrixOp<T1, op_type>& op);
+    // template <typename T1,              typename op_type> inline       Matrix(const MatrixOp<T1, op_type>& op);
+    // template <typename T1,              typename op_type> inline const Matrix& operator= (const MatrixOp<T1, op_type>& op);
+    // template <typename T1,              typename op_type> inline const Matrix& operator+=(const MatrixOp<T1, op_type>& op);
+    // template <typename T1,              typename op_type> inline const Matrix& operator-=(const MatrixOp<T1, op_type>& op);
+    // template <typename T1,              typename op_type> inline const Matrix& operator%=(const MatrixOp<T1, op_type>& op);
+    // template <typename T1,              typename op_type> inline const Matrix& operator/=(const MatrixOp<T1, op_type>& op);
     // binary expression
     template <typename T1, typename T2, typename op_type> inline    Matrix(const MatrixExpr<T1, T2, op_type>& op);
     template <typename T1, typename T2, typename op_type> inline const Matrix& operator= (const MatrixExpr<T1, T2, op_type>& op);

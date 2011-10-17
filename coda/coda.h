@@ -86,21 +86,21 @@
 
 #include "coda/linalg/arrayops_impl.h"
 
-#include "coda/linalg/cwise_op_impl.h"
-#include "coda/linalg/cwise_expr_impl.h"
+#include "coda/linalg/detail/cwise_op.inl"
+#include "coda/linalg/detail/cwise_expr.inl"
 
-#include "coda/linalg/op_inv_impl.h"
-#include "coda/linalg/op_trans_impl.h"
-#include "coda/linalg/op_times_impl.h"
+#include "coda/linalg/detail/op_inv.inl"
+#include "coda/linalg/detail/op_trans.inl"
+#include "coda/linalg/detail/op_times.inl"
 
-#include "coda/linalg/CwiseOp_impl.h"
-#include "coda/linalg/CwiseExpr_impl.h"
-#include "coda/linalg/Op_impl.h"
-#include "coda/linalg/Expr_impl.h"
+#include "coda/linalg/detail/CwiseOp.inl"
+#include "coda/linalg/detail/CwiseExpr.inl"
+#include "coda/linalg/detail/Op.inl"
+#include "coda/linalg/detail/Expr.inl"
 
-#include "coda/linalg/Matrix_impl.h"
-#include "coda/linalg/SymMatrix_impl.h"
-#include "coda/linalg/Vector_impl.h"
+#include "coda/linalg/detail/Matrix.inl"
+#include "coda/linalg/detail/SymMatrix.inl"
+#include "coda/linalg/detail/Vector.inl"
 
 #include "coda/linalg/operators.h"
 #include "coda/linalg/functions.h"
