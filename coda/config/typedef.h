@@ -6,4 +6,6 @@ typedef unsigned int uint;
 } /* namespace coda */
 
 
+using coda::uint;
+
 #endif /* TYPEDEF_H */

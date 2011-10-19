@@ -9,7 +9,7 @@ env=Environment(variables = vars)
 
 Help(vars.GenerateHelpText(env))
 
-env.Replace(CXX="/usr/bin/g++")
+#env.Replace(CXX="/usr/bin/g++")
 
 mode=env['mode']
 
@@ -18,13 +18,14 @@ if mode == 'debug':
 elif mode == 'extra_debug':
   env.Append(CXXFLAGS=['-Wall','-Werror','-g','-O0','-DCODA_EXTRA_DEBUG'])
 elif mode == 'optim':
-  env.Append(CXXFLAGS=['-O3', '-DNDEBUG','-funroll-loops','-mtune=native'])
+  env.Append(CXXFLAGS=['-O3', '-DNDEBUG','-funroll-loops'])
 
 blas = env['blas']
 if blas == 'gotoblas':
   env.Append(CXXFLAGS=['-DCODA_WITH_GOTOBLAS'])
-  env.Append(LIBPATH=['/Users/couegnat/lib'])
-  env.Append(LIBS=['goto'])
+#  env.Append(LIBPATH=['/Users/couegnat/lib'])
+  env.Append(LIBPATH=['/opt/hpc/lib'])
+  env.Append(LIBS=['goto2','gfortran'])
 elif blas == 'veclib':
   env.Append(CXXFLAGS=['-DCODA_WITH_VECLIB'])
   env['FRAMEWORKS']+= ['Accelerate']
