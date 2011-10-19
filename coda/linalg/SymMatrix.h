@@ -5,22 +5,11 @@ namespace coda {
 
 template <typename eT>
 class SymMatrix : public Matrix<eT> {
-  public:
-
-    typedef eT elem_type;
-
-    using Matrix<eT>::nrows;
-    using Matrix<eT>::ncols;
-    using Matrix<eT>::nelem;
-        
-    const eT* const mem;
 
   public:
 
     // constructor/destructor
-    ~SymMatrix() {};
-    SymMatrix() : Matrix<eT>() {}
-    SymMatrix(uint in_rows) : Matrix<eT>(in_rows, in_rows), mem(mem) {}
+    SymMatrix(uint in_rows, uint in_cols);
     
     template<typename T1>
     SymMatrix(const MatrixBase<T1>& X) { Matrix<eT>::operator=(X.derived()); }
@@ -47,9 +36,9 @@ class SymMatrix : public Matrix<eT> {
    //   inline eT& operator [](const uint i);
    //   inline eT  operator [](const uint i) const;
      inline eT& at(const uint i, const uint j);
-     inline eT  at(const uint i, const uint j) const;
-   //   inline eT& operator()(const uint i, const uint j);
-   //   inline eT  operator()(const uint i, const uint j) const;
+      inline eT  at(const uint i, const uint j) const;
+      inline eT& operator()(const uint i, const uint j);
+      inline eT  operator()(const uint i, const uint j) const;
    // 
    //   // memory access
    //   inline          eT* memptr();
@@ -99,8 +88,8 @@ class SymMatrix : public Matrix<eT> {
    //   //optimization for matrix-matrix product
    //   template <typename T1, typename T2 > inline const SymMatrix& operator+= (const MatrixExpr<T1, T2, op_times>& op);
    // 
-   // protected:
-   //   inline void init(uint in_rows, uint in_cols);
+   protected:
+      inline void init(uint in_rows, uint in_cols);
 };
 
 }   // namespace coda

@@ -5,7 +5,7 @@ using coda::Matrix;
 int main (int argc, char const *argv[])
 {
   Matrix<float> A(5,5), B(5,5), C(5,5);
-  A.randu();
+  A.eye();
   A.print("A:");
   
   // B=trans(A);
@@ -20,19 +20,15 @@ int main (int argc, char const *argv[])
   C=A+B;
   C.print("C=A+B:");
  
-  // C=0.5*(trans(A)+A);
-  // C.print("0.5*(trans(A)+A)");
-  // 
-  // B=inv(C);
-  // B.print("inv(C):");
-  
-  SymMatrix<float> D(5);
-  D.randu();
-  
-  
-  
+  C=0.5*(trans(A)+A);
+  C.print("0.5*(trans(A)+A)");
+   
+  B=inv(C);
+  B.print("inv(C):");
+    
+  SymMatrix<float> D(5,5);
+  D.fill();
   D.print("D:");
-  
     
   return 0;
 }

@@ -63,7 +63,7 @@
 #include "coda/linalg/op_trans.h"
 #include "coda/linalg/op_times.h"
 
-#include "coda/linalg/cblas.h"
+#include "coda/linalg/cblas_interface.h"
 #include "coda/linalg/gemm.h"
 #include "coda/linalg/gemv.h"
 
@@ -84,7 +84,7 @@
 #include "coda/log/prettyprint_impl.h"
 
 
-#include "coda/linalg/arrayops_impl.h"
+#include "coda/linalg/detail/arrayops.inl"
 
 #include "coda/linalg/detail/cwise_op.inl"
 #include "coda/linalg/detail/cwise_expr.inl"

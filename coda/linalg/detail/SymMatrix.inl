@@ -19,12 +19,11 @@ using namespace coda;
 //   coda_extra_debug_funcname();
 // }
 // //-----------------------------------------------------------------------------
-// template <typename eT>
-// inline SymMatrix<eT>::Matrix(uint in_rows, uint in_cols)
-//   : nrows(0), ncols(0), nelem(0) , mem(0) {
-//   coda_extra_debug_funcname();
-//   init(in_rows, in_cols);
-// }
+template <typename eT>
+inline SymMatrix<eT>::SymMatrix(uint in_rows, uint in_cols) {
+  coda_extra_debug_funcname();
+  init(in_rows, in_cols);
+}
 // //-----------------------------------------------------------------------------
 // template <typename eT>
 // inline eT* SymMatrix<eT>::memptr() {
@@ -36,17 +35,18 @@ using namespace coda;
 //   return mem;
 // }
 // //-----------------------------------------------------------------------------
-// template <typename eT>
-// inline void SymMatrix<eT>::init(uint in_rows, uint in_cols) {
-//   coda_extra_debug_funcname();
-//   if (nelem > 0) {
-//     delete [] mem;
-//   }
-//   access::rw(nrows) = in_rows;
-//   access::rw(ncols) = in_cols;
-//   access::rw(nelem) = in_rows * in_cols;
-//   access::rw(mem) = new eT[nelem];
-// }
+template <typename eT>
+inline void SymMatrix<eT>::init(uint in_rows, uint in_cols) {
+  coda_extra_debug_funcname();
+  coda_debug_assert((in_rows==in_cols),"symmetric matrix must be square.")
+  if (Matrix<eT>::nelem > 0) {
+    delete [] Matrix<eT>::mem;
+  }
+  access::rw(Matrix<eT>::nrows) = in_rows;
+  access::rw(Matrix<eT>::ncols) = in_cols;
+  access::rw(Matrix<eT>::nelem) = in_rows*(in_rows+1)/2;
+  access::rw(Matrix<eT>::mem) = new eT[Matrix<eT>::nelem];
+}
 // //-----------------------------------------------------------------------------
 // template <typename eT>
 // inline const SymMatrix<eT>& SymMatrix<eT>::operator+=(const eT val) {
@@ -134,26 +134,39 @@ using namespace coda;
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline eT& SymMatrix<eT>::at(const uint i, const uint j) {
-  if(i>j) 
-    return Matrix<eT>::at(i,j);
+  const uint n = Matrix<eT>::nrows;
+  if (j>=i)
+    return access::rw(Matrix<eT>::mem[j+i*(2*n-i-1)/2]);
   else
-    return Matrix<eT>::at(j,i);
+    return access::rw(Matrix<eT>::mem[i+j*(2*n-j-1)/2]);
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline eT  SymMatrix<eT>::at(const uint i, const uint j) const {
-  return mem[i * ncols + j];
+  const uint n = Matrix<eT>::nrows;
+  if (j>=i)
+    return access::rw(Matrix<eT>::mem[j+i*(2*n-i-1)/2]);
+  else
+    return access::rw(Matrix<eT>::mem[i+j*(2*n-j-1)/2]);
 }
 // //-----------------------------------------------------------------------------
-// template <typename eT>
-// inline eT& SymMatrix<eT>::operator()(const uint i, const uint j) {
-//   return access::rw(mem[i * ncols + j]);
-// }
+ template <typename eT>
+ inline eT& SymMatrix<eT>::operator()(const uint i, const uint j) {
+   const uint n = Matrix<eT>::nrows;
+   if (j>=i)
+     return access::rw(Matrix<eT>::mem[j+i*(2*n-i-1)/2]);
+   else
+     return access::rw(Matrix<eT>::mem[i+j*(2*n-j-1)/2]);
+ }
 // //-----------------------------------------------------------------------------
-// template <typename eT>
-// inline eT  SymMatrix<eT>::operator()(const uint i, const uint j) const {
-//   return mem[i * ncols + j];
-// }
+ template <typename eT>
+ inline eT  SymMatrix<eT>::operator()(const uint i, const uint j) const {
+   const uint n = Matrix<eT>::nrows;
+   if (j>=i)
+     return access::rw(Matrix<eT>::mem[j+i*(2*n-i-1)/2]);
+   else
+     return access::rw(Matrix<eT>::mem[i+j*(2*n-j-1)/2]);
+ }
 // //-----------------------------------------------------------------------------
 // template <typename eT>
 // inline const SymMatrix<eT>& SymMatrix<eT>::fill(const eT val) {
@@ -220,7 +233,7 @@ inline void SymMatrix<eT>::print(std::string text) {
   if (text.length() > 0) {
     std::cout << text << " ";
   }
-  std::cout << "<Symmetic matrix of size " << nrows << " by " << ncols <<">\n";
+  std::cout << "<Symmetic matrix of size " << Matrix<eT>::nrows << " by " << Matrix<eT>::ncols <<">\n";
   prettyprint::print(std::cout, *this);
 }
 // //-----------------------------------------------------------------------------

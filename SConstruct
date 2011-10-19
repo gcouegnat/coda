@@ -4,11 +4,12 @@ import os,sys,platform
 vars = Variables()
 vars.Add(EnumVariable('mode', 'Compilation mode','debug', allowed_values =('optim','debug','extra_debug')))
 vars.Add(EnumVariable('backend', 'Parallel backend', 'none' , allowed_values =('none','omp','cuda')))
+vars.Add(EnumVariable('blas','BLAS backend','veclib',allowed_values=('veclib','gotoblas')))
 env=Environment(variables = vars)
 
 Help(vars.GenerateHelpText(env))
 
-#env.Replace(CXX="/usr/bin/g++")
+env.Replace(CXX="/usr/bin/g++")
 
 mode=env['mode']
 
@@ -19,8 +20,15 @@ elif mode == 'extra_debug':
 elif mode == 'optim':
   env.Append(CXXFLAGS=['-O3', '-DNDEBUG','-funroll-loops','-mtune=native'])
 
-if sys.platform=="darwin":
+blas = env['blas']
+if blas == 'gotoblas':
+  env.Append(CXXFLAGS=['-DCODA_WITH_GOTOBLAS'])
+  env.Append(LIBPATH=['/Users/couegnat/lib'])
+  env.Append(LIBS=['goto'])
+elif blas == 'veclib':
+  env.Append(CXXFLAGS=['-DCODA_WITH_VECLIB'])
   env['FRAMEWORKS']+= ['Accelerate']
+
 
 backend = env['backend']
 if backend == 'omp':

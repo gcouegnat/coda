@@ -57,9 +57,10 @@ class Matrix : public MatrixBase< Matrix<eT> > {
 
     // value initialization
     inline const Matrix& fill(const eT val);
+    inline const Matrix& fill();
     inline const Matrix& zeros();
     inline const Matrix& ones();
-    inline const Matrix& eyes();
+    inline const Matrix& eye();
     inline const Matrix& randu();
 
     // misc.

@@ -160,6 +160,16 @@ inline const Matrix<eT>& Matrix<eT>::fill(const eT val) {
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
+inline const Matrix<eT>& Matrix<eT>::fill() {
+  coda_extra_debug_funcname();
+  for(uint i=0; i<nelem; ++i)
+  {
+    access::rw(mem[i])=eT(i);
+  }
+  return *this;
+}
+//-----------------------------------------------------------------------------
+template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::zeros() {
   coda_extra_debug_funcname();
   arrayops::inplace_set(memptr(), eT(0), nelem);
@@ -172,6 +182,17 @@ inline const Matrix<eT>& Matrix<eT>::ones() {
   arrayops::inplace_set(memptr(), eT(1), nelem);
   return *this;
 }
+
+template <typename eT>
+inline const Matrix<eT>& Matrix<eT>::eye() {
+  coda_extra_debug_funcname();
+  zeros();
+  for (uint i = 0; i < nrows; ++i) {
+    this->at(i,i)=eT(1)+eT(i);
+  }
+  return *this;
+}
+
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::randu() {
   coda_extra_debug_funcname();

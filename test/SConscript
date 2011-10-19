@@ -7,5 +7,5 @@ env.Append(LIBS=['coda'])
 env.Program("test_array.exe",['test_Array.cpp'])
 env.Program("test_matrix.exe",['test_matrix.cpp'])
 env.Program("test_sparse.exe",['test_sparse.cpp'])
-
-env.Program("benchmark.exe",['benchmark.cpp'],LIBS=['coda','armadillo'])
+env.Program("test_gemm.exe",['test_gemm.cpp'])
+# env.Program("benchmark.exe",['benchmark.cpp'],LIBS=['coda','armadillo'])
