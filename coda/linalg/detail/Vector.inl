@@ -29,9 +29,9 @@ template <typename eT>
 inline void Vector<eT>::print(const std::string text) {
   coda_extra_debug_funcname();
   if (text.length() > 0) {
-    std::cout << text << std::endl;
+    std::cout << text << " ";
   }
-  // std::cout << "<Vector of size " << nelem << ">\n";
+  std::cout << "<Vector of size " << nelem << ">\n";
   // if (verbose == true)
   // {
   coda::prettyprint::print(std::cout, *this);

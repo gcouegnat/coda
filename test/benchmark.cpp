@@ -84,7 +84,7 @@ main(int argc, char const* argv[]) {
   // set_log_level (ERROR);
   info("Coda " + coda_version::as_string());
   info("Compiled with gcc %d", GCCVERSION);
-  const uint nrepeat = 10000;
+  const uint nrepeat = 1000;
   Timer timer;
   // info("Running benchmark with cblas");
   // timer.rename("cblas");
@@ -96,11 +96,11 @@ main(int argc, char const* argv[]) {
   timer.start();
   benchmark_matmul_coda<float>(nrepeat);
   timer.stop();
-  info("Running benchmark<float> with armadillo");
-  timer.rename("armadillo");
-  timer.start();
-  benchmark_matmul_arma<float>(nrepeat);
-  timer.stop();
+  // info("Running benchmark<float> with armadillo");
+  // timer.rename("armadillo");
+  // timer.start();
+  // benchmark_matmul_arma<float>(nrepeat);
+  // timer.stop();
   // info("Running benchmark<double> with cblas");
   // timer.rename("cblas");
   // timer.start();
@@ -111,10 +111,10 @@ main(int argc, char const* argv[]) {
   timer.start();
   benchmark_matmul_coda<double>(nrepeat);
   timer.stop();
-  info("Running benchmark<double> with armadillo");
-  timer.rename("armadillo");
-  timer.start();
-  benchmark_matmul_arma<double>(nrepeat);
-  timer.stop();
+  // info("Running benchmark<double> with armadillo");
+  // timer.rename("armadillo");
+  // timer.start();
+  // benchmark_matmul_arma<double>(nrepeat);
+  // timer.stop();
   return 0;
 }

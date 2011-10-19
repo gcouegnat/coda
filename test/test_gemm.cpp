@@ -1,7 +1,7 @@
 #include <coda/coda.h>
 using namespace coda;
 int main(int argc, char const* argv[]) {
-  Matrix<float> A(25, 25), B(25, 15), C(15, 25);
+  Matrix<float> A(50, 50), B(50, 150), C(150, 50);
 
   B.fill(2.0);
   C.fill(3.0);
@@ -11,7 +11,7 @@ int main(int argc, char const* argv[]) {
   
   y.resize(x.nelem);
   
-  const uint nrepeat = 500000;
+  const uint nrepeat = 5000;
   
   Timer timer("matvec");
   info("(B*C)*x");

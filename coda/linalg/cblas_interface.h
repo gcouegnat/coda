@@ -21,6 +21,15 @@
   #endif
 #endif
 
+#ifdef CODA_WITH_GENERICBLAS
+  #define CBLAS_INT int
+  #define BLAS_IMPL "Generic CBLAS"
+  #ifndef CBLAS_INDEX
+    #define CBLAS_INDEX int
+  #endif
+#endif
+
+
 #include "cblas.h"
 #include "clapack.h"
 

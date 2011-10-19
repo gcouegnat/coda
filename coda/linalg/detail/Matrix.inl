@@ -188,7 +188,7 @@ inline const Matrix<eT>& Matrix<eT>::eye() {
   coda_extra_debug_funcname();
   zeros();
   for (uint i = 0; i < nrows; ++i) {
-    this->at(i,i)=eT(1)+eT(i);
+    this->at(i,i)=eT(1);
   }
   return *this;
 }
