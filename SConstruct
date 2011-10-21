@@ -5,7 +5,7 @@ import os,sys,platform
 vars = Variables()
 vars.Add(EnumVariable('mode', 'Compilation mode','debug', allowed_values =('optim','debug','extra_debug')))
 vars.Add(EnumVariable('backend', 'Parallel backend', 'none' , allowed_values =('none','omp','cuda')))
-vars.Add(EnumVariable('blas','BLAS backend','veclib',allowed_values=('veclib','gotoblas','generic')))
+vars.Add(EnumVariable('blas','BLAS backend','default',allowed_values=('default','veclib','gotoblas','generic')))
 env=Environment(variables = vars)
 Help(vars.GenerateHelpText(env))
 
@@ -26,6 +26,12 @@ elif mode == 'optim':
 # BLAS library 
 #------------------------------------------------------------------------------
 blas = env['blas']
+if blas == 'default':
+  if platform.system()=='Darwin':
+    blas = 'veclib'
+  elif platform.system()=='Linux':
+    blas = 'gotoblas'
+
 if blas == 'gotoblas':
   env.Append(CXXFLAGS=['-DCODA_WITH_GOTOBLAS'])
   if platform.system()=='Darwin':
@@ -44,6 +50,7 @@ elif blas == 'veclib':
 elif blas == 'generic':
   env.Append(CXXFLAGS=['-DCODA_WITH_GENERICBLAS'])
   env.Append(LIBS=['cblas','blas','lapack'])
+    
 
 #------------------------------------------------------------------------------
 # Parallel backend
