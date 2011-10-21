@@ -9,10 +9,10 @@ namespace coda {
 
 template < typename Derived >
 class SparseMatrixBase {
-  public:
-    inline const Derived& derived() const {
-      return static_cast<const Derived&>(*this);
-    }
+ public:
+  inline const Derived& derived() const {
+    return static_cast<const Derived&>(*this);
+  }
 };
 
 }  // namespace coda

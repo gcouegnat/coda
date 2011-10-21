@@ -60,10 +60,13 @@
 #include "coda/linalg/cwise_op.h"
 #include "coda/linalg/cwise_expr.h"
 #include "coda/linalg/op_inv.h"
+#include "coda/linalg/op_lu.h"
 #include "coda/linalg/op_trans.h"
 #include "coda/linalg/op_times.h"
 
 #include "coda/linalg/cblas_interface.h"
+#include "coda/linalg/clapack_interface.h"
+
 #include "coda/linalg/gemm.h"
 #include "coda/linalg/gemv.h"
 
@@ -90,6 +93,7 @@
 #include "coda/linalg/detail/cwise_expr.inl"
 
 #include "coda/linalg/detail/op_inv.inl"
+#include "coda/linalg/detail/op_lu.inl"
 #include "coda/linalg/detail/op_trans.inl"
 #include "coda/linalg/detail/op_times.inl"
 

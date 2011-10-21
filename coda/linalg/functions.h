@@ -88,6 +88,12 @@ inline const VectorCwiseOp<T1, op_ramp> ramp(const VectorBase<T1>& X) {
   return VectorCwiseOp<T1, op_ramp>(X.derived());
 }
 
+// matrix lu decomposition
+template <typename T1>
+inline const MatrixOp<T1, op_lu> lu(const MatrixBase<T1>& X) {
+  coda_extra_debug_funcname();
+  return MatrixOp<T1, op_lu>(X.derived());
+}
 
 // matrix inverse
 template <typename T1>

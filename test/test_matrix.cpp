@@ -38,18 +38,16 @@ int main (int argc, char const *argv[])
   B.print("B:");
   
   Matrix<scalar> D(3,3);
+  info("Inverse");
   D=inv(B);
-  D.print("D=inv(B):");
+  D.print("D = inv(B):");
     
-  B.resize(50,50);
-  B.randu();
-
-  Timer t;
-  for(uint k=0; k<5000; ++k)
-  {
-    D=inv(B);  
-  }
-  t.stop();
+  
+  info("LU");
+  D=lu(B);
+  D.print("D = lu(B):");
+  
+  
       
   return 0;
 }
