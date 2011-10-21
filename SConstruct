@@ -9,7 +9,7 @@ vars.Add(EnumVariable('blas','BLAS backend','veclib',allowed_values=('veclib','g
 env=Environment(variables = vars)
 Help(vars.GenerateHelpText(env))
 
-#env.Replace(CXX="/usr/bin/g++")
+#env.Replace(CXX="/usr/local/bin/g++")
 
 #------------------------------------------------------------------------------
 # Compilation mode
@@ -30,7 +30,7 @@ if blas == 'gotoblas':
   env.Append(CXXFLAGS=['-DCODA_WITH_GOTOBLAS'])
   if platform.system()=='Darwin':
     env.Append(LIBPATH=['/Users/couegnat/lib'])
-    env.Append(LIBS=['goto','gfortran'])
+    env.Append(LIBS=['goto2','gfortran'])
   if platform.system()=='Linux':
     env.Append(LIBPATH=['/opt/hpc/lib'])
     env.Append(LIBS=['goto2','gfortran'])

@@ -78,7 +78,7 @@ inline const Matrix<eT>& Matrix<eT>::operator/=(const eT val) {
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline Matrix<eT>::Matrix(const Matrix<eT>& m)
-  : nrows(0), ncols(0), nelem(0), mem(mem) {
+  : nrows(0), ncols(0), nelem(0), mem(0) {
   coda_extra_debug_funcname();
   if (this != &m) {
     init(m.nrows, m.ncols);
@@ -292,7 +292,7 @@ inline void Matrix<eT>::print(std::string text) {
 //-----------------------------------------------------------------------------
 // template <typename eT>
 // template <typename T1, typename T2, typename op_type>
-// inline Matrix<eT>::Matrix(const MatrixCwiseExpr<T1, T2, op_type>& op) : nrows(0), ncols(0), nelem(0) , mem(mem) {
+// inline Matrix<eT>::Matrix(const MatrixCwiseExpr<T1, T2, op_type>& op) : nrows(0), ncols(0), nelem(0) , mem(0) {
 //   cwise_expr<op_type>::apply(*this, op);
 // }
 // //-----------------------------------------------------------------------------
@@ -336,7 +336,7 @@ inline void Matrix<eT>::print(std::string text) {
 //-----------------------------------------------------------------------------
 // template <typename eT>
 // template <typename T1, typename op_type>
-// inline Matrix<eT>::Matrix(const MatrixOp<T1, op_type>& op) : nrows(0), ncols(0), nelem(0), mem(mem) {
+// inline Matrix<eT>::Matrix(const MatrixOp<T1, op_type>& op) : nrows(0), ncols(0), nelem(0), mem(0) {
 //   coda_extra_debug_funcname();
 //   op_type::apply(*this, op);
 // }
@@ -354,7 +354,7 @@ inline void Matrix<eT>::print(std::string text) {
 //-----------------------------------------------------------------------------
 template <typename eT>
 template <typename T1, typename T2, typename op_type>
-inline Matrix<eT>::Matrix(const MatrixExpr<T1, T2, op_type>& op) : nrows(0), ncols(0), nelem(0) , mem(mem) {
+inline Matrix<eT>::Matrix(const MatrixExpr<T1, T2, op_type>& op) : nrows(0), ncols(0), nelem(0) , mem(0) {
   coda_extra_debug_funcname();
   op_type::apply(*this, op);
 }

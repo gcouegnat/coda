@@ -9,6 +9,11 @@
 #include <coda/parameter/GlobalParameters.h>
 
 using namespace coda;
+using coda::colors::nocolor;
+using coda::colors::bold;
+using coda::colors::underline;
+using coda::colors::red;
+using coda::colors::yellow;
 
 static const int buffer_size = 256;
 static char buffer[buffer_size];
@@ -30,9 +35,9 @@ void coda::info(std::string msg, ...) {
   const int log_level = coda::parameters["log_level"];
   if (log_level <= INFO) {
     read(buffer, msg);
-    std::string s = std::string("INFO: ") + buffer;
+    //std::string s = std::string("INFO: ") + buffer;
     std::cerr.flush();
-    std::cerr << coda::colors::bold << s << coda::colors::nocolor << std::endl;
+    std::cerr << bold << buffer << nocolor << std::endl;
     std::cerr.flush();
   }
 }
@@ -42,11 +47,9 @@ void coda::warning(std::string msg, ...) {
   const int log_level = coda::parameters["log_level"];
   if (log_level <= WARNING) {
     read(buffer, msg);
-    std::string s = std::string("WARNING: ") + buffer;
+    std::string s = std::string("*** Warning ***");
     std::cerr.flush();
-    std::cerr << "-----------------------------------------------------------------------------" << std::endl;
-    std::cerr << coda::colors::yellow << s << coda::colors::nocolor << std::endl;
-    std::cerr << "-----------------------------------------------------------------------------" << std::endl;
+    std::cerr << bold << yellow <<  s << coda::colors::nocolor << " " << buffer << std::endl;
     std::cerr.flush();
   }
 }
@@ -56,11 +59,9 @@ void coda::error(std::string msg, ...) {
   const int log_level = coda::parameters["log_level"];
   if (log_level <= ERROR) {
     read(buffer, msg);
-    std::string s = std::string("ERROR: ") + buffer;
+    std::string s = std::string("*** Error ***"); 
     std::cerr.flush();
-    std::cerr << "-----------------------------------------------------------------------------" << std::endl;
-    std::cerr << coda::colors::red << s << coda::colors::nocolor << '\n';
-    std::cerr << "-----------------------------------------------------------------------------" << std::endl;
+    std::cerr << bold << red <<  s << coda::colors::nocolor << " " << buffer << std::endl;
     std::cerr.flush();
     abort();
   }

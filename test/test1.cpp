@@ -75,5 +75,9 @@ int main(int argc, char const* argv[]) {
   y.print("y :");
   z.print("Ax:");
   std::cout << "norm(Ax-y) = " << norm2(A * x - y) << std::endl;
+
+  coda::warning("This is a warning");
+  coda::error("This is an error");
+  
   return 0;
 }

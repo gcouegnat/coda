@@ -1,3 +1,5 @@
+#include "../cwise_expr.h"
+
 using namespace coda;
 
 template <typename op_type>
@@ -6,16 +8,17 @@ inline eT cwise_expr<op_type>::process(const eT a, const eT b) {
   error("cwise_expr::process(): unknown op_type");
 }
 
-template<> template<typename eT> const inline eT cwise_expr<op_plus >::process(const eT a, const eT b) {
+template<> template<typename eT> 
+inline eT cwise_expr<op_plus >::process(const eT a, const eT b) {
   return a + b;
 }
-template<> template<typename eT> const inline eT cwise_expr<op_minus>::process(const eT a, const eT b) {
+template<> template<typename eT> inline eT cwise_expr<op_minus>::process(const eT a, const eT b) {
   return a - b;
 }
-template<> template<typename eT> const inline eT cwise_expr<op_schur>::process(const eT a, const eT b) {
+template<> template<typename eT> inline eT cwise_expr<op_schur>::process(const eT a, const eT b) {
   return a * b;
 }
-template<> template<typename eT> const inline eT cwise_expr<op_div  >::process(const eT a, const eT b) {
+template<> template<typename eT> inline eT cwise_expr<op_div  >::process(const eT a, const eT b) {
   return a / b;
 }
 

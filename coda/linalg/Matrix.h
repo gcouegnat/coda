@@ -85,7 +85,7 @@ class Matrix : public MatrixBase< Matrix<eT> > {
 
     template <typename Expression> 
     inline Matrix(const MatrixBase<Expression>& X) 
-    : nrows(0), ncols(0), nelem(0) , mem(mem) { 
+    : nrows(0), ncols(0), nelem(0) , mem(0) { 
       X.derived().assign(*this);
     }
     

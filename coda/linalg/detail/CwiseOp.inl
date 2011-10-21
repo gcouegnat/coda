@@ -5,7 +5,7 @@ using namespace coda;
 //
 
 template <typename T1, typename op_type>
-MatrixCwiseOp<T1, op_type>::MatrixCwiseOp(const MatrixBase<T1>& in_A) : lhs(in_A.derived()), val(val) {
+MatrixCwiseOp<T1, op_type>::MatrixCwiseOp(const MatrixBase<T1>& in_A) : lhs(in_A.derived()), val(0) {
   coda_extra_debug_funcname();
 }
 template <typename T1, typename op_type>
@@ -42,7 +42,7 @@ typename T1::elem_type MatrixCwiseOp<T1, op_type>::at(const uint i, const uint j
 //
 
 template <typename T1, typename op_type>
-VectorCwiseOp<T1, op_type>::VectorCwiseOp(const VectorBase<T1>& in_A) : lhs(in_A.derived()), val(val) {
+VectorCwiseOp<T1, op_type>::VectorCwiseOp(const VectorBase<T1>& in_A) : lhs(in_A.derived()), val(0) {
   coda_extra_debug_funcname();
 }
 template <typename T1, typename op_type>

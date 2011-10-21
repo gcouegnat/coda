@@ -7,12 +7,12 @@ inline Vector<eT>::~Vector() {
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline Vector<eT>::Vector()
-  : nelem(0), mem(mem) {
+  : nelem(0), mem(0) {
   coda_extra_debug_funcname();
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
-inline Vector<eT>::Vector(const uint in_size) : nelem(0), mem(mem) {
+inline Vector<eT>::Vector(const uint in_size) : nelem(0), mem(0) {
   coda_extra_debug_funcname();
   init(in_size);
 }
@@ -149,7 +149,7 @@ inline const Vector<eT>& Vector<eT>::operator/=(const eT val) {
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline Vector<eT>::Vector(const Vector<eT>& v)
-  : nelem(0), mem(mem) {
+  : nelem(0), mem(0) {
   coda_extra_debug_funcname();
   if (this != &v) {
     init(v.nelem);
@@ -236,7 +236,7 @@ inline const Vector<eT>& Vector<eT>::operator/=(const VectorCwiseOp<T1, op_type>
 //-----------------------------------------------------------------------------
 template <typename eT>
 template <typename T1, typename T2, typename op_type>
-inline Vector<eT>::Vector(const VectorCwiseExpr<T1, T2, op_type>& op) : nelem(0) , mem(mem) {
+inline Vector<eT>::Vector(const VectorCwiseExpr<T1, T2, op_type>& op) : nelem(0) , mem(0) {
   cwise_expr<op_type>::apply(*this, op);
 }
 //-----------------------------------------------------------------------------
@@ -277,7 +277,7 @@ inline const Vector<eT>& Vector<eT>::operator/=(const VectorCwiseExpr<T1, T2, op
 
 template <typename eT>
 template <typename T1, typename T2, typename op_type>
-inline Vector<eT>::Vector(const VectorExpr<T1, T2, op_type>& op) : nelem(0) , mem(mem) {
+inline Vector<eT>::Vector(const VectorExpr<T1, T2, op_type>& op) : nelem(0) , mem(0) {
   coda_extra_debug_funcname();
   op_type::apply(*this, op);
 }

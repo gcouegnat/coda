@@ -75,7 +75,8 @@ inline const VectorCwiseExpr<T1, T2, op_schur> operator* (const VectorBase<T1>& 
 
 // A / B
 template <typename T1, typename T2>
-inline const VectorCwiseExpr<T1, T2, op_div> operator/ (const VectorBase<T1>& lhs, const VectorBase<T2>& rhs) {
+inline const VectorCwiseExpr<T1, T2, op_div>
+operator/ (const VectorBase<T1>& lhs, const VectorBase<T2>& rhs) {
   coda_extra_debug_funcname();
   return VectorCwiseExpr<T1, T2, op_div>(lhs.derived(), rhs.derived());
 }
