@@ -1,21 +1,72 @@
-import os, sys
+EnsureSConsVersion(1,2)
 
-env=Environment()
+import os,sys,platform
 
-#env.Replace(CXX="/usr/bin/g++")
+vars = Variables()
+vars.Add(EnumVariable('mode', 'Compilation mode','debug', allowed_values =('optim','debug','extra_debug')))
+vars.Add(EnumVariable('backend', 'Parallel backend', 'none' , allowed_values =('none','omp','cuda')))
+vars.Add(EnumVariable('blas','BLAS backend','default',allowed_values=('default','veclib','gotoblas','atlas','generic')))
+env=Environment(variables = vars)
+Help(vars.GenerateHelpText(env))
 
-debug=ARGUMENTS.get("debug", 1)
-if int(debug)==0:
-	env.Append(CCFLAGS="-O3 -funroll-loops -DNDEBUG -DCODA_NO_DEBUG -DARMA_NO_DEBUG")
+env.Replace(CXX="/opt/local/bin/g++")
 
-if int(debug)==1:
-	env.Append(CCFLAGS="-g -O2")
+#------------------------------------------------------------------------------
+# Compilation mode
+#------------------------------------------------------------------------------
+mode=env['mode']
+if mode == 'debug':
+  env.Append(CXXFLAGS=['-Wall','-g'])
+elif mode == 'extra_debug':
+  env.Append(CXXFLAGS=['-Wall','-Werror','-g','-O0','-DCODA_EXTRA_DEBUG'])
+elif mode == 'optim':
+  env.Append(CXXFLAGS=['-O3', '-DNDEBUG','-funroll-loops','-ftree-vectorize'])
 
-if int(debug)==2:
-    env.Append(CCFLAGS="-g -O0 -DCODA_EXTRA_DEBUG")
+#------------------------------------------------------------------------------
+# BLAS library 
+#------------------------------------------------------------------------------
+blas = env['blas']
+if blas == 'default':
+  if platform.system()=='Darwin':
+    blas = 'veclib'
+  elif platform.system()=='Linux':
+    blas = 'gotoblas'
 
-if sys.platform=="darwin":
-	env['FRAMEWORKS']+= ['Accelerate']
+if blas == 'gotoblas':
+  env.Append(CXXFLAGS=['-DCODA_WITH_GOTOBLAS'])
+  if platform.system()=='Darwin':
+    env.Append(LIBPATH=['/Users/couegnat/lib'])
+    env.Append(LIBS=['goto2','gfortran'])
+  if platform.system()=='Linux':
+    env.Append(LIBPATH=['/opt/hpc/lib'])
+    env.Append(LIBS=['goto2','gfortran'])
+elif blas == 'veclib':
+  if platform.system()=='Darwin':
+    env.Append(CXXFLAGS=['-DCODA_WITH_VECLIB'])
+    env['FRAMEWORKS']+= ['Accelerate']
+  else:
+    print "ERROR: veclib is only available on mac platform"
+    sys.exit();
+elif blas == 'generic':
+  env.Append(CXXFLAGS=['-DCODA_WITH_GENERICBLAS'])
+  env.Append(LIBS=['cblas','blas','lapack'])
+elif blas == 'atlas':
+  env.Append(CXXFLAGS=['-DCODA_WITH_ATLAS'])
+  if platform.system()=='Darwin':
+    env.Append(LIBPATH=['/opt/local/lib'])
+  elif platform.system=='Linux':
+    env.Append(LIBPATH=['/opt/hpc/lib'])
+  env.Append(LIBS=['ptlapack','ptf77blas','ptcblas','atlas'])
+    
+
+#------------------------------------------------------------------------------
+# Parallel backend
+#------------------------------------------------------------------------------
+backend = env['backend']
+if backend == 'omp':
+  env.Append(CXXFLAGS=['-fopenmp'])
+  env.Append(LIBS=['gomp'])
+
 
 coda_dir = os.getcwd()
 env.Append(CPPPATH=[coda_dir])
@@ -25,4 +76,5 @@ Export('env')
 lib = SConscript('lib/SConscript')
 test = SConscript('test/SConscript')
 
-Default('test')
+Alias('all',['lib','test'])
+Default('all')

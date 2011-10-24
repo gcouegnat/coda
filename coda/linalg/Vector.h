@@ -1,39 +1,86 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-namespace coda
-{
+namespace coda {
 
 template <typename eT>
-class Vector : public Matrix<eT>
-{
-public:
+class Vector : public VectorBase< Vector<eT> > {
 
-    typedef eT	elem_type;
+  public:
+    typedef eT  elem_type;
+    const uint nelem;
+    const eT* const mem;
 
 // protected:
-// 	eT mem_local[16];
+//  eT mem_local[16];
 
-public:
+  public:
+
+    // constructor/destructor
+    inline ~Vector();
     inline Vector();
-    inline Vector(uint in_size);
+    inline explicit Vector(uint in_size);
+
+    // operations with scalar
+    inline const Vector& operator+=(const eT val);
+    inline const Vector& operator-=(const eT val);
+    inline const Vector& operator*=(const eT val);
+    inline const Vector& operator/=(const eT val);
+
+    // operations with another Vector
+    inline Vector(const Vector& v);
+    inline const Vector& operator= (const Vector& v);
+    inline const Vector& operator+=(const Vector& v);
+    inline const Vector& operator-=(const Vector& v);
+    inline const Vector& operator%=(const Vector& v);
+    inline const Vector& operator/=(const Vector& v);
+
+    // interface with expression template
+    template <typename T1,              typename op_type> inline       Vector(const VectorCwiseOp<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Vector& operator= (const VectorCwiseOp<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Vector& operator+=(const VectorCwiseOp<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Vector& operator-=(const VectorCwiseOp<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Vector& operator%=(const VectorCwiseOp<T1, op_type>& op);
+    template <typename T1,              typename op_type> inline const Vector& operator/=(const VectorCwiseOp<T1, op_type>& op);
+
+    template <typename T1, typename T2, typename op_type> inline       Vector(const VectorCwiseExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Vector& operator= (const VectorCwiseExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Vector& operator+=(const VectorCwiseExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Vector& operator-=(const VectorCwiseExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Vector& operator%=(const VectorCwiseExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Vector& operator/=(const VectorCwiseExpr<T1, T2, op_type>& op);
+
+    template <typename T1, typename T2, typename op_type> inline       Vector(const VectorExpr<T1, T2, op_type>& op);
+    template <typename T1, typename T2, typename op_type> inline const Vector& operator= (const VectorExpr<T1, T2, op_type>& op);
+
 
     inline void resize(const uint in_nelem);
+    // inline void print(const std::string text="", const bool verbose = false);
+    inline void print(const std::string text = "");
 
-    inline void print(std::string text="");
+    inline eT& operator [](const uint i);
+    inline const eT  operator [](const uint i) const;
+    inline eT& at(const uint i);
+    inline eT  at(const uint i) const;
 
+    // value initialization
+    inline const Vector& fill(const eT val);
+    inline const Vector& zeros();
+    inline const Vector& ones();
+    inline const Vector& randu();
+    inline const Vector& basis(const uint i);
 
-    template<typename T1> inline                   Vector(const Base<T1>& X);
-    template<typename T1> inline const Vector&  operator=(const Base<T1>& X);
+    // memory access
+    inline          eT* memptr();
+    inline const    eT* memptr() const;
 
-
-protected:
+  protected:
     inline void init(uint in_size);
 
 
 };
 
-}				/* end of namespace coda */
+}    // namespace coda
 
-#endif				/* end of include guard: VECTOR_H */
+#endif  /* VECTOR_H */
 

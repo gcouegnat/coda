@@ -3,11 +3,9 @@
 
 #include <coda/config/typedef.h>
 
-namespace coda
-{
-class arrayops
-{
-public:
+namespace coda {
+class arrayops {
+  public:
 
     template <typename eT>
     inline static void copy(eT* dest, const eT* src, const uint nelem);
@@ -43,6 +41,6 @@ public:
 
 };
 
-} /* end of namespace coda */
+}    // namespace coda
 
-#endif /* end of include guard: ARRAYOPS_H */
+#endif /* ARRAYOPS_H */

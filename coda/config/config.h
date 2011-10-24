@@ -1,9 +1,8 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-namespace coda
-{
- 
+namespace coda {
+
 #if !defined(CODA_NO_DEBUG) && !defined(NDEBUG) && !defined(CODA_DEBUG)
 #define CODA_DEBUG
 #endif
@@ -21,8 +20,11 @@ namespace coda
 #undef CODA_EXTRA_DEBUG
 #endif
 
+#ifdef _OPENMP
+#define CODA_OPENMP
+#endif
 
-    
-} /* end of namespace coda */
 
-#endif /* end of include guard: CONFIG_H */
+}    // namespace coda
+
+#endif /* CONFIG_H */

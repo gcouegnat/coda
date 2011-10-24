@@ -9,6 +9,11 @@
 #include <coda/parameter/GlobalParameters.h>
 
 using namespace coda;
+using coda::colors::nocolor;
+using coda::colors::bold;
+using coda::colors::underline;
+using coda::colors::red;
+using coda::colors::yellow;
 
 static const int buffer_size = 256;
 static char buffer[buffer_size];
@@ -21,56 +26,45 @@ static char buffer[buffer_size];
 
 //-----------------------------------------------------------------------------
 void
-coda::set_log_level (int log_level)
-{
-    coda::parameters["log_level"] = log_level;
+coda::set_log_level(int log_level) {
+  coda::parameters["log_level"] = log_level;
 }
 
 //-----------------------------------------------------------------------------
-void coda::info (std::string msg, ...)
-{
-    const int log_level = coda::parameters["log_level"];
-    if (log_level <= INFO)
-    {
-        read (buffer, msg);
-        std::string s = std::string ("") + buffer;
-
-        std::cerr.flush();
-        std::cerr << coda::colors::bold_white << s << coda::colors::nocolor << std::endl;
-        std::cerr.flush();
-    }
+void coda::info(std::string msg, ...) {
+  const int log_level = coda::parameters["log_level"];
+  if (log_level <= INFO) {
+    read(buffer, msg);
+    //std::string s = std::string("INFO: ") + buffer;
+    std::cerr.flush();
+    std::cerr << bold << buffer << nocolor << std::endl;
+    std::cerr.flush();
+  }
 }
 
 //-----------------------------------------------------------------------------
-void coda::warning (std::string msg, ...)
-{
-    const int log_level = coda::parameters["log_level"];
-    if (log_level <= WARNING)
-    {
-        read (buffer, msg);
-        std::string s = std::string ("WARNING: ") + buffer;
-
-        std::cerr.flush();
-        std::cerr << coda::colors::bold_yellow << s << coda::colors::nocolor << std::endl;
-        std::cerr.flush(); 
-    }
+void coda::warning(std::string msg, ...) {
+  const int log_level = coda::parameters["log_level"];
+  if (log_level <= WARNING) {
+    read(buffer, msg);
+    std::string s = std::string("*** Warning ***");
+    std::cerr.flush();
+    std::cerr << bold << yellow <<  s << coda::colors::nocolor << " " << buffer << std::endl;
+    std::cerr.flush();
+  }
 }
 
 //-----------------------------------------------------------------------------
-void coda::error (std::string msg, ...)
-{
-    const int log_level = coda::parameters["log_level"];
-
-    if (log_level <= ERROR)
-    {
-        read (buffer, msg);
-        std::string s = std::string ("ERROR: ") + buffer;
-
-        std::cerr.flush();
-        std::cerr << coda::colors::bold_red << s << coda::colors::nocolor << '\n';
-        std::cerr.flush();
-        abort();
-    }
+void coda::error(std::string msg, ...) {
+  const int log_level = coda::parameters["log_level"];
+  if (log_level <= ERROR) {
+    read(buffer, msg);
+    std::string s = std::string("*** Error ***");
+    std::cerr.flush();
+    std::cerr << bold << red <<  s << coda::colors::nocolor << " " << buffer << std::endl;
+    std::cerr.flush();
+    abort();
+  }
 }
 //-----------------------------------------------------------------------------
 

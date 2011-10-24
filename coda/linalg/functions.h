@@ -1,67 +1,124 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-namespace coda
-{
+namespace coda {
 // trace
 template <typename T1>
-inline typename T1::elem_type trace(const Base<T1>& X)
-{
-    coda_extra_debug_funcname();
+inline typename T1::elem_type trace(const MatrixBase<T1>& X) {
+  coda_extra_debug_funcname();
+  typedef typename T1::elem_type eT;
+  const Proxy<T1> A(X.derived());
+  const uint nrows = A.nrows();
+  eT val = eT(0);
+  for (uint i = 0; i < nrows; ++i) {
+    val += A.at(i, i);
+  }
+  return val;
+}
 
-    typedef typename T1::elem_type eT;
 
-    const Proxy<T1> A(X.get_ref());
-    const uint nrows = A.nrows();
+// norm1
+template <typename T1>
+inline typename T1::elem_type norm1(const VectorBase<T1>& X) {
+  coda_extra_debug_funcname();
+  typedef typename T1::elem_type eT;
+  const Proxy<T1> V(X.derived());
+  const uint nelem = V.nelem();
+  eT acc = eT(0);
+  for (uint i = 0; i < nelem; ++i) {
+    acc += std::abs(V[i]);
+  }
+  return acc;
+}
 
-    eT val = eT(0);
-    for (uint i=0; i<nrows; ++i)
-    {
-        val += A.at(i,i);
+// norm2
+template <typename T1>
+inline typename T1::elem_type norm2(const VectorBase<T1>& X) {
+  coda_extra_debug_funcname();
+  typedef typename T1::elem_type eT;
+  const Proxy<T1> V(X.derived());
+  const uint nelem = V.nelem();
+  eT acc = eT(0);
+  for (uint i = 0; i < nelem; ++i) {
+    const eT tmp = V[i];
+    acc += tmp * tmp;
+  }
+  return std::sqrt(acc);
+}
+
+// norm_inf
+template <typename T1>
+inline typename T1::elem_type norm_max(const VectorBase<T1>& X) {
+  coda_extra_debug_funcname();
+  typedef typename T1::elem_type eT;
+  const Proxy<T1> V(X.derived());
+  const uint nelem = V.nelem();
+  eT max_val = std::abs(V[0]);
+  for (uint i = 1; i < nelem; ++i) {
+    const eT tmp = std::abs(V[i]);
+    if (tmp > max_val) {
+      max_val = tmp;
     }
-
-    return val;
+  }
+  return max_val;
 }
 
 
 template <typename T1>
-inline const CwiseOp<T1, op_abs> abs(const Base<T1>& X)
-{
-    coda_extra_debug_funcname();
-    return CwiseOp<T1, op_abs>(X.get_ref());
+inline const MatrixCwiseOp<T1, op_abs> abs(const MatrixBase<T1>& X) {
+  coda_extra_debug_funcname();
+  return MatrixCwiseOp<T1, op_abs>(X.derived());
 }
 
 template <typename T1>
-inline const CwiseOp<T1, op_ramp> ramp(const Base<T1>& X)
-{
-    coda_extra_debug_funcname();
-    return CwiseOp<T1, op_ramp>(X.get_ref());
+inline const VectorCwiseOp<T1, op_abs> abs(const VectorBase<T1>& X) {
+  coda_extra_debug_funcname();
+  return VectorCwiseOp<T1, op_abs>(X.derived());
 }
 
 template <typename T1>
-inline const Op<T1, op_inv> inv(const Base<T1>& X)
-{
-	coda_extra_debug_funcname();
-	return Op<T1, op_inv>(X.get_ref());
+inline const MatrixCwiseOp<T1, op_ramp> ramp(const MatrixBase<T1>& X) {
+  coda_extra_debug_funcname();
+  return MatrixCwiseOp<T1, op_ramp>(X.derived());
 }
 
 template <typename T1>
-inline const T1& inv(const Op<T1, op_inv>& X)
-{
-	coda_extra_debug_funcname();
-	return X.lhs;
+inline const VectorCwiseOp<T1, op_ramp> ramp(const VectorBase<T1>& X) {
+  coda_extra_debug_funcname();
+  return VectorCwiseOp<T1, op_ramp>(X.derived());
 }
 
+// matrix lu decomposition
 template <typename T1>
-inline const Op<T1, op_trans> trans(const Base<T1>& X)
-{
-	coda_extra_debug_funcname();
-	return Op<T1, op_trans>(X.get_ref());
+inline const MatrixOp<T1, op_lu> lu(const MatrixBase<T1>& X) {
+  coda_extra_debug_funcname();
+  return MatrixOp<T1, op_lu>(X.derived());
+}
+
+// matrix inverse
+template <typename T1>
+inline const MatrixOp<T1, op_inv> inv(const MatrixBase<T1>& X) {
+  coda_extra_debug_funcname();
+  return MatrixOp<T1, op_inv>(X.derived());
+}
+
+// inv(inv(X)) = X
+template <typename T1>
+inline const T1& inv(const MatrixOp<T1, op_inv>& X) {
+  coda_extra_debug_funcname();
+  return X.lhs;
+}
+
+// matrix transpose
+template <typename T1>
+inline const MatrixOp<T1, op_trans> trans(const MatrixBase<T1>& X) {
+  coda_extra_debug_funcname();
+  return MatrixOp<T1, op_trans>(X.derived());
 }
 
 
 
-} /* end of namespace coda */
+}    // namespace coda
 
 
-#endif /* end of include guard: FUNCTIONS_H */
+#endif /* FUNCTIONS_H */

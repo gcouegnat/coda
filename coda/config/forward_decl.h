@@ -1,19 +1,30 @@
 #ifndef FORWARD_DECL_H
 #define FORWARD_DECL_H
 
-namespace coda
-{
+namespace coda {
 template <typename eT> class Matrix;
+template <typename eT> class SymMatrix;
 template <typename eT> class Vector;
 
-template <typename T1, 				typename op_type> class Op;
-template <typename T1, typename T2, typename op_type> class BinaryOp;
-template <typename T1, 				typename op_type> class CwiseOp;
-template <typename T1, typename T2, typename op_type> class CwiseBinaryOp;
+template <typename T1, typename op_type> class MatrixCwiseOp;
+template <typename T1, typename op_type> class MatrixOp;
+template <typename T1, typename T2, typename op_type> class MatrixCwiseExpr;
+template <typename T1, typename T2, typename op_type> class MatrixExpr;
+
+template <typename T1, typename T2, typename op_type> class VectorCwiseExpr;
+template <typename T1, typename op_type> class VectorCwiseOp;
+template <typename T1, typename T2, typename op_type> class VectorExpr;
 
 template<typename T1> class Proxy;
 template<typename T1> class Unwrap;
 
-} /* end of namespace coda */
+class op_times;
 
-#endif /* end of include guard: FORWARD_DECL_H */
+
+template <typename eT> class CooSparseMatrix;
+
+
+
+}    // namespace coda
+
+#endif /* FORWARD_DECL_H */

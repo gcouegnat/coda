@@ -1,10 +1,11 @@
 #ifndef TYPEDEF_H
 #define TYPEDEF_H
 
-namespace coda
-{
+namespace coda {
 typedef unsigned int uint;
-} /* end of namespace coda */
+}    // namespace coda
 
 
-#endif /* end of include guard: TYPEDEF_H */
+using coda::uint;
+
+#endif /* TYPEDEF_H */
