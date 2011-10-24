@@ -5,7 +5,7 @@
 namespace coda
 {
   double  _tic;
-}    // namespace coda 
+}    // namespace coda
 
 
 using namespace coda;
@@ -48,7 +48,7 @@ double Timer::elapsed() const {
   } else {
     return coda::time() - _t;
   }
-  
+
 }
 
 //-----------------------------------------------------------------------------
@@ -65,7 +65,13 @@ void coda::tic() {
 }
 
 double coda::toc() {
-  return coda::time() - coda::_tic;
+  const double elapsed = coda::time() - coda::_tic;
+  std::cout.unsetf(std::ios::scientific);
+  std::cout.setf(std::ios::right);
+  std::cout.setf(std::ios::fixed);
+  std::cout.precision(4);
+  std::cout << "Elasped time is " << elapsed << " seconds." << std::endl;
+  return elapsed;
 }
 
 
