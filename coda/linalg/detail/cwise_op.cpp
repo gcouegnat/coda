@@ -64,7 +64,7 @@ inline void  cwise_op<op_type>::FUNC(Matrix<typename T1::elem_type>& out, const 
         out_mem[i] OP op_type::process(lhs[i], val);  \
     } \
 }\
- 
+
 __apply(apply       ,  =);
 __apply(apply_inplace_plus    , +=);
 __apply(apply_inplace_minus    , -=);
@@ -90,7 +90,7 @@ inline void  cwise_op<op_type>::FUNC(Vector<typename T1::elem_type>& out, const 
         out_mem[i] OP op_type::process(lhs[i], val);  \
     } \
 }\
- 
+
 __apply(apply       ,  =);
 __apply(apply_inplace_plus    , +=);
 __apply(apply_inplace_minus    , -=);

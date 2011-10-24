@@ -6,7 +6,7 @@ namespace coda {
 template <typename op_type>
 class cwise_op {
 public:
-  
+
   template <typename T1> inline static void apply(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
   template <typename T1> inline static void apply_inplace_plus(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);
   template <typename T1> inline static void apply_inplace_minus(Matrix<typename T1::elem_type>& out, const MatrixCwiseOp<T1, op_type>& op);

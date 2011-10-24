@@ -70,39 +70,39 @@ extern "C" {
    * ===========================================================================
    */
 
-  /* 
+  /*
    * Routines with standard 4 prefixes (s, d, c, z)
    */
-  void cblas_sswap(CBLAS_INT N, float *X, CBLAS_INT incX, 
+  void cblas_sswap(CBLAS_INT N, float *X, CBLAS_INT incX,
                    float *Y, CBLAS_INT incY);
-  void cblas_scopy(CBLAS_INT N, const float *X, CBLAS_INT incX, 
+  void cblas_scopy(CBLAS_INT N, const float *X, CBLAS_INT incX,
                    float *Y, CBLAS_INT incY);
   void cblas_saxpy(CBLAS_INT N, float alpha, const float *X,
                    CBLAS_INT incX, float *Y, CBLAS_INT incY);
 
-  void cblas_dswap(CBLAS_INT N, double *X, CBLAS_INT incX, 
+  void cblas_dswap(CBLAS_INT N, double *X, CBLAS_INT incX,
                    double *Y, CBLAS_INT incY);
-  void cblas_dcopy(CBLAS_INT N, const double *X, CBLAS_INT incX, 
+  void cblas_dcopy(CBLAS_INT N, const double *X, CBLAS_INT incX,
                    double *Y, CBLAS_INT incY);
   void cblas_daxpy(CBLAS_INT N, double alpha, const double *X,
                    CBLAS_INT incX, double *Y, CBLAS_INT incY);
 
-  void cblas_cswap(CBLAS_INT N, void *X, CBLAS_INT incX, 
+  void cblas_cswap(CBLAS_INT N, void *X, CBLAS_INT incX,
                    void *Y, CBLAS_INT incY);
-  void cblas_ccopy(CBLAS_INT N, const void *X, CBLAS_INT incX, 
+  void cblas_ccopy(CBLAS_INT N, const void *X, CBLAS_INT incX,
                    void *Y, CBLAS_INT incY);
   void cblas_caxpy(CBLAS_INT N, const void *alpha, const void *X,
                    CBLAS_INT incX, void *Y, CBLAS_INT incY);
 
-  void cblas_zswap(CBLAS_INT N, void *X, CBLAS_INT incX, 
+  void cblas_zswap(CBLAS_INT N, void *X, CBLAS_INT incX,
                    void *Y, CBLAS_INT incY);
-  void cblas_zcopy(CBLAS_INT N, const void *X, CBLAS_INT incX, 
+  void cblas_zcopy(CBLAS_INT N, const void *X, CBLAS_INT incX,
                    void *Y, CBLAS_INT incY);
   void cblas_zaxpy(CBLAS_INT N, const void *alpha, const void *X,
                    CBLAS_INT incX, void *Y, CBLAS_INT incY);
 
 
-  /* 
+  /*
    * Routines with S and D prefix only
    */
   void cblas_srotg(float *a, float *b, float *c, float *s);
@@ -120,7 +120,7 @@ extern "C" {
                    double *Y, CBLAS_INT incY, const double *P);
 
 
-  /* 
+  /*
    * Routines with S D C Z CS and ZD prefixes
    */
   void cblas_sscal(CBLAS_INT N, float alpha, float *X, CBLAS_INT incX);
@@ -136,7 +136,7 @@ extern "C" {
    * ===========================================================================
    */
 
-  /* 
+  /*
    * Routines with standard 4 prefixes (S, D, C, Z)
    */
   void cblas_sgemv(enum CBLAS_ORDER order,
@@ -151,11 +151,11 @@ extern "C" {
                    CBLAS_INT incX, float beta, float *Y, CBLAS_INT incY);
   void cblas_strmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
-                   CBLAS_INT N, const float *A, CBLAS_INT lda, 
+                   CBLAS_INT N, const float *A, CBLAS_INT lda,
                    float *X, CBLAS_INT incX);
   void cblas_stbmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
-                   CBLAS_INT N, CBLAS_INT K, const float *A, CBLAS_INT lda, 
+                   CBLAS_INT N, CBLAS_INT K, const float *A, CBLAS_INT lda,
                    float *X, CBLAS_INT incX);
   void cblas_stpmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
@@ -184,11 +184,11 @@ extern "C" {
                    CBLAS_INT incX, double beta, double *Y, CBLAS_INT incY);
   void cblas_dtrmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
-                   CBLAS_INT N, const double *A, CBLAS_INT lda, 
+                   CBLAS_INT N, const double *A, CBLAS_INT lda,
                    double *X, CBLAS_INT incX);
   void cblas_dtbmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
-                   CBLAS_INT N, CBLAS_INT K, const double *A, CBLAS_INT lda, 
+                   CBLAS_INT N, CBLAS_INT K, const double *A, CBLAS_INT lda,
                    double *X, CBLAS_INT incX);
   void cblas_dtpmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
@@ -217,11 +217,11 @@ extern "C" {
                    CBLAS_INT incX, const void *beta, void *Y, CBLAS_INT incY);
   void cblas_ctrmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
-                   CBLAS_INT N, const void *A, CBLAS_INT lda, 
+                   CBLAS_INT N, const void *A, CBLAS_INT lda,
                    void *X, CBLAS_INT incX);
   void cblas_ctbmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
-                   CBLAS_INT N, CBLAS_INT K, const void *A, CBLAS_INT lda, 
+                   CBLAS_INT N, CBLAS_INT K, const void *A, CBLAS_INT lda,
                    void *X, CBLAS_INT incX);
   void cblas_ctpmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
@@ -250,11 +250,11 @@ extern "C" {
                    CBLAS_INT incX, const void *beta, void *Y, CBLAS_INT incY);
   void cblas_ztrmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
-                   CBLAS_INT N, const void *A, CBLAS_INT lda, 
+                   CBLAS_INT N, const void *A, CBLAS_INT lda,
                    void *X, CBLAS_INT incX);
   void cblas_ztbmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
-                   CBLAS_INT N, CBLAS_INT K, const void *A, CBLAS_INT lda, 
+                   CBLAS_INT N, CBLAS_INT K, const void *A, CBLAS_INT lda,
                    void *X, CBLAS_INT incX);
   void cblas_ztpmv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
                    enum CBLAS_TRANSPOSE TransA, enum CBLAS_DIAG Diag,
@@ -272,7 +272,7 @@ extern "C" {
                    CBLAS_INT N, const void *Ap, void *X, CBLAS_INT incX);
 
 
-  /* 
+  /*
    * Routines with S and D prefixes only
    */
   void cblas_ssymv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
@@ -334,7 +334,7 @@ extern "C" {
                    CBLAS_INT incX, const double *Y, CBLAS_INT incY, double *A);
 
 
-  /* 
+  /*
    * Routines with C and Z prefixes only
    */
   void cblas_chemv(enum CBLAS_ORDER order, enum CBLAS_UPLO Uplo,
@@ -405,7 +405,7 @@ extern "C" {
    * ===========================================================================
    */
 
-  /* 
+  /*
    * Routines with standard 4 prefixes (S, D, C, Z)
    */
   void cblas_sgemm(enum CBLAS_ORDER Order, enum CBLAS_TRANSPOSE TransA,
@@ -438,13 +438,13 @@ extern "C" {
                    float alpha, const float *A, CBLAS_INT lda,
                    float *B, CBLAS_INT ldb);
 
-  void cblas_dgemm(enum CBLAS_ORDER Order, 
-                   enum CBLAS_TRANSPOSE TransA, enum CBLAS_TRANSPOSE TransB, 
-                   CBLAS_INT M, CBLAS_INT N, CBLAS_INT K, 
-                   double alpha, 
-                   const double *A, CBLAS_INT lda, 
+  void cblas_dgemm(enum CBLAS_ORDER Order,
+                   enum CBLAS_TRANSPOSE TransA, enum CBLAS_TRANSPOSE TransB,
+                   CBLAS_INT M, CBLAS_INT N, CBLAS_INT K,
+                   double alpha,
+                   const double *A, CBLAS_INT lda,
                    const double *B, CBLAS_INT ldb,
-                   double beta, 
+                   double beta,
                    double *C, CBLAS_INT ldc);
   void cblas_dsymm(enum CBLAS_ORDER Order, enum CBLAS_SIDE Side,
                    enum CBLAS_UPLO Uplo, CBLAS_INT M, CBLAS_INT N,
@@ -532,7 +532,7 @@ extern "C" {
                    void *B, CBLAS_INT ldb);
 
 
-  /* 
+  /*
    * Routines with prefixes C and Z only
    */
   void cblas_chemm(enum CBLAS_ORDER Order, enum CBLAS_SIDE Side,

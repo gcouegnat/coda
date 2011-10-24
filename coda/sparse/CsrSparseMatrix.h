@@ -9,11 +9,11 @@ template <typename eT>
 class CsrSparseMatrix : public SparseMatrixBase < CsrSparseMatrix<eT> > {
  public:
   typedef eT elem_type;
-  
+
   const uint nrows;   // number of rows
   const uint ncols;   // number of cols
   const uint nnz;     // number of non-zero entries
-  
+
   const Array<uint> rows;
   const Array<uint> cols;
   const Array<eT>   values;

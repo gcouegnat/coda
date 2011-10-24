@@ -20,13 +20,13 @@ class MatrixCwiseOp : public MatrixBase< MatrixCwiseOp<T1, op_type> > {
 
     elem_type operator[](const uint i) const;
     elem_type at(const uint i, const uint j) const;
-    
+
     void assign(Matrix<elem_type>& out) const
-    { 
+    {
       coda_extra_debug_funcname();
       cwise_op<op_type>::apply(out, *this);
     }
-    
+
 
 };
 

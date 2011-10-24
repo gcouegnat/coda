@@ -10,9 +10,9 @@ class MatrixOp : public MatrixBase< MatrixOp<T1, op_type> > {
     const T1& lhs;
     inline ~MatrixOp();
     inline explicit MatrixOp(const T1& in_A);
-    
+
     void assign(Matrix<elem_type>& out) const
-    { 
+    {
       coda_extra_debug_funcname();
       op_type::apply(out, *this);
     }

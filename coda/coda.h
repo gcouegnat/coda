@@ -65,7 +65,7 @@
 #include "coda/linalg/op_times.h"
 
 #include "coda/linalg/cblas_interface.h"
-#include "coda/linalg/clapack_interface.h"
+#include "coda/linalg/lapack_interface.h"
 
 #include "coda/linalg/gemm.h"
 #include "coda/linalg/gemv.h"
@@ -87,24 +87,24 @@
 #include "coda/log/prettyprint_impl.h"
 
 
-#include "coda/linalg/detail/arrayops.inl"
+#include "coda/linalg/detail/arrayops.cpp"
 
-#include "coda/linalg/detail/cwise_op.inl"
-#include "coda/linalg/detail/cwise_expr.inl"
+#include "coda/linalg/detail/cwise_op.cpp"
+#include "coda/linalg/detail/cwise_expr.cpp"
 
-#include "coda/linalg/detail/op_inv.inl"
-#include "coda/linalg/detail/op_lu.inl"
-#include "coda/linalg/detail/op_trans.inl"
-#include "coda/linalg/detail/op_times.inl"
+#include "coda/linalg/detail/op_inv.cpp"
+#include "coda/linalg/detail/op_lu.cpp"
+#include "coda/linalg/detail/op_trans.cpp"
+#include "coda/linalg/detail/op_times.cpp"
 
-#include "coda/linalg/detail/CwiseOp.inl"
-#include "coda/linalg/detail/CwiseExpr.inl"
-#include "coda/linalg/detail/Op.inl"
-#include "coda/linalg/detail/Expr.inl"
+#include "coda/linalg/detail/CwiseOp.cpp"
+#include "coda/linalg/detail/CwiseExpr.cpp"
+#include "coda/linalg/detail/Op.cpp"
+#include "coda/linalg/detail/Expr.cpp"
 
-#include "coda/linalg/detail/Matrix.inl"
-#include "coda/linalg/detail/SymMatrix.inl"
-#include "coda/linalg/detail/Vector.inl"
+#include "coda/linalg/detail/Matrix.cpp"
+#include "coda/linalg/detail/SymMatrix.cpp"
+#include "coda/linalg/detail/Vector.cpp"
 
 #include "coda/linalg/operators.h"
 #include "coda/linalg/functions.h"

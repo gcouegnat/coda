@@ -104,8 +104,6 @@ inline void prettyprint::print(std::ostream& o, SymMatrix<eT>& M) {
   o.flush();
   stream_state.restore(o);
 }
-
-
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline void prettyprint::print(std::ostream& o, Vector<eT>& V) {

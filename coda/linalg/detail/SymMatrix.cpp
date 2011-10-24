@@ -3,7 +3,7 @@ using namespace coda;
 #include <iostream>
 #include <iomanip>
 #include <coda/utils/access.h>
-// 
+//
 // //-----------------------------------------------------------------------------
 // template <typename eT>
 // inline SymMatrix<eT>::~Matrix() {
@@ -318,7 +318,7 @@ inline void SymMatrix<eT>::print(std::string text) {
 //   cwise_expr<op_type>::apply_inplace_div(*this, op);
 //   return *this;
 // }
-// 
+//
 // //-----------------------------------------------------------------------------
 // // MatrixOp
 // //-----------------------------------------------------------------------------
@@ -336,7 +336,7 @@ inline void SymMatrix<eT>::print(std::string text) {
 //   op_type::apply(*this, op);
 //   return *this;
 // }
-// 
+//
 // //-----------------------------------------------------------------------------
 // // MatrixExpr
 // //-----------------------------------------------------------------------------
@@ -346,7 +346,7 @@ inline void SymMatrix<eT>::print(std::string text) {
 //   coda_extra_debug_funcname();
 //   op_type::apply(*this, op);
 // }
-// 
+//
 // template <typename eT>
 // template <typename T1, typename T2, typename op_type>
 // inline const SymMatrix<eT>& SymMatrix<eT>::operator= (const MatrixExpr<T1, T2, op_type>& op) {
@@ -354,7 +354,7 @@ inline void SymMatrix<eT>::print(std::string text) {
 //   op_type::apply(*this, op);
 //   return *this;
 // }
-// 
+//
 // template <typename eT>
 // template <typename T1, typename T2>
 // inline const SymMatrix<eT>& SymMatrix<eT>::operator+= (const MatrixExpr<T1, T2, op_times>& op) {
@@ -362,4 +362,4 @@ inline void SymMatrix<eT>::print(std::string text) {
 //   op_times::apply_inplace_plus(*this, op);
 //   return *this;
 // }
-// 
+//

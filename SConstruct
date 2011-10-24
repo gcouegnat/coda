@@ -9,7 +9,7 @@ vars.Add(EnumVariable('blas','BLAS backend','default',allowed_values=('default',
 env=Environment(variables = vars)
 Help(vars.GenerateHelpText(env))
 
-#env.Replace(CXX="/usr/local/bin/g++")
+env.Replace(CXX="/opt/local/bin/g++")
 
 #------------------------------------------------------------------------------
 # Compilation mode
@@ -20,7 +20,7 @@ if mode == 'debug':
 elif mode == 'extra_debug':
   env.Append(CXXFLAGS=['-Wall','-Werror','-g','-O0','-DCODA_EXTRA_DEBUG'])
 elif mode == 'optim':
-  env.Append(CXXFLAGS=['-O3', '-DNDEBUG','-funroll-loops'])
+  env.Append(CXXFLAGS=['-O3', '-DNDEBUG','-funroll-loops','-ftree-vectorize'])
 
 #------------------------------------------------------------------------------
 # BLAS library 
@@ -56,7 +56,7 @@ elif blas == 'atlas':
     env.Append(LIBPATH=['/opt/local/lib'])
   elif platform.system=='Linux':
     env.Append(LIBPATH=['/opt/hpc/lib'])
-  env.Append(LIBS=['lapack','f77blas','cblas','atlas'])
+  env.Append(LIBS=['ptlapack','ptf77blas','ptcblas','atlas'])
     
 
 #------------------------------------------------------------------------------
@@ -77,8 +77,4 @@ lib = SConscript('lib/SConscript')
 test = SConscript('test/SConscript')
 
 Alias('all',['lib','test'])
-<<<<<<< HEAD
 Default('all')
-=======
-Default('all')
->>>>>>> 59a8ade9c2a123a466a1b4ad6817c4be772417cb

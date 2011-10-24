@@ -10,7 +10,7 @@ class SymMatrix : public Matrix<eT> {
 
     // constructor/destructor
     SymMatrix(uint in_rows, uint in_cols);
-    
+
     template<typename T1>
     SymMatrix(const MatrixBase<T1>& X) { Matrix<eT>::operator=(X.derived()); }
 
@@ -23,7 +23,7 @@ class SymMatrix : public Matrix<eT> {
    //   inline const SymMatrix& operator-=(const eT val);
    //   inline const SymMatrix& operator*=(const eT val);
    //   inline const SymMatrix& operator/=(const eT val);
-   // 
+   //
    //   // operations with another matrix
    //   inline SymMatrix(const SymMatrix& m);
    //   inline const SymMatrix& operator= (const SymMatrix& m);
@@ -31,7 +31,7 @@ class SymMatrix : public Matrix<eT> {
    //   inline const SymMatrix& operator-=(const SymMatrix& m);
    //   inline const SymMatrix& operator%=(const SymMatrix& m);
    //   inline const SymMatrix& operator/=(const SymMatrix& m);
-   // 
+   //
    //   // element access
    //   inline eT& operator [](const uint i);
    //   inline eT  operator [](const uint i) const;
@@ -39,27 +39,27 @@ class SymMatrix : public Matrix<eT> {
       inline eT  at(const uint i, const uint j) const;
       inline eT& operator()(const uint i, const uint j);
       inline eT  operator()(const uint i, const uint j) const;
-   // 
+   //
    //   // memory access
    //   inline          eT* memptr();
    //   inline const    eT* memptr() const;
-   // 
+   //
    //   // size management
    //   inline void resize(const uint in_rows, const uint in_cols);
    //   inline void reshape(const uint in_rows, const uint in_cols);
    //   inline uint size();
-   // 
+   //
    //   // value initialization
    //   inline const SymMatrix& fill(const eT val);
    //   inline const SymMatrix& zeros();
    //   inline const SymMatrix& ones();
    //   inline const SymMatrix& eyes();
    //   inline const SymMatrix& randu();
-   // 
+   //
    //   // misc.
    //   inline const SymMatrix& symmetrize();
      inline void print(std::string text = "");
-   // 
+   //
    //   // interface with expression template
    //   // component-wise operator
    //   template <typename T1,              typename op_type> inline       SymMatrix(const MatrixCwiseOp<T1, op_type>& op);
@@ -87,7 +87,7 @@ class SymMatrix : public Matrix<eT> {
    //   template <typename T1, typename T2, typename op_type> inline const SymMatrix& operator= (const MatrixExpr<T1, T2, op_type>& op);
    //   //optimization for matrix-matrix product
    //   template <typename T1, typename T2 > inline const SymMatrix& operator+= (const MatrixExpr<T1, T2, op_times>& op);
-   // 
+   //
    protected:
       inline void init(uint in_rows, uint in_cols);
 };

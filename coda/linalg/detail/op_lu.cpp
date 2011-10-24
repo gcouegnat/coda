@@ -13,12 +13,9 @@ inline void op_lu::apply(Matrix<typename T1::elem_type>& out, const MatrixOp<T1,
   int work_len = nrows ;
   eT* work = new eT[work_len];
   lapack::getrf(&nrows, &ncols, out.memptr(), &nrows, ipiv, &info);
-
   if (info > 0) {
     error("op_inv::apply(): Matrix is singular");
   }
-
   delete [] ipiv;
   delete [] work;
-  
 }

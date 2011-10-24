@@ -20,10 +20,10 @@ class MatrixCwiseExpr : public MatrixBase< MatrixCwiseExpr<T1, T2, op_type> > {
 
     elem_type operator[](const uint i) const;
     elem_type at(const uint i, const uint j) const;
-    
+
     template <typename Matrix>
     void assign(Matrix& out) const
-    { 
+    {
       coda_extra_debug_funcname();
       cwise_expr<op_type>::apply(out, *this);
     }

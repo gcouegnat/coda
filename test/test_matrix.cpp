@@ -27,6 +27,16 @@ int main (int argc, char const *argv[])
   C.print("0.5*(trans(A)+A)");
    
   B.resize(3,3);
+  
+  B.fill();
+  B.print("B:");
+  
+  for(uint i=0; i < B.nelem; ++i)
+  {
+    std::cout << i << ": " << B[i] << std::endl;
+  }
+
+  
   B.zeros();
   B(0,0)=100.0;
   B(1,1)=200.0;
@@ -35,7 +45,6 @@ int main (int argc, char const *argv[])
   B(1,2)=-10.0;
   B(2,2)=40.0;
   
-  B.print("B:");
   
   Matrix<scalar> D(3,3);
   info("Inverse");
@@ -47,6 +56,17 @@ int main (int argc, char const *argv[])
   D.print("D = lu(B):");
   
   
+  D=lu(trans(B));
+  D.print("D = lu(trans(B)):");
+      
+  Vector<scalar> x(3), y(3);
+  x[0]=1;  x[1]=2;   x[2]=3;
+  y=B*x;
+  y.print("y=B*x:");
+  y=trans(B)*x;
+  y.print("y=B'*x:");
+  
+      
       
   return 0;
 }

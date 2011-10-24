@@ -1,5 +1,5 @@
-#ifndef CLAPACK_INTERFACE_H
-#define CLAPACK_INTERFACE_H
+#ifndef CODA_LINALG_LAPACK_INTERFACE_H
+#define CODA_LINALG_LAPACK_INTERFACE_H
 
 #include "backend.h"
 #include "clapack.h"
@@ -57,4 +57,4 @@ namespace coda
   } /* namespace coda */
 
 
-#endif /* CLAPACK_INTERFACE_H */
+#endif /* CODA_LINALG_LAPACK_INTERFACE_H */

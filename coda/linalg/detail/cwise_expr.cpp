@@ -8,7 +8,7 @@ inline eT cwise_expr<op_type>::process(const eT a, const eT b) {
   error("cwise_expr::process(): unknown op_type");
 }
 
-template<> template<typename eT> 
+template<> template<typename eT>
 inline eT cwise_expr<op_plus >::process(const eT a, const eT b) {
   return a + b;
 }
@@ -45,7 +45,7 @@ inline void  cwise_expr<op_type>::FUNC(Matrix<typename T1::elem_type>& out, cons
       } \
     } \
 } \
- 
+
 __apply(apply               ,  =);
 __apply(apply_inplace_plus  , +=);
 __apply(apply_inplace_minus , -=);
@@ -74,7 +74,7 @@ inline void  cwise_expr<op_type>::FUNC(Vector<typename T1::elem_type>& out, cons
         out_mem[i] OP op_type::process(lhs[i], rhs[i]); \
     } \
 } \
- 
+
 __apply(apply               , =);
 __apply(apply_inplace_plus  , +=);
 __apply(apply_inplace_minus , -=);

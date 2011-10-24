@@ -8,13 +8,13 @@ inline static void apply(Matrix<eT>& C, const Matrix<eT>& A, const Matrix<eT>& B
   coda_extra_debug_funcname();
   coda_extra_debug_print("Using ["BLAS_IMPL"] cblas::gemm()");
 
-  cblas::gemm<eT>(cblas::CblasRowMajor, cblas::CblasNoTrans, cblas::CblasNoTrans,
+  cblas::gemm<eT>(cblas::CblasColMajor, cblas::CblasNoTrans, cblas::CblasNoTrans,
                   C.nrows, C.ncols, A.ncols, // K
                   alpha,
-                  A.mem, A.ncols, // LDA
-                  B.mem, B.ncols, // LDB
+                  A.mem, A.nrows, // LDA
+                  B.mem, B.nrows, // LDB
                   beta,
-                  C.memptr(), C.ncols); // LDC
+                  C.memptr(), C.nrows); // LDC
 
   // for(uint i=0; i<A.nrows; ++i)
   // {

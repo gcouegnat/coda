@@ -23,7 +23,7 @@ static char buffer[buffer_size];
     va_start(aptr, msg); \
     vsnprintf(buffer, buffer_size, msg.c_str(), aptr); \
     va_end(aptr); \
- 
+
 //-----------------------------------------------------------------------------
 void
 coda::set_log_level(int log_level) {
@@ -59,7 +59,7 @@ void coda::error(std::string msg, ...) {
   const int log_level = coda::parameters["log_level"];
   if (log_level <= ERROR) {
     read(buffer, msg);
-    std::string s = std::string("*** Error ***"); 
+    std::string s = std::string("*** Error ***");
     std::cerr.flush();
     std::cerr << bold << red <<  s << coda::colors::nocolor << " " << buffer << std::endl;
     std::cerr.flush();

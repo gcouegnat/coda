@@ -134,22 +134,22 @@ inline eT  Matrix<eT>::operator [](const uint i) const {
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline eT& Matrix<eT>::at(const uint i, const uint j) {
-  return access::rw(mem[i * ncols + j]);
+  return access::rw(mem[i + nrows * j]);
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline eT  Matrix<eT>::at(const uint i, const uint j) const {
-  return mem[i * ncols + j];
+  return mem[i + nrows * j];
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline eT& Matrix<eT>::operator()(const uint i, const uint j) {
-  return access::rw(mem[i * ncols + j]);
+  return access::rw(mem[i + nrows * j]);
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
 inline eT  Matrix<eT>::operator()(const uint i, const uint j) const {
-  return mem[i * ncols + j];
+  return mem[i + nrows * j];
 }
 //-----------------------------------------------------------------------------
 template <typename eT>
