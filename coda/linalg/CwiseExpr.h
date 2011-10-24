@@ -47,6 +47,6 @@ class VectorCwiseExpr : public VectorBase< VectorCwiseExpr<T1, T2, op_type> > {
     elem_type operator[](const uint i) const;
 };
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* CWISEBINARYOP_H */

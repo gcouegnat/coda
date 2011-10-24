@@ -80,7 +80,7 @@ class Vector : public VectorBase< Vector<eT> > {
 
 };
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif  /* VECTOR_H */
 

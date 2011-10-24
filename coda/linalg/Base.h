@@ -10,6 +10,6 @@ class Base {
     }
 };
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* BASE_H */

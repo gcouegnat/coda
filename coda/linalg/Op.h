@@ -18,5 +18,5 @@ class MatrixOp : public MatrixBase< MatrixOp<T1, op_type> > {
     }
 };
 
-} /* namespace coda */
+}    // namespace coda
 #endif /* OP_H */

@@ -8,6 +8,6 @@
       inline static void apply(Matrix<typename T1::elem_type>& out, const MatrixOp<T1, op_lu>& in);
   };
 
-  } /* namespace coda */
+  }    // namespace coda
 
 #endif /* OP_LU_H */

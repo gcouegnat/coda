@@ -11,6 +11,6 @@ class MatrixBase {
     }
 };
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* MATRIXBASE_H */

@@ -2,12 +2,18 @@
 #include <sys/time.h>
 #include "Timer.h"
 
+namespace coda
+{
+  double  _tic;
+}    // namespace coda 
+
+
 using namespace coda;
 
 //-----------------------------------------------------------------------------
 Timer::Timer(std::string task) {
   _task = task;
-  _t = coda::_time();
+  _t = coda::time();
   start();
 }
 
@@ -25,33 +31,44 @@ void Timer::rename(std::string task) {
 
 //-----------------------------------------------------------------------------
 void Timer::start() {
-  _t = coda::_time();
+  _t = coda::time();
   _stopped = false;
 }
 
 //-----------------------------------------------------------------------------
 void Timer::stop() {
-  _t = coda::_time() - _t;
+  _t = coda::time() - _t;
   _stopped = true;
-  std::cout << "Elasped time";
-  if (_task.length() > 0) {
-    std::cout << " [" << _task << "]";
+}
+
+//-----------------------------------------------------------------------------
+double Timer::elapsed() const {
+  if (_stopped == true) {
+    return _t;
+  } else {
+    return coda::time() - _t;
   }
-  std::cout << ": " << value() << "s" << std::endl;
+  
 }
 
 //-----------------------------------------------------------------------------
-double Timer::value() const {
-  return _t;
-}
-
-//-----------------------------------------------------------------------------
-double coda::_time() {
+double coda::time() {
   struct timeval tv;
   struct timezone tz;
   gettimeofday(&tv, &tz);
   return static_cast < double >(tv.tv_sec) + static_cast <
          double >(tv.tv_usec) * 1e-6f;
 }
+
+void coda::tic() {
+  coda::_tic = coda::time();
+}
+
+double coda::toc() {
+  return coda::time() - coda::_tic;
+}
+
+
+
 
 //-----------------------------------------------------------------------------

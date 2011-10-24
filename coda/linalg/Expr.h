@@ -30,6 +30,6 @@ class VectorExpr : public VectorBase< VectorExpr<T1, T2, op_type> > {
 };
 
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* BINARYOP_H */

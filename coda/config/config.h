@@ -25,6 +25,6 @@ namespace coda {
 #endif
 
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* CONFIG_H */

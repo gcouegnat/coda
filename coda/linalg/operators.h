@@ -232,6 +232,6 @@ inline const VectorExpr<T1, T2, op_times> operator* (const MatrixBase<T1>& lhs, 
 }
 
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* OPERATORS_H */

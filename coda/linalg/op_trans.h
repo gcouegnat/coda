@@ -13,6 +13,6 @@ class op_trans {
 
 };
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* OP_TRANS_H */

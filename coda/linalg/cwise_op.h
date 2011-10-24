@@ -32,7 +32,7 @@ class op_neg                :  public cwise_op<op_neg            >   {};
 class op_abs                :  public cwise_op<op_abs            >   {};
 class op_ramp               :  public cwise_op<op_ramp           >   {};
 
-} /* namespace coda */
+}    // namespace coda
 
 
 

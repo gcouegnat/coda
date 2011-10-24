@@ -41,5 +41,5 @@ class VectorUnwrap< Vector<eT> > {
     }
 };
 
-} /* namespace coda */
+}    // namespace coda
 #endif /* UNWRAP_H */

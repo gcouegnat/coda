@@ -27,7 +27,7 @@ class op_minus  : public cwise_expr<op_minus>    {};
 class op_schur  : public cwise_expr<op_schur>    {};
 class op_div    : public cwise_expr<op_div>      {};
 
-} /* namespace coda */
+}    // namespace coda
 
 
 #endif /* EOP_CORE_H */

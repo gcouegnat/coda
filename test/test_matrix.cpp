@@ -55,9 +55,10 @@ int main (int argc, char const *argv[])
   D=lu(B);
   D.print("D = lu(B):");
   
-  
+  tic();
   D=lu(trans(B));
   D.print("D = lu(trans(B)):");
+  std::cout << "Elasped: " << toc() << std::endl;    
       
   Vector<scalar> x(3), y(3);
   x[0]=1;  x[1]=2;   x[2]=3;

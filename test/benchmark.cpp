@@ -18,34 +18,16 @@ void benchmark_matmul_cblas(uint nrepeat = 1000) {
   C.fill(2.0);
   for (uint i = 0; i < nrepeat; ++i) {
     Matrix<eT> BtC(B.ncols, C.ncols);
-    cblas::gemm<eT>(cblas::CblasRowMajor,
-                    cblas::CblasTrans,
-                    cblas::CblasNoTrans,
-                    BtC.nrows, // M
-                    BtC.ncols, // N
-                    B.ncols, // K
-                    eT(1.0),
-                    B.mem,
-                    B.ncols, // LDA
-                    C.mem,
-                    C.ncols, // LDB
-                    eT(0.0),
-                    BtC.memptr(),
-                    BtC.ncols); // LDC
-    cblas::gemm<eT>(cblas::CblasRowMajor,
-                    cblas::CblasNoTrans,
-                    cblas::CblasNoTrans,
-                    K.nrows, // M
-                    K.ncols, // N
-                    BtC.ncols, // K
-                    eT(1.0),
-                    BtC.mem,
-                    BtC.ncols, // LDA
-                    B.mem,
-                    B.ncols, // LDB
-                    eT(0.0),
-                    K.memptr(),
-                    K.ncols); // LDC
+
+    cblas::gemm<eT>(cblas::CblasRowMajor, cblas::CblasTrans,
+                    cblas::CblasNoTrans, BtC.nrows, BtC.ncols, B.ncols, eT(1.0),
+                    B.mem, B.ncols, C.mem, C.ncols, eT(0.0), BtC.memptr(),
+                    BtC.ncols); 
+
+    cblas::gemm<eT>(cblas::CblasRowMajor, cblas::CblasNoTrans,
+                    cblas::CblasNoTrans, K.nrows, K.ncols, BtC.ncols, eT(1.0),
+                    BtC.mem, BtC.ncols, B.mem, B.ncols, eT(0.0), K.memptr(),
+                    K.ncols); 
   }
   K.print("K =");
 }

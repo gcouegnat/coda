@@ -8,7 +8,7 @@ bool rand_seeded = false;
 template <typename eT>
 inline eT randu() {
   if (rand_seeded == false) {
-    unsigned int s = static_cast<long int>(time(0));
+    unsigned int s = static_cast<long int>(coda::time());
     std::srand(s);
     rand_seeded = true;
   }

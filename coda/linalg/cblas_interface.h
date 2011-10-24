@@ -1,5 +1,5 @@
-#ifndef CODA_CBLAS_H
-#define CODA_CBLAS_H
+#ifndef CODA_LINALG_CBLAS_INTERFACE_H_
+#define CODA_LINALG_CBLAS_INTERFACE_H_
 
 #include "backend.h"
 #include "cblas.h"
@@ -39,23 +39,26 @@ inline double dot(const int n, const double* x, const double* y) {
 // gemv
 //-----------------------------------------------------------------------------
 template <typename eT>
-inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA, const int M, const int N,
-                 const eT alpha, const eT* A, const int lda, const eT* X, const int incX, const eT beta,
+inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA,
+                 const int M, const int N,  const eT alpha, const eT* A,
+                 const int lda, const eT* X, const int incX, const eT beta,
                  eT* Y, const int incY) {
   coda_extra_debug_funcname();
   error("cblas::gemv() is only defined for float or double");
 }
 template <>
-inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA, const int M, const int N,
-                 const float alpha, const float* A, const int lda, const float* X, const int incX, const float beta,
+inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA,
+                 const int M, const int N, const float alpha, const float* A,
+                 const int lda, const float* X, const int incX, const float beta,
                  float* Y, const int incY) {
   coda_extra_debug_funcname();
   cblas_sgemv(Order, TransA, M, N, alpha, A, lda, X, incX, beta, Y, incY);
 }
 template <>
-inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA, const int M, const int N,
-                 const double alpha, const double* A, const int lda, const double* X, const int incX, const double beta,
-                 double* Y, const int incY) {
+inline void gemv(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA,
+                 const int M, const int N, const double alpha, const double* A,
+                 const int lda, const double* X, const int incX,
+                 const double beta, double* Y, const int incY) {
   coda_extra_debug_funcname();
   cblas_dgemv(Order, TransA, M, N, alpha, A, lda, X, incX, beta, Y, incY);
 }
@@ -89,7 +92,6 @@ inline void gemm(const enum CBLAS_ORDER Order, const enum CBLAS_TRANSPOSE TransA
   coda_extra_debug_funcname();
   cblas_dgemm(Order, TransA, TransB, M, N, K, alpha, A, lda , B, ldb, beta, C, ldc);
 }
-} /* namespace cblas */
-
-}/* namespace coda */
-#endif        /* CODA_CBLAS_H */
+}    // namespace cblas
+}    // namespace coda
+#endif  // CODA_LINALG_CBLAS_INTERFACE_H_

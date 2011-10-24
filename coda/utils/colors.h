@@ -44,5 +44,5 @@ namespace colors {
   const std::string bold_cyan    = "";
 #endif
 }
-} /* namespace coda */
+}    // namespace coda
 #endif /* COLORS_H */

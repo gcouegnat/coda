@@ -73,5 +73,5 @@ inline void coda_dummy() {
 #define coda_extra_debug_info(msg)
 #define coda_extra_debug_funcname       coda_dummy
 #endif
-} /* namespace coda */
+}    // namespace coda
 #endif /* DEBUG_H */

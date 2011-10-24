@@ -240,7 +240,7 @@ class Proxy< VectorExpr<T1, T2, op_type> > {
 };
 
 
-} /* namespace coda */
+}    // namespace coda
 
 
 #endif /* PROXY_H */

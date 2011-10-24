@@ -32,5 +32,5 @@ inline static void apply(Matrix<eT>& C, const Matrix<eT>& A, const Matrix<eT>& B
 
 }
 };
-} /* namespace coda */
+}    // namespace coda
 #endif /* GEMM_H */

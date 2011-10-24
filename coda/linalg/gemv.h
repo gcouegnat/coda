@@ -31,5 +31,5 @@ class gemv {
 
 };
 
-} /* namespace coda */
+}    // namespace coda
 #endif /* GEMV_H */

@@ -13,6 +13,6 @@ struct is_same_type<T1, T1> {
   static const bool value = true;
 };
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* TRAITS_H */

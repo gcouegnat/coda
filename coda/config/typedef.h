@@ -3,7 +3,7 @@
 
 namespace coda {
 typedef unsigned int uint;
-} /* namespace coda */
+}    // namespace coda
 
 
 using coda::uint;

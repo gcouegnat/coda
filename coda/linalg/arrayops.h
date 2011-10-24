@@ -41,6 +41,6 @@ class arrayops {
 
 };
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* ARRAYOPS_H */

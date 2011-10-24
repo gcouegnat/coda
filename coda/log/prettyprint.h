@@ -34,6 +34,6 @@ class prettyprint {
 };
 
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif

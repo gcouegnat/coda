@@ -39,6 +39,6 @@ bool operator<(const tuple<T1, T2, T3>& x, const tuple<T1, T2, T3>& y) {
 }
 
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* TUPLE_H */

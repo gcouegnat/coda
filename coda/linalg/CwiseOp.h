@@ -49,6 +49,6 @@ class VectorCwiseOp : public VectorBase< VectorCwiseOp<T1, op_type> > {
 };
 
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* CWISEOP_H */

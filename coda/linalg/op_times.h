@@ -16,6 +16,6 @@ class op_times {
 
 };
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* OP_TIMES_H */

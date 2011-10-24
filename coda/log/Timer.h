@@ -13,8 +13,7 @@ class Timer {
 
     void start();
     void stop();
-
-    double value() const;
+    double elapsed() const;
 
     void rename(std::string task);
 
@@ -26,7 +25,9 @@ class Timer {
 
 };
 
-double _time();
+double time();
+void tic();
+double toc();
 
-} // namespace coda
+}   // namespace coda
 #endif // TIMER_H

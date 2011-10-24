@@ -25,6 +25,6 @@ template <typename eT> class CooSparseMatrix;
 
 
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* FORWARD_DECL_H */

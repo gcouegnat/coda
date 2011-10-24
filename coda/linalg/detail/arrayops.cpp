@@ -67,12 +67,7 @@ inline  void arrayops::inplace_div(eT* dest, const eT* src, const uint nelem) {
 // array op= scalar
 //-----------------------------------------------------------------------------
 #define __apply(oper)                           \
-uint i, j;                                      \
-for (i = 0, j = 1; j < nelem; i += 2, j += 2) { \
-  dest[i] oper src[i];                          \
-  dest[j] oper src[j];                          \
-}                                               \
-if (i < nelem) {                                \
+for (uint i = 0; i < nelem; ++i) {                   \
   dest[i] oper val;                             \
 }                                               \
 //-----------------------------------------------------------------------------

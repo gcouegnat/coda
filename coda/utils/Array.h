@@ -71,6 +71,6 @@ class Array {
 
 
 
-} /* namespace coda */
+}    // namespace coda
 
 #endif /* ARRAY_H */

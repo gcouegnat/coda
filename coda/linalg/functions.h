@@ -118,7 +118,7 @@ inline const MatrixOp<T1, op_trans> trans(const MatrixBase<T1>& X) {
 
 
 
-} /* namespace coda */
+}    // namespace coda
 
 
 #endif /* FUNCTIONS_H */
