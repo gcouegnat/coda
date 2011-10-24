@@ -3,7 +3,7 @@
 using coda::Matrix;
 
 
-typedef float scalar;
+typedef double scalar;
 
 int main (int argc, char const *argv[])
 {
@@ -41,7 +41,6 @@ int main (int argc, char const *argv[])
   info("Inverse");
   D=inv(B);
   D.print("D = inv(B):");
-    
   
   info("LU");
   D=lu(B);

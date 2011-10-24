@@ -1,34 +1,7 @@
 #ifndef CLAPACK_INTERFACE_H
 #define CLAPACK_INTERFACE_H
 
-#ifdef CODA_WITH_VECLIB
-  #define CBLAS_INT int
-  #define BLAS_IMPL "VecLib (Atlas)"
-  #ifndef CBLAS_INDEX
-    #define CBLAS_INDEX int
-  #endif
-#endif
-
-#ifdef CODA_WITH_GOTOBLAS
-  #ifdef BLASINT
-    #define CBLAS_INT BLAS_INT
-  #else
-    #define CBLAS_INT int
-  #endif
-  #define BLAS_IMPL "GotoBLAS2"
-  #ifndef CBLAS_INDEX
-    #define CBLAS_INDEX size_t
-  #endif
-#endif
-
-#ifdef CODA_WITH_GENERICBLAS
-  #define CBLAS_INT int
-  #define BLAS_IMPL "Generic CBLAS"
-  #ifndef CBLAS_INDEX
-    #define CBLAS_INDEX int
-  #endif
-#endif
-
+#include "backend.h"
 #include "clapack.h"
 
 namespace coda
