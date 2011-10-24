@@ -77,4 +77,8 @@ lib = SConscript('lib/SConscript')
 test = SConscript('test/SConscript')
 
 Alias('all',['lib','test'])
+<<<<<<< HEAD
 Default('all')
+=======
+Default('all')
+>>>>>>> 59a8ade9c2a123a466a1b4ad6817c4be772417cb
