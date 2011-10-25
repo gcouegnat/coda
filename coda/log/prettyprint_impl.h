@@ -79,7 +79,7 @@ inline void prettyprint::print(std::ostream& o, Matrix<eT>& M) {
     for (uint j = 0; j < ncols; ++j) {
       o.width(width);
       prettyprint::print_elem(o, M.at(i, j));
-      o << ' ';
+      o << '\n';
     }
     o << '\n';
   }
