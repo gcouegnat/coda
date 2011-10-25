@@ -36,22 +36,22 @@ class Vector : public VectorBase< Vector<eT> > {
     inline const Vector& operator/=(const Vector& v);
 
     // interface with expression template
-    template <typename T1,              typename op_type> inline       Vector(const VectorCwiseOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Vector& operator= (const VectorCwiseOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Vector& operator+=(const VectorCwiseOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Vector& operator-=(const VectorCwiseOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Vector& operator%=(const VectorCwiseOp<T1, op_type>& op);
-    template <typename T1,              typename op_type> inline const Vector& operator/=(const VectorCwiseOp<T1, op_type>& op);
-
-    template <typename T1, typename T2, typename op_type> inline       Vector(const VectorCwiseExpr<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Vector& operator= (const VectorCwiseExpr<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Vector& operator+=(const VectorCwiseExpr<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Vector& operator-=(const VectorCwiseExpr<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Vector& operator%=(const VectorCwiseExpr<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Vector& operator/=(const VectorCwiseExpr<T1, T2, op_type>& op);
-
-    template <typename T1, typename T2, typename op_type> inline       Vector(const VectorExpr<T1, T2, op_type>& op);
-    template <typename T1, typename T2, typename op_type> inline const Vector& operator= (const VectorExpr<T1, T2, op_type>& op);
+    // template <typename T1,              typename op_type> inline       Vector(const VectorCwiseOp<T1, op_type>& op);
+    // template <typename T1,              typename op_type> inline const Vector& operator= (const VectorCwiseOp<T1, op_type>& op);
+    // template <typename T1,              typename op_type> inline const Vector& operator+=(const VectorCwiseOp<T1, op_type>& op);
+    // template <typename T1,              typename op_type> inline const Vector& operator-=(const VectorCwiseOp<T1, op_type>& op);
+    // template <typename T1,              typename op_type> inline const Vector& operator%=(const VectorCwiseOp<T1, op_type>& op);
+    // template <typename T1,              typename op_type> inline const Vector& operator/=(const VectorCwiseOp<T1, op_type>& op);
+    // 
+    // template <typename T1, typename T2, typename op_type> inline       Vector(const VectorCwiseExpr<T1, T2, op_type>& op);
+    // template <typename T1, typename T2, typename op_type> inline const Vector& operator= (const VectorCwiseExpr<T1, T2, op_type>& op);
+    // template <typename T1, typename T2, typename op_type> inline const Vector& operator+=(const VectorCwiseExpr<T1, T2, op_type>& op);
+    // template <typename T1, typename T2, typename op_type> inline const Vector& operator-=(const VectorCwiseExpr<T1, T2, op_type>& op);
+    // template <typename T1, typename T2, typename op_type> inline const Vector& operator%=(const VectorCwiseExpr<T1, T2, op_type>& op);
+    // template <typename T1, typename T2, typename op_type> inline const Vector& operator/=(const VectorCwiseExpr<T1, T2, op_type>& op);
+    // 
+    // template <typename T1, typename T2, typename op_type> inline       Vector(const VectorExpr<T1, T2, op_type>& op);
+    // template <typename T1, typename T2, typename op_type> inline const Vector& operator= (const VectorExpr<T1, T2, op_type>& op);
 
 
     inline void resize(const uint in_nelem);

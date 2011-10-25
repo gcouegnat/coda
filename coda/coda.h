@@ -57,12 +57,12 @@
 #include "coda/linalg/SymMatrix.h"
 #include "coda/linalg/Vector.h"
 
-#include "coda/linalg/cwise_op.h"
-#include "coda/linalg/cwise_expr.h"
-#include "coda/linalg/op_inv.h"
-#include "coda/linalg/op_lu.h"
-#include "coda/linalg/op_trans.h"
-#include "coda/linalg/op_times.h"
+// #include "coda/linalg/cwise_op.h"
+// #include "coda/linalg/cwise_expr.h"
+// #include "coda/linalg/op_inv.h"
+// #include "coda/linalg/op_lu.h"
+// #include "coda/linalg/op_trans.h"
+// #include "coda/linalg/op_times.h"
 
 #include "coda/linalg/cblas_interface.h"
 #include "coda/linalg/lapack_interface.h"
@@ -70,13 +70,13 @@
 #include "coda/linalg/gemm.h"
 #include "coda/linalg/gemv.h"
 
-#include "coda/linalg/CwiseOp.h"
-#include "coda/linalg/CwiseExpr.h"
-#include "coda/linalg/Op.h"
-#include "coda/linalg/Expr.h"
-
+// #include "coda/linalg/CwiseOp.h"
+// #include "coda/linalg/CwiseExpr.h"
+// #include "coda/linalg/Op.h"
+// #include "coda/linalg/Expr.h"
+// 
 #include "coda/linalg/Proxy.h"
-#include "coda/linalg/Unwrap.h"
+// #include "coda/linalg/Unwrap.h"
 
 
 #include "coda/utils/Array.h"
@@ -89,24 +89,24 @@
 
 #include "coda/linalg/detail/arrayops.cpp"
 
-#include "coda/linalg/detail/cwise_op.cpp"
-#include "coda/linalg/detail/cwise_expr.cpp"
-
-#include "coda/linalg/detail/op_inv.cpp"
-#include "coda/linalg/detail/op_lu.cpp"
-#include "coda/linalg/detail/op_trans.cpp"
-#include "coda/linalg/detail/op_times.cpp"
-
-#include "coda/linalg/detail/CwiseOp.cpp"
-#include "coda/linalg/detail/CwiseExpr.cpp"
-#include "coda/linalg/detail/Op.cpp"
-#include "coda/linalg/detail/Expr.cpp"
+// #include "coda/linalg/detail/cwise_op.cpp"
+// #include "coda/linalg/detail/cwise_expr.cpp"
+// 
+// #include "coda/linalg/detail/op_inv.cpp"
+// #include "coda/linalg/detail/op_lu.cpp"
+// #include "coda/linalg/detail/op_trans.cpp"
+// #include "coda/linalg/detail/op_times.cpp"
+// 
+// #include "coda/linalg/detail/CwiseOp.cpp"
+// #include "coda/linalg/detail/CwiseExpr.cpp"
+// #include "coda/linalg/detail/Op.cpp"
+// #include "coda/linalg/detail/Expr.cpp"
 
 #include "coda/linalg/detail/Matrix.cpp"
 #include "coda/linalg/detail/SymMatrix.cpp"
 #include "coda/linalg/detail/Vector.cpp"
 
-#include "coda/linalg/operators.h"
+// #include "coda/linalg/operators.h"
 #include "coda/linalg/functions.h"
 
 
