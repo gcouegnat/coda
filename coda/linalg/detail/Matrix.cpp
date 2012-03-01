@@ -162,9 +162,8 @@ inline const Matrix<eT>& Matrix<eT>::fill(const eT val) {
 template <typename eT>
 inline const Matrix<eT>& Matrix<eT>::fill() {
   coda_extra_debug_funcname();
-  for(uint i=0; i<nelem; ++i)
-  {
-    access::rw(mem[i])=eT(i);
+  for (uint i = 0; i < nelem; ++i) {
+    access::rw(mem[i]) = eT(i);
   }
   return *this;
 }
@@ -188,7 +187,7 @@ inline const Matrix<eT>& Matrix<eT>::eye() {
   coda_extra_debug_funcname();
   zeros();
   for (uint i = 0; i < nrows; ++i) {
-    this->at(i,i)=eT(1);
+    this->at(i, i) = eT(1);
   }
   return *this;
 }
@@ -239,7 +238,7 @@ inline void Matrix<eT>::print(std::string text) {
   if (text.length() > 0) {
     std::cout << text << " ";
   }
-  std::cout << "<Matrix of size " << nrows << " by " << ncols <<">\n";
+  std::cout << "<Matrix of size " << nrows << " by " << ncols << ">\n";
   prettyprint::print(std::cout, *this);
 }
 

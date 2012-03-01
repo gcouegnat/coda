@@ -3,6 +3,16 @@
 
 namespace coda {
 
+/**
+ * \addtogroup linalg
+ * @{
+ */
+
+
+/// class Vector
+/// @brief Generic Vector implementation
+///
+
 template <typename eT>
 class Vector : public VectorBase< Vector<eT> > {
 
@@ -11,8 +21,8 @@ class Vector : public VectorBase< Vector<eT> > {
     const uint nelem;
     const eT* const mem;
 
-// protected:
-//  eT mem_local[16];
+    // protected:
+    //  eT mem_local[16];
 
   public:
 
@@ -55,7 +65,7 @@ class Vector : public VectorBase< Vector<eT> > {
 
 
     inline void resize(const uint in_nelem);
-    // inline void print(const std::string text="", const bool verbose = false);
+// inline void print(const std::string text="", const bool verbose = false);
     inline void print(const std::string text = "");
 
     inline eT& operator [](const uint i);
@@ -63,14 +73,14 @@ class Vector : public VectorBase< Vector<eT> > {
     inline eT& at(const uint i);
     inline eT  at(const uint i) const;
 
-    // value initialization
+// value initialization
     inline const Vector& fill(const eT val);
     inline const Vector& zeros();
     inline const Vector& ones();
     inline const Vector& randu();
     inline const Vector& basis(const uint i);
 
-    // memory access
+// memory access
     inline          eT* memptr();
     inline const    eT* memptr() const;
 
@@ -79,6 +89,10 @@ class Vector : public VectorBase< Vector<eT> > {
 
 
 };
+
+/**
+ * @}
+ */
 
 }    // namespace coda
 

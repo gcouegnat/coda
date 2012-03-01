@@ -51,10 +51,8 @@ Parameter::operator= (bool value) {
 }
 
 //-----------------------------------------------------------------------------
-Parameter::operator int ()
-const {
-  return
-    0;
+Parameter::operator int () const {
+  return 0;
 }
 //-----------------------------------------------------------------------------
 Parameter::operator double() const {

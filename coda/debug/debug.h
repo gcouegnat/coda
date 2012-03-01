@@ -1,14 +1,19 @@
 #ifndef DEBUG_H
 #define DEBUG_H
+
 namespace coda {
-template <typename T1> inline void coda_print(const T1& msg) {
+
+template <typename T1> 
+inline void coda_print(const T1& msg) {
   std::cerr << coda::colors::yellow << "@" << msg  << coda::colors::nocolor << std::endl;
 }
+
 inline void coda_assert(const bool state, std::string msg) {
   if (state == false) {
     error(msg);
   }
 }
+
 inline void coda_assert_same_size(const uint nrows1, const uint ncols1, const uint nrows2, const uint ncols2, std::string msg) {
   if ((nrows1 != nrows2) || (ncols1 != ncols2)) {
     error("%s: Incompatible matrix dimensions: %d by %d and %d by %d", msg.c_str(), nrows1, ncols1, nrows2, ncols2);
@@ -28,13 +33,16 @@ inline void coda_assert_mult_size(const uint nrows1, const uint ncols1, const ui
     error("%s: Incompatible matrix dimensions: %d by %d and %d by %d", msg.c_str(), nrows1, ncols1, nrows2, ncols2);
   }
 }
+
 inline void coda_funcname(const char* x) {
   // std::cerr << "@" << x;
   coda_print(x);
 }
+
 inline void coda_endl() {
   std::cerr << std::endl;
 }
+
 inline void coda_dummy() {
   // do nothing
 }
@@ -75,3 +83,4 @@ inline void coda_dummy() {
 #endif
 }    // namespace coda
 #endif /* DEBUG_H */
+

@@ -20,9 +20,9 @@ static char buffer[buffer_size];
 
 #define read(buffer, msg) \
     va_list aptr; \
-    va_start(aptr, msg); \
-    vsnprintf(buffer, buffer_size, msg.c_str(), aptr); \
-    va_end(aptr); \
+va_start(aptr, msg); \
+vsnprintf(buffer, buffer_size, msg.c_str(), aptr); \
+va_end(aptr); \
 
 //-----------------------------------------------------------------------------
 void
@@ -67,6 +67,4 @@ void coda::error(std::string msg, ...) {
   }
 }
 //-----------------------------------------------------------------------------
-
-
 

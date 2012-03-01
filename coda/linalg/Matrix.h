@@ -3,14 +3,41 @@
 
 namespace coda {
 
+/**
+ * @addtogroup linalg Linear algebra
+ * @{
+ */
+
+
+
+/**
+ * class Matrix
+ *
+ * @brief General matrix implementation
+ *
+ * Implémente une classe templaté pour les matrices.
+ */
+
+
+/*
+ * Class: Matrix
+ *
+ */
 template <typename eT>
 class Matrix : public MatrixBase< Matrix<eT> > {
+
+
   public:
 
     typedef eT elem_type;
 
+    /// Number of rows
     const uint nrows;
+
+    /// Number of cols
     const uint ncols;
+
+    /// Number of stored elements
     const uint nelem;
 
     const eT* const mem;
@@ -19,12 +46,26 @@ class Matrix : public MatrixBase< Matrix<eT> > {
 
   public:
 
-    // constructor/destructor
+    /**
+    * Destructor
+    */
     inline ~Matrix();
+
+    /// Constructor
     inline Matrix();
+
+    /**
+     * Constructor
+     *
+     * @param in_rows nombre de lignes
+     * @param in_cols nombre de colonnes
+     */
     inline Matrix(uint in_rows, uint in_cols);
 
-    // operations with scalar
+    /**
+    * Element-wise operation
+    * @param val Value to add/substract
+    */
     inline const Matrix& operator+=(const eT val);
     inline const Matrix& operator-=(const eT val);
     inline const Matrix& operator*=(const eT val);
@@ -110,10 +151,25 @@ class Matrix : public MatrixBase< Matrix<eT> > {
     template <typename T1, typename T2 > inline const Matrix& operator+= (const MatrixExpr<T1, T2, op_times>& op);
 
   protected:
+    /*
+     * Function: init
+     *
+     * Parameters:
+     *
+     *  in_rows - number of rows
+     *
+     * Returns:
+     *
+     *  nothing
+     */
+
     inline void init(uint in_rows, uint in_cols);
 };
+
+/** @}*/
 
 }    /* namespace coda */
 
 #endif    /* MATRIX_H */
+
 
