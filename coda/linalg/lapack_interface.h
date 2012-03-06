@@ -4,8 +4,7 @@
 #include "backend.h"
 #include "clapack.h"
 
-namespace coda
-{
+namespace coda {
 namespace lapack {
 
 using ::sgetrf_;
